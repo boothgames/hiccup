@@ -1,0 +1,56 @@
+{
+  "name": "parcel-react-example",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "lint": "eslint ./src/**/*.jsx",
+    "fix": "eslint ./src/**/*.jsx --fix",
+    "build": "cross-env NODE_ENV=production parcel build index.html --public-url /",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.4.9",
+    "babel-preset-react-app": "^7.0.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "json5": "^2.1.0",
+    "parcel-bundler": "latest",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^5.0.0",
+    "react-transition-group": "^2.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.1.0",
+    "cross-env": "^5.1.1",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.1.0",
+    "jest-enzyme": "^7.0.1",
+    "prettier": "1.16.4",
+    "react-test-renderer": "^16.8.3",
+    "sass": "^1.17.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "<rootDir>/mocks/styleMock.js",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/mocks/fileMock.js"
+    },
+    "setupFiles": [
+      "<rootDir>/config/enzymeSetup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./node_modules/jest-enzyme/lib/index.js"
+    ]
+  }
+}
