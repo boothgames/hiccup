@@ -1,4 +1,4 @@
-# Parcel React starter kit
+# GIDS UI
 This is build using react, sass and parcel. For running the app do.
 ```
 yarn or yarn install or npm install
