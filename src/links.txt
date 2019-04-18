@@ -1,11 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Page from "./Page";
-
-export default function LandingPage() {
-  return (
-    <Page>
-      <Link
+<Link
         to={{
           pathname: "/firstgame",
           state: { prev: true }
@@ -50,6 +43,3 @@ export default function LandingPage() {
       >
         Leap
       </Link>
-    </Page>
-  );
-}

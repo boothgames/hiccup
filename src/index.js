@@ -1,24 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { 
-  Route, 
-  Switch, 
-  BrowserRouter,
-} from 'react-router-dom';
-import { 
-  CSSTransition, 
-  TransitionGroup 
-} from 'react-transition-group';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './style.css';
-import Nav from './Nav';
-import LandingPage from './LandingPage';
+
+import LandingPage from './dashboard/LandingPage';
+import VrGame from './games/VrGame';
+import ArGame from './games/ArGame';
+import SmileIot from './games/SmileIot';
+import TicTac from './games/TitTac';
+import LeapMotion from './games/LeapMotion';
 import Error404 from './Error404';
-import FifthGame from './FifthGame';
-import FirstGame from './FirstGame';
-import SecondGame from './SecondGame';
-import ThirdGame from './ThirdGame';
-import FourthGame from './FourthGame';
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -27,8 +20,6 @@ const supportsHistory = 'pushState' in window.history;
 
 const App = () => (
   <BrowserRouter forceRefresh={!supportsHistory}>
-    <div>
-      <Nav />
       <main>
         <Route
           render={({ location }) => {
@@ -53,24 +44,24 @@ const App = () => (
                           component={LandingPage}
                         />
                          <Route
-                          path="/firstgame"
-                          component={FirstGame}
+                          path="/vr"
+                          component={VrGame}
                         />
                          <Route
-                          path="/secondgame"
-                          component={SecondGame}
+                          path="/ar"
+                          component={ArGame}
                         />
                          <Route
-                          path="/thirdgame"
-                          component={ThirdGame}
+                          path="/iot"
+                          component={SmileIot}
                         />
                          <Route
-                          path="/fourthgame"
-                          component={FourthGame}
+                          path="/tictac"
+                          component={TicTac}
                         />
                         <Route
-                          path="/fifthgame"
-                          component={FifthGame}
+                          path="/leapmotion"
+                          component={LeapMotion}
                         />
                         <Route
                           component={Error404}
@@ -84,7 +75,7 @@ const App = () => (
           }}
         />
       </main>
-    </div>
+      
   </BrowserRouter>
 );
 

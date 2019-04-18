@@ -38,7 +38,7 @@ Page.propTypes = {
 
 Page.defaultProps = {
   color: '#444',
-  background: '#e2e1e0',
+  background: '#fff',
 };
 
 export default withRouter(Page);

@@ -1,11 +1,11 @@
 import React from 'react';
-import Page from './Page';
+import Page from '../common/Page';
 import { Link } from "react-router-dom";
 
-export default function ThirdGame(props) {
+export default function TicTac(props) {
   return (
     <Page color="#cc99ff" background="#280051">
-      <h1>3rd</h1>
+      <h1>4th</h1>
       <Link
         to={{
           pathname: "/",
