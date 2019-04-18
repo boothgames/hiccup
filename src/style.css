@@ -12,19 +12,6 @@ body {
   padding: 0;
 }
 
-/* Nav */
-
-.nav__link {
-  background: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  height: 300px;
-  margin: 1rem;
-  position: relative;
-  width: 300px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-
 /* Page */
 .page__inner{
   height: 100vh;
@@ -32,7 +19,7 @@ body {
 
 .page {
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
   position: fixed;
   top: 0;
   width: 100%;
@@ -75,6 +62,27 @@ body {
   margin-top: 0;
 }
 
+.gooey a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-decoration: none;
+  font-size: 3em;
+}
+
+.logo {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 300px;
+}
+
+/* animation */
 .gooey{
   background-color: orange;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
@@ -82,8 +90,8 @@ body {
   transform-style: preserve-3d;
   outline: 1px solid transparent;
   will-change: border-radius;
-  width: 20em;
-  height: 20em;
+  width: 30em;
+  height: 30em;
   display: block;
   position: absolute;
   top: 0;
@@ -91,6 +99,7 @@ body {
   right: 0;
   bottom: 0;
   margin: auto;
+  opacity: 1;
 }
 .gooey:before,
 .gooey:after{
@@ -102,19 +111,13 @@ body {
   left: 0; top: 0;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
   will-change: border-radius,;
+  animation: morph 15s linear infinite;
   animation-delay: 5s;
   background-color: orange;
 }
 
-.gooey:before{
-  animation: morph 15s linear infinite;
-}
-
 .gooey:after{
-  animation: morph 15s linear infinite;
   animation-delay: 10s;
-  line-height: 120px;
-  text-indent: -21px;
 }
 
 @keyframes morph{

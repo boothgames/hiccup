@@ -1,12 +1,4 @@
-<Link
-        to={{
-          pathname: "/firstgame",
-          state: { prev: true }
-        }}
-        className="nav__link"
-      >
-        VR
-      </Link>
+
       <Link
         to={{
           pathname: "/secondgame",

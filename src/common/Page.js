@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
+import logo from '../asserts/img/TW-logo.png'
 
-function Page({ 
-  children, 
-  color, 
+function Page({
+  children,
+  color,
   background,
   location: {
     state,
@@ -16,7 +17,7 @@ function Page({
     'page--prev': state && state.prev,
   })
   return (
-    <section 
+    <section
       className={cx}
       style={{
         color,
@@ -25,6 +26,7 @@ function Page({
     >
       <div className="page__inner">
         {children}
+        <img className="logo" src={logo} alt='logo'/>
       </div>
     </section>
   );

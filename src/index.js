@@ -20,62 +20,62 @@ const supportsHistory = 'pushState' in window.history;
 
 const App = () => (
   <BrowserRouter forceRefresh={!supportsHistory}>
-      <main>
-        <Route
-          render={({ location }) => {
-            const { pathname } = location;
-            return (
-              <TransitionGroup>
-                <CSSTransition 
-                  key={pathname}
-                  classNames="page"
-                  timeout={{
-                    enter: 1000,
-                    exit: 1000,
-                  }}
-                >
-                  <Route
-                    location={location}
-                    render={() => (
-                      <Switch>
-                        <Route
-                          exact
-                          path="/"
-                          component={LandingPage}
-                        />
-                         <Route
-                          path="/vr"
-                          component={VrGame}
-                        />
-                         <Route
-                          path="/ar"
-                          component={ArGame}
-                        />
-                         <Route
-                          path="/iot"
-                          component={SmileIot}
-                        />
-                         <Route
-                          path="/tictac"
-                          component={TicTac}
-                        />
-                        <Route
-                          path="/leapmotion"
-                          component={LeapMotion}
-                        />
-                        <Route
-                          component={Error404}
-                        />
-                      </Switch>
-                    )}
-                  />
-                </CSSTransition>
-              </TransitionGroup>
-            );
-          }}
-        />
-      </main>
-      
+    <main>
+      <Route
+        render={({ location }) => {
+          const { pathname } = location;
+          return (
+            <TransitionGroup>
+              <CSSTransition
+                key={pathname}
+                classNames="page"
+                timeout={{
+                  enter: 1000,
+                  exit: 1000,
+                }}
+              >
+                <Route
+                  location={location}
+                  render={() => (
+                    <Switch>
+                      <Route
+                        exact
+                        path="/"
+                        component={LandingPage}
+                      />
+                      <Route
+                        path="/vr"
+                        component={VrGame}
+                      />
+                      <Route
+                        path="/ar"
+                        component={ArGame}
+                      />
+                      <Route
+                        path="/iot"
+                        component={SmileIot}
+                      />
+                      <Route
+                        path="/tictac"
+                        component={TicTac}
+                      />
+                      <Route
+                        path="/leapmotion"
+                        component={LeapMotion}
+                      />
+                      <Route
+                        component={Error404}
+                      />
+                    </Switch>
+                  )}
+                />
+              </CSSTransition>
+            </TransitionGroup>
+          );
+        }}
+      />
+    </main>
+
   </BrowserRouter>
 );
 
