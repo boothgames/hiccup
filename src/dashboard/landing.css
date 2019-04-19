@@ -5,3 +5,17 @@ h1 {
     font-style: italic;
     color: #A07861;
 }
+.gameName {
+    color: #5F3C25;
+    font-size: 3em;
+    font-style: italic;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    z-index: 1;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}

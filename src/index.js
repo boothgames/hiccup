@@ -13,6 +13,7 @@ import TicTac from './games/TitTac';
 import LeapMotion from './games/LeapMotion';
 import Error404 from './Error404';
 import Qa from './games/Qa';
+import GameLandingPage from './dashboard/GameLandingPAge';
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -67,6 +68,10 @@ const App = () => (
                       <Route
                         path="/quiz"
                         component={Qa}
+                      />
+                       <Route
+                        path="/game"
+                        component={GameLandingPage}
                       />
                       <Route
                         component={Error404}
