@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function LeapMotion(props) {
   return (
-    <Page color="#cc99ff" background="#280051">
+    <Page>
       <h1>5th</h1>
       <Link
         to={{

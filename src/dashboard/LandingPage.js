@@ -13,7 +13,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <Page>
-      <h1>Some Heading with style</h1>
+      <h1>Dare to be extraordinary ?</h1>
         <div className="gooey">
           <Link
             to={{
