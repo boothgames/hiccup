@@ -15,6 +15,8 @@ import Error404 from './Error404';
 import Qa from './games/Qa';
 import GameLandingPage from './dashboard/GameLandingPAge';
 import Instruction from './dashboard/Instruction';
+import Win from './dashboard/Win';
+import Lost from './dashboard/lost';
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -77,6 +79,14 @@ const App = () => (
                       <Route
                         path="/info"
                         component={Instruction}
+                      />
+                       <Route
+                        path="/win"
+                        component={Win}
+                      />
+                      <Route
+                        path="/lost"
+                        component={Lost}
                       />
                       <Route
                         component={Error404}

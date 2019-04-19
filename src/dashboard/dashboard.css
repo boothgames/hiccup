@@ -44,3 +44,18 @@ ul li {
     vertical-align: middle;
     margin-right: 20px;
 }
+img {
+    width: 30em;
+    margin: 0 auto;
+    display: block;
+}
+.status-text {
+    font-size: 3em;
+    font-style: italic;
+    text-align: center;
+    font-weight: 900;
+    margin-top: 0;
+}
+.lost {
+    color: #AD0F13;
+}
