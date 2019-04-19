@@ -14,6 +14,7 @@ import LeapMotion from './games/LeapMotion';
 import Error404 from './Error404';
 import Qa from './games/Qa';
 import GameLandingPage from './dashboard/GameLandingPAge';
+import Instruction from './dashboard/Instruction';
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -72,6 +73,10 @@ const App = () => (
                        <Route
                         path="/game"
                         component={GameLandingPage}
+                      />
+                      <Route
+                        path="/info"
+                        component={Instruction}
                       />
                       <Route
                         component={Error404}

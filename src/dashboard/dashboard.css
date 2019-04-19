@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 1em 0;
+    font-style: italic;
+    color: #A07861;
+}
+.gameName {
+    color: #5F3C25;
+    font-size: 3em;
+    font-style: italic;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    z-index: 1;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.gameName-info {
+    font-size: 3em;
+    margin: 1em 0 1em 1em;
+    color: #5F3C25;   
+    font-weight: bold;
+}
+ul {
+    margin-left: 2em;
+}
+ul li {
+    list-style: none;
+    vertical-align: middle;
+    margin-bottom: 30px;
+    font-size: 3em;
+    font-style: italic;
+    color: #fff;
+}
+.dot {
+    width: 41px;
+    height: 41px;
+    background: url(../asserts/img/dot.svg) no-repeat center;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}

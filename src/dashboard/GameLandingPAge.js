@@ -1,6 +1,6 @@
 import React from "react";
 import Page from "../common/Page";
-import './landing.css'
+import './dashboard.css'
 
 export default class GameLandingPage extends React.Component {
   constructor(props) {
