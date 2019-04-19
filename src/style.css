@@ -74,17 +74,26 @@ body {
   color: #fff;
   text-decoration: none;
   font-size: 3em;
+  font-style: italic;
 }
 
 .logo {
   position: absolute;
-  bottom: 10px;
+  bottom: 1em;
   left: 0;
   right: 0;
   margin: auto;
-  width: 300px;
+  width: 20em;
 }
-
+.counter {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.counter li {
+  position: absolute;
+  animation: count-up 1s linear;
+}
 /* animation */
 .gooey{
   background-color: #F58932;
@@ -139,5 +148,14 @@ body {
   67%{
     border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
     transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+  }
+}
+
+@keyframes hide-show{
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
