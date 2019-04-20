@@ -1,7 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import {render} from 'react-dom';
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import './style.css';
 
@@ -16,7 +16,8 @@ import Qa from './games/Qa';
 import GameLandingPage from './dashboard/GameLandingPAge';
 import Instruction from './dashboard/Instruction';
 import Win from './dashboard/Win';
-import Lost from './dashboard/lost';
+import Lost from './dashboard/Lost';
+import Settings from "./common/Settings";
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -24,84 +25,92 @@ import Lost from './dashboard/lost';
 const supportsHistory = 'pushState' in window.history;
 
 const App = () => (
-  <BrowserRouter forceRefresh={!supportsHistory}>
-    <main>
-      <Route
-        render={({ location }) => {
-          const { pathname } = location;
-          return (
-            <TransitionGroup>
-              <CSSTransition
-                key={pathname}
-                classNames="page"
-                timeout={{
-                  enter: 1000,
-                  exit: 1000,
-                }}
-              >
-                <Route
-                  location={location}
-                  render={() => (
-                    <Switch>
+    <BrowserRouter forceRefresh={!supportsHistory}>
+      <main>
+        <Route
+            render={({location}) => {
+              const {pathname} = location;
+              return (
+                  <TransitionGroup>
+                    <CSSTransition
+                        key={pathname}
+                        classNames="page"
+                        timeout={{
+                          enter: 1000,
+                          exit: 1000,
+                        }}
+                    >
                       <Route
-                        exact
-                        path="/"
-                        component={LandingPage}
+                          location={location}
+                          render={() => (
+                              <Switch>
+                                <Route
+                                    exact
+                                    path="/"
+                                    component={LandingPage}
+                                />
+                                <Route
+                                    path="/vr"
+                                    component={VrGame}
+                                />
+                                <Route
+                                    path="/ar"
+                                    component={ArGame}
+                                />
+                                <Route
+                                    path="/iot"
+                                    component={SmileIot}
+                                />
+                                <Route
+                                    path="/tictac"
+                                    component={TicTac}
+                                />
+                                <Route
+                                    path="/leapmotion"
+                                    component={LeapMotion}
+                                />
+                                <Route
+                                    path="/quiz"
+                                    component={Qa}
+                                />
+                                <Route
+                                    path="/game"
+                                    component={GameLandingPage}
+                                />
+                                <Route
+                                    path="/info"
+                                    component={Instruction}
+                                />
+                                <Route
+                                    path="/win"
+                                    component={Win}
+                                />
+                                <Route
+                                    path="/lost"
+                                    component={Lost}
+                                />
+                                <Route
+                                    path="/lost"
+                                    component={Lost}
+                                />
+                                <Route
+                                    path="/settings"
+                                    component={Settings}
+                                />
+                                <Route
+                                    component={Error404}
+                                />
+                              </Switch>
+                          )}
                       />
-                      <Route
-                        path="/vr"
-                        component={VrGame}
-                      />
-                      <Route
-                        path="/ar"
-                        component={ArGame}
-                      />
-                      <Route
-                        path="/iot"
-                        component={SmileIot}
-                      />
-                      <Route
-                        path="/tictac"
-                        component={TicTac}
-                      />
-                      <Route
-                        path="/leapmotion"
-                        component={LeapMotion}
-                      />
-                      <Route
-                        path="/quiz"
-                        component={Qa}
-                      />
-                       <Route
-                        path="/game"
-                        component={GameLandingPage}
-                      />
-                      <Route
-                        path="/info"
-                        component={Instruction}
-                      />
-                       <Route
-                        path="/win"
-                        component={Win}
-                      />
-                      <Route
-                        path="/lost"
-                        component={Lost}
-                      />
-                      <Route
-                        component={Error404}
-                      />
-                    </Switch>
-                  )}
-                />
-              </CSSTransition>
-            </TransitionGroup>
-          );
-        }}
-      />
-    </main>
+                    </CSSTransition>
+                  </TransitionGroup>
+              );
+            }}
+        />
+      </main>
 
-  </BrowserRouter>
+    </BrowserRouter>
 );
 
-render(<App />, document.getElementById('root'));
+render(<App/>, document.getElementById('root'));
