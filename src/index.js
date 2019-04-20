@@ -5,7 +5,7 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import './style.css';
 
-import LandingPage from './dashboard/LandingPage';
+import Home from './dashboard/Home';
 import VrGame from './games/VrGame';
 import ArGame from './games/ArGame';
 import SmileIot from './games/SmileIot';
@@ -47,7 +47,7 @@ const App = () => (
                                 <Route
                                     exact
                                     path="/"
-                                    component={LandingPage}
+                                    component={Home}
                                 />
                                 <Route
                                     path="/vr"

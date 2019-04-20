@@ -7,6 +7,7 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "classnames": "2.2.6",
+    "events": "^3.0.0",
     "formik": "^1.5.2",
     "lodash": "^4.17.11",
     "node-localstorage": "^1.3.1",
@@ -16,7 +17,8 @@
     "react-dom": "16.8.6",
     "react-router-dom": "5.0.0",
     "react-transition-group": "2.9.0",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "ws": "^6.2.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.0"
@@ -29,7 +31,9 @@
       }
     },
     "/ws/*": {
-      "target": "http://localhost:5624/ws/v1"
+      "target": "ws://localhost:5624/",
+      "changeOrigin": true,
+      "ws": true
     }
   },
   "scripts": {

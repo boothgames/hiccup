@@ -5,6 +5,7 @@ h1 {
     font-style: italic;
     color: #A07861;
 }
+
 .gameName {
     color: #5F3C25;
     font-size: 3em;
@@ -19,15 +20,18 @@ h1 {
     width: 100%;
     text-align: center;
 }
+
 .gameName-info {
     font-size: 3em;
     margin: 1em 0 1em 1em;
-    color: #5F3C25;   
+    color: #5F3C25;
     font-weight: bold;
 }
+
 ul {
     margin-left: 2em;
 }
+
 ul li {
     list-style: none;
     vertical-align: middle;
@@ -36,6 +40,7 @@ ul li {
     font-style: italic;
     color: #fff;
 }
+
 .dot {
     width: 41px;
     height: 41px;
@@ -44,11 +49,13 @@ ul li {
     vertical-align: middle;
     margin-right: 20px;
 }
+
 img {
     width: 30em;
     margin: 0 auto;
     display: block;
 }
+
 .status-text {
     font-size: 3em;
     font-style: italic;
@@ -56,6 +63,11 @@ img {
     font-weight: 900;
     margin-top: 0;
 }
+
 .lost {
     color: #AD0F13;
+}
+
+a.link {
+    cursor: pointer;
 }
