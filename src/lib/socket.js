@@ -49,8 +49,8 @@ const onClientConnected = () => {
 };
 
 const onClientMessage = ({data}) => {
-  const message = JSON.parse(data);
-  console.log(message);
+  const {Action: action, Payload: payload} = JSON.parse(data);
+  clientEvent.emit(action, payload);
 };
 
 const onGameMessage = ({data}) => {

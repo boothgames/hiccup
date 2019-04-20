@@ -17,6 +17,7 @@
     "react-dom": "16.8.6",
     "react-router-dom": "5.0.0",
     "react-transition-group": "2.9.0",
+    "timer-stopwatch": "^0.2.0",
     "whatwg-fetch": "^3.0.0",
     "ws": "^6.2.1"
   },

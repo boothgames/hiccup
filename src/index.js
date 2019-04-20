@@ -4,20 +4,10 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import './style.css';
-
-import Home from './dashboard/Home';
-import VrGame from './games/VrGame';
-import ArGame from './games/ArGame';
-import SmileIot from './games/SmileIot';
-import TicTac from './games/TitTac';
-import LeapMotion from './games/LeapMotion';
+import Home from './game/Home';
 import Error404 from './Error404';
-import Qa from './games/Qa';
-import GameLandingPage from './dashboard/GameLandingPAge';
-import Instruction from './dashboard/Instruction';
-import Win from './dashboard/Win';
-import Lost from './dashboard/Lost';
 import Settings from "./common/Settings";
+
 
 // Does the user's browser support the HTML5 history API?
 // If the user's browser doesn't support the HTML5 history API then we
@@ -44,62 +34,9 @@ const App = () => (
                           location={location}
                           render={() => (
                               <Switch>
-                                <Route
-                                    exact
-                                    path="/"
-                                    component={Home}
-                                />
-                                <Route
-                                    path="/vr"
-                                    component={VrGame}
-                                />
-                                <Route
-                                    path="/ar"
-                                    component={ArGame}
-                                />
-                                <Route
-                                    path="/iot"
-                                    component={SmileIot}
-                                />
-                                <Route
-                                    path="/tictac"
-                                    component={TicTac}
-                                />
-                                <Route
-                                    path="/leapmotion"
-                                    component={LeapMotion}
-                                />
-                                <Route
-                                    path="/quiz"
-                                    component={Qa}
-                                />
-                                <Route
-                                    path="/game"
-                                    component={GameLandingPage}
-                                />
-                                <Route
-                                    path="/info"
-                                    component={Instruction}
-                                />
-                                <Route
-                                    path="/win"
-                                    component={Win}
-                                />
-                                <Route
-                                    path="/lost"
-                                    component={Lost}
-                                />
-                                <Route
-                                    path="/lost"
-                                    component={Lost}
-                                />
-                                <Route
-                                    path="/settings"
-                                    component={Settings}
-                                />
-                                <Route
-                                    component={Error404}
-                                />
+                                <Route exact path="/" component={Home}/>
+                                <Route exact path="/settings" component={Settings}/>
+                                <Route component={Error404}/>
                               </Switch>
                           )}
                       />
