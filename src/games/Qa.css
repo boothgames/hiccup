@@ -6,6 +6,9 @@
     width: 86%;
     border-radius: 50px;
 }
+.quizWrapper h1 {
+    color: #fff;
+}
 .question {
     color: #5F3C25;
     font-size: 2em;
