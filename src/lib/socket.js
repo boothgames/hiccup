@@ -70,10 +70,12 @@ export const connect = () => {
 };
 
 export const publishClientMessage = (message) => {
+  console.log(`publishing client message ${message.action}`);
   clientSocket.send(JSON.stringify(message));
 };
 
 export const publishGameMessage = (id, message) => {
+  console.log(`publishing game message ${message.action}`);
   const socket = _.get(connections, id);
   if (socket) {
     socket.send(JSON.stringify(message));

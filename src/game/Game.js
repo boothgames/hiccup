@@ -1,18 +1,17 @@
 import React from 'react';
 import Page from '../common/Page';
 import {Col, Container, Jumbotron, Row} from 'react-bootstrap';
-import {countDownTimer} from "../lib/timer";
 import {publishGameMessage} from "../lib/socket";
+
+let timer;
 
 export default function Game(props) {
   const {game: {Name: name, Instruction: instruction}} = props;
 
-  countDownTimer({
-    completed: () => {
-      publishGameMessage(name, {action: 'completed'})
-    },
-    duration: 5000,
-  });
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    publishGameMessage(name, {action: 'completed'});
+  }, 5000);
 
   return (
       <Page>
