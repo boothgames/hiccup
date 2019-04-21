@@ -19,7 +19,11 @@ class Settings extends Component {
   componentDidMount() {
     const {games} = this.state;
     getRegisteredGames().then(registeredGames => {
-      _.merge(games, registeredGames);
+      const mappedGames = _.reduce(registeredGames, (result, value, name) => {
+        _.merge(result, {[name]: _.pick(value, ['Name','Title'])});
+        return result;
+      }, {});
+      _.merge(games, mappedGames);
       this.setState({games})
     });
   }
