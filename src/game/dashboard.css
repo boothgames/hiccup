@@ -116,9 +116,13 @@ a.link {
     width: 80%;
     margin: 0 auto;
   }
+
+  .App-header video {
+    margin-bottom: 1em;
+  }
   
   .App-link {
-    color: #61dafb;
+    color: #fff;
   }
   
   @keyframes App-logo-spin {
