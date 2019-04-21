@@ -1,16 +1,15 @@
 import * as React from "react";
 import Page from "../common/Page";
+import Qa from '../games/Qa';
 
 export default class Embedded extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {game} = this.props;
     return (
         <Page>
-          <div className="gooey">Embedded: {game.Title}</div>
+          <h1>{game.Title}</h1>   
+          {game.Name === 'quiz' && <Qa options={game.Metadata.questions} />}
         </Page>
     )
   }

@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {QaModel} from "./qa/QaModel";
-import {ListGroup} from "react-bootstrap";
-import {Button} from "react-bootstrap";
+import React, { Component } from 'react';
+import { QaModel } from "./qa/QaModel";
 import _ from "lodash";
+import { publishGameMessage } from "../lib/socket";
+import './Qa.css'
 
 class Qa extends Component {
     constructor(props, context) {
@@ -19,7 +19,8 @@ class Qa extends Component {
             currentQuestion: qas[getRandomArbitrary(0, qas.length - 1)],
             selectedOption: "",
             isOver: false,
-            correctAnswers: 0
+            correctAnswers: 0,
+            count: qas.length
         };
     }
     handleSubmit = () => {
@@ -41,10 +42,16 @@ class Qa extends Component {
             correctAnswers: totalCorrect,
             selectedOption: ""
         })
+        if (_.isEmpty(questions)) {
+            if (this.state.correctAnswers === this.state.count) { publishGameMessage('quiz', 'completed'); }
+            else {
+                publishGameMessage('quiz', 'failed');
+            }
+        }
     };
 
     handleOptionChange = (event) => {
-        this.setState({selectedOption: event.target.value})
+        this.setState({ selectedOption: event.target.value })
     };
 
     removeQuestion = (questionID) => {
@@ -58,34 +65,35 @@ class Qa extends Component {
 
     render() {
         return (
-            <div>
+            <div className='quizWrapper'>
                 {!this.state.isOver &&
-                <div>
-                    <form>
-                        <ListGroup.Item active>
-                            {this.state.currentQuestion.question}
-                        </ListGroup.Item>
-                        {this.state.currentQuestion.options.map((option, index) => {
-                            console.log(index);
-                            return <div className="form-check" key={index}>
-                                <input
-                                    type="radio"
-                                    name="react-tips"
-                                    value={option}
-                                    className="form-check-input"
-                                    onChange={this.handleOptionChange}
-                                    checked={option === this.state.selectedOption}
-                                    key={index}
-                                />
-                                {option}
-                            </div>
-                        })}
-                    </form>
-                    <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
-                </div>
+                    <React.Fragment>
+                        <form>
+                            <p className='question'>
+                                {this.state.currentQuestion.question}
+                            </p>
+                            {this.state.currentQuestion.options.map((option, index) => {
+                                console.log(index);
+                                return <div className="form-check" key={index}>
+                                    <input
+                                        id={option}
+                                        type="radio"
+                                        name="react-tips"
+                                        value={option}
+                                        className="form-check-input"
+                                        onChange={this.handleOptionChange}
+                                        checked={option === this.state.selectedOption}
+                                        key={index}
+                                    />
+                                    <label for={option}>{option}</label>
+                                </div>
+                            })}
+                        </form>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                    </React.Fragment>
                 }
                 {this.state.isOver &&
-                <h1> Game over! {this.state.correctAnswers} + {this.state.questions.length}</h1>
+                    <h1>you answered {this.state.correctAnswers}/{this.state.count} right</h1>
                 }
             </div>
 

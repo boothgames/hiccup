@@ -8,7 +8,6 @@ import Game from "./Game";
 import _ from "lodash";
 import Lost from "./Lost";
 import Win from "./Win";
-import GameEmbedded from "./GameEmbedded";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -62,15 +61,6 @@ export default class Home extends React.Component {
     _.merge(games, {[name]: {failed: true}});
     this.setState({games, status: 'failed'});
   }
-  newMethod(games, name) {
-    return _.map(games, (game) => {
-      if (game.Mode === 'embedded') {
-        return <GameEmbedded game={_.get(games, name, { Name: 'oops', Instruction: 'Contact volunteer' })} />
-      }else {
-        return <Game game={_.get(games, name, { Name: 'oops', Instruction: 'Contact volunteer' })} />;
-      }
-    });
-  }
 
   render() {
     const {status, games} = this.state;
@@ -79,7 +69,7 @@ export default class Home extends React.Component {
         return <Instruction onRead={this.instructionRead} games={games}/>;
       case "in-progress": {
         const {selectedGame: name} = this.state;
-        return this.newMethod(games, name)
+        return <Game game={_.get(games, name, {Name: 'oops', Instruction: 'Contact volunteer'})}/>
       }
       case "completed":
         return <Win/>;
