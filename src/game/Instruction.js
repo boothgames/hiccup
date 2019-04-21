@@ -28,10 +28,10 @@ export default class Instruction extends React.Component {
         <Page>
           <div className="gooey-Ex-large">
             <h2 className='gameName-info'>Levels</h2>
-            <ul>{_.map(games, ({Name: name}) => {
+            <ul>{_.map(games, ({Name: name, Title: title}) => {
               return (
                   <li key={name}>
-                    <span className="dot"/>{name}
+                    <span className="dot"/>{title}
                   </li>
               )
             })}

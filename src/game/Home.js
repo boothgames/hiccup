@@ -1,7 +1,7 @@
 import React from "react";
 import './dashboard.css'
 import {connect, publishClientMessage, gameEvent, clientEvent} from "../lib/socket";
-import {getRegisteredGames} from "../lib/settings";
+import {getSelectedGames} from "../lib/settings";
 import Prequel from "./Prequel";
 import Instruction from "./Instruction";
 import Game from "./Game";
@@ -24,8 +24,8 @@ export default class Home extends React.Component {
     gameEvent.addListener('start', this.handleStartGame);
     clientEvent.addListener('completed', this.handleGameComplete);
     clientEvent.addListener('failed', this.handleGameFailed);
-    getRegisteredGames().then(registeredGames => {
-      this.setState({games: registeredGames})
+    getSelectedGames().then(selectedGames => {
+      this.setState({games: selectedGames})
     });
     connect();
   }

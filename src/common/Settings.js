@@ -64,14 +64,14 @@ class Settings extends Component {
                                         id="nickname"
                                         onChange={this.updateNickname}/>
                         </Form.Group>
-                        {_.map(games, ({Name: name}) => {
+                        {_.map(games, ({Name: name, Title: title}) => {
                               const {Selected: selected = false} = selectedGames[name];
                               return (
                                   <Form.Group key={name} controlId={`formGroup${name}`}>
                                     <Form.Check name={name}
                                                 type="checkbox"
                                                 defaultChecked={selected}
-                                                label={name}
+                                                label={title}
                                                 onChange={this.toggleGame}
                                                 id={name}
                                     />
