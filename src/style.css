@@ -171,3 +171,8 @@ body {
     opacity: 1;
   }
 }
+
+div.code {
+  text-align: center;
+  padding: 10%;
+}
