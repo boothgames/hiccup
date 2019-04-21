@@ -72,3 +72,61 @@ a.link {
     color: #fff;
     cursor: pointer;
 }
+
+
+.App {
+    text-align: center;
+  }
+  
+  .joker {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .happy {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+  }
+  .nothappy {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+  }
+  
+  .App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F58932;
+    padding: 3em 0;
+    border-radius: 40px;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

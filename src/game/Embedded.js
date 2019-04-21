@@ -2,6 +2,7 @@ import * as React from "react";
 import Page from "../common/Page";
 import Qa from '../games/Qa';
 import {publishGameMessage} from "../lib/socket";
+import WhySoSerious from "./WhySoSerious";
 
 export default class Embedded extends React.Component {
   constructor(props) {
@@ -20,8 +21,8 @@ export default class Embedded extends React.Component {
       case "quiz":
         const {questions = []} = metadata;
         return <Qa options={questions} onComplete={this.handleComplete}/>;
-      case "small":
-        return <h1>Why so serious</h1>;
+      case "smile":
+        return <WhySoSerious />;
       default:
         return <h1>Call volunteer</h1>;
     }
