@@ -27,7 +27,7 @@ export default class Instruction extends React.Component {
     return (
         <Page>
           <div className="gooey-Ex-large">
-            <h2 className='gameName-info'>Levels</h2>
+            <h2 className='gameName-info'>Instruction</h2>
             <ul>{_.map(games, ({Name: name, Title: title}) => {
               return (
                   <li key={name}>
