@@ -17,7 +17,7 @@ export default class Instruction extends React.Component {
     const {onRead = _.noop} = this.props;
     const {data = {}} = this.props;
     const {name, action} = data;
-    const duration = 5000;
+    const duration = 10000;
 
     this.timer = countDownTimer({
       tick: ({ms}) => {
