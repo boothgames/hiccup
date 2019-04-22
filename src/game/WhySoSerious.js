@@ -39,9 +39,9 @@ class WhySoSerious extends Component {
   };
 
   async componentDidMount() {
-    await faceapi.loadFaceDetectionModel("models")
-    await faceapi.loadFaceExpressionModel("models")
-    await faceapi.loadSsdMobilenetv1Model('models')
+    await faceapi.loadFaceDetectionModel("models");
+    await faceapi.loadFaceExpressionModel("models");
+    await faceapi.loadSsdMobilenetv1Model('models');
     const timerId = setInterval(() => this.analyse(), 1000);
     this.setState({timerId});
   }

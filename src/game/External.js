@@ -3,7 +3,6 @@ import Page from "../common/Page";
 import {Col, Container, Row} from "react-bootstrap";
 import PinInput from "react-pin-input";
 import _ from "lodash";
-import {publishGameMessage} from "../lib/socket";
 
 export default class External extends React.Component {
   constructor(props) {
@@ -13,9 +12,9 @@ export default class External extends React.Component {
   }
 
   complete(value) {
-    const {game: {Name: name, Metadata: {codes}}} = this.props;
+    const {game: {Name: name, Metadata: {codes}}, onComplete = _.noop} = this.props;
     const action = _.includes(codes, Number(value)) ? "completed" : "failed";
-    publishGameMessage(name, {action});
+    onComplete(name, {action});
   }
 
   render() {
