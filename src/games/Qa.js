@@ -47,7 +47,7 @@ class Qa extends Component {
 
     if (_.isEmpty(questions)) {
       const {onComplete = _.noop} = this.props;
-      const status = this.state.correctAnswers === this.state.count ? 'completed' : 'failed';
+      const status = this.state.correctAnswers >= 2 ? 'completed' : 'failed';
       if (isOver) {
         clearTimeout(completedTimer);
         completedTimer = setTimeout(() => {
