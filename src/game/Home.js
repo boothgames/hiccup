@@ -31,7 +31,7 @@ export default class Home extends React.Component {
     clientEvent.addListener('failed', this.handleGameFailed);
     const fetch = async () => {
       const games = await getSelectedGames();
-      const incidents = await getSecurityIncidents();
+      const incidents = await getSecurityIncidents(_.size(games));
       this.setState({incidents, games: games});
     };
     fetch().then(_.noop);
