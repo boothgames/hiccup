@@ -3,6 +3,7 @@ import Page from "../common/Page";
 import './dashboard.css'
 import _ from 'lodash';
 import {countDownTimer} from "../lib/timer";
+import {Col, Container, Row} from "react-bootstrap";
 
 export default class Prequel extends React.Component {
   constructor(props) {
@@ -30,27 +31,53 @@ export default class Prequel extends React.Component {
     this.setState({status: 'start', countDown: 3});
   }
 
-  render() {
+  renderMessage() {
     const {status, countDown} = this.state;
-    let message;
     switch (status) {
       case "ready":
-        message = (<a className="link" onClick={this.kickoff}>Start</a>);
-        break;
+        return (
+            <Page>
+              <div className="gooey">
+                <a className="link" onClick={this.kickoff}>Start</a>
+              </div>
+            </Page>
+        );
       case "start":
-        message = (<a>{countDown}</a>);
-        break;
+        return (
+            <Page>
+              <div className="gooey">
+                <a>{countDown}</a>
+              </div>
+            </Page>
+        );
       case "begin":
-        message = (<a className="link" onClick={this.start}>Save the Server</a>);
-        break;
+        return (
+            <Page>
+              <Container>
+                <Row>
+                  <Col>
+                    <div className="save-the-server">
+                      <p>You are in a world that runs on <strong>Open Source Software.</strong> But there are forces beyond reason, that
+                        are constantly threatening the ways of the internet. </p>
+                      <p>As you’re reading this, hackers are breaking
+                        into your most-dependable open source server. </p>
+                      <p>The future of internet is in your hands right now.
+                        Complete all levels of the challenge and save the day!</p>
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
+              <div className="gooey">
+                <a className="link" onClick={this.start}>Save the Server</a>
+              </div>
+            </Page>
+        );
       default:
-        message = (<a>Welcome</a>);
-        break;
+        return (<a>Welcome</a>);
     }
-    return (
-        <Page>
-          <div className="gooey">{message}</div>
-        </Page>
-    );
+  }
+
+  render() {
+    return this.renderMessage();
   };
 }

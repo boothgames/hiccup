@@ -17,7 +17,7 @@ export default class Instruction extends React.Component {
     const {onRead = _.noop} = this.props;
     const {data = {}} = this.props;
     const {name, action} = data;
-    const duration = 10000;
+    const duration = 15000;
 
     this.timer = countDownTimer({
       tick: ({ms}) => {
@@ -42,7 +42,7 @@ export default class Instruction extends React.Component {
     return (
         <Page>
           <ProgressBar percent={progress} spinner={false}/>
-          <h1>Hint</h1>
+          <h1>Did you Know?</h1>
           <Container>
             <Row>
               <Col>
