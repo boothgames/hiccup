@@ -3,6 +3,7 @@ import Page from "../common/Page";
 import {Col, Container, Row} from "react-bootstrap";
 import PinInput from "react-pin-input";
 import _ from "lodash";
+import ReactMarkdown from "react-markdown";
 
 export default class External extends React.Component {
   constructor(props) {
@@ -25,7 +26,9 @@ export default class External extends React.Component {
           <Container>
             <Row>
               <Col md={{span: 6, offset: 3}}>
-                <p>{instruction}</p>
+                <div className="hint">
+                  <ReactMarkdown source={instruction}/>
+                </div>
                 <div className="code">
                   <PinInput length={4}
                             type="numeric"

@@ -5,6 +5,7 @@ import _ from "lodash";
 import {countDownTimer} from "../lib/timer";
 import ProgressBar from "react-progress-bar-plus";
 import {Col, Container, Row} from "react-bootstrap";
+import ReactMarkdown from "react-markdown";
 
 export default class Instruction extends React.Component {
   constructor(props) {
@@ -45,10 +46,13 @@ export default class Instruction extends React.Component {
           <Container>
             <Row>
               <Col>
-                <p>{takeaway}</p>
+                <div className="hint">
+                  <ReactMarkdown source={takeaway}/>
+                </div>
               </Col>
             </Row>
           </Container>
+
         </Page>
     );
   };
