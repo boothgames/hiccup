@@ -117,12 +117,9 @@ a.link {
     margin: 0 auto;
   }
 
-  .App-header video {
-    margin-bottom: 1em;
-  }
-  
-  .App-link {
-    color: #fff;
+  .App-header video, .expression, .App-header button {
+      position: absolute;
+      left: -999999px;
   }
   
   @keyframes App-logo-spin {
