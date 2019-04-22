@@ -22,7 +22,7 @@ export default class Embedded extends React.Component {
         const {questions = []} = metadata;
         return <Qa options={questions} onComplete={this.handleComplete}/>;
       case "smile":
-        return <WhySoSerious/>;
+        return <WhySoSerious onComplete={this.handleComplete}/>;
       default:
         return <h1>Call volunteer</h1>;
     }

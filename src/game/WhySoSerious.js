@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import { orderBy } from 'lodash'
 import './dashboard.css';
 import joker from '../asserts/img/joker.jpg'
+import victory from '../asserts/img/victory2.gif'
 
 class WhySoSerious extends Component {
     setRef = webcam => {
@@ -53,9 +54,12 @@ class WhySoSerious extends Component {
     }
 
     getSuccess() {
+        setTimeout(() => {
+            this.props.onComplete("completed");
+        }, 5000);
         return (
             <div className="container">
-                <img alt="you won" className="joker" src="https://media.giphy.com/media/KEVNWkmWm6dm8/giphy.gif" />
+                <img alt="you won" className="joker" src={victory} />
                 <img alt="happy" className="happy" src={this.state.image} />
                 <img alt="not happy" className="nothappy" src={this.state.oldImage ? this.state.oldImage : this.state.image} />
             </div>
