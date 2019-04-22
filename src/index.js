@@ -4,6 +4,7 @@ import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import './style.css';
+import './asserts/styles/bootstrap.min.css';
 import Home from './game/Home';
 import Error404 from './Error404';
 import Settings from "./common/Settings";
