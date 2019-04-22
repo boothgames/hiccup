@@ -15,7 +15,7 @@ export default class Win extends React.Component {
     return (
         <Page>
           <img src={image} alt='win'/>
-          <p className='status-text'>You Win</p>
+          <p className='status-text'>You Win, Server is now secured</p>
         </Page>
     );
   };
