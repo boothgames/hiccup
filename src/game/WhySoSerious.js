@@ -13,7 +13,7 @@ class WhySoSerious extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expresion: "",
+            expression: "",
             timerId: null
         };
         this.webcam = React.createRef();
@@ -21,20 +21,23 @@ class WhySoSerious extends Component {
 
     analyse = async () => {
         console.log("called", this.webcam);
-        this.setState({ expresion: "" });
+        this.setState({ expression: "" });
         const image = new Image();
         image.src = this.webcam.getScreenshot();
         const detectionsWithExpressions = await faceapi.detectAllFaces(image).withFaceExpressions();
         console.log("expressions", detectionsWithExpressions)
         if (detectionsWithExpressions && detectionsWithExpressions.length !== 0) {
+            const expression = orderBy(detectionsWithExpressions[0].expressions, ['probability'], ['desc'])[0]['expression'];
+            console.log("expression", expression)
             this.setState(
                 {
                     image: image.src,
-                    expresion: orderBy(detectionsWithExpressions[0].expressions, ['probability'], ['desc'])[0]['expression']
+                    expression
                 }
             );
-            if (this.state.expresion !== "happy") {
+            if (expression !== "happy") {
                 this.setState({ oldImage: image.src });
+                this.analyse();
             }
         }
     }
@@ -44,17 +47,17 @@ class WhySoSerious extends Component {
         await faceapi.loadSsdMobilenetv1Model('models')
     }
     startProcess() {
-        const timerId = setInterval(() => this.analyse(), 1000);
-        this.setState({ timerId });
+        setTimeout(() => {
+            this.analyse();
+        }, 1000); 
     }
 
     getSuccess() {
-        clearInterval(this.state.timerId);
         return (
             <div className="container">
                 <img alt="you won" className="joker" src="https://media.giphy.com/media/KEVNWkmWm6dm8/giphy.gif" />
                 <img alt="happy" className="happy" src={this.state.image} />
-                <img alt="not happy" className="nothappy" src={this.state.oldImage} />
+                <img alt="not happy" className="nothappy" src={this.state.oldImage ? this.state.oldImage : this.state.image} />
             </div>
         )
     }
@@ -68,7 +71,7 @@ class WhySoSerious extends Component {
         return (
             <div className="App">
                 <div className="App-header">
-                    {this.state.expresion === "happy" ? this.getSuccess() : <img alt="joker" className="joker" src={joker} />}
+                    {this.state.expression === "happy" ? this.getSuccess() : <img alt="joker" className="joker" src={joker} />}
                     <Webcam
                         audio={false}
                         height={350}
@@ -78,7 +81,7 @@ class WhySoSerious extends Component {
                         onUserMedia={() => { this.startProcess() }}
                         videoConstraints={videoConstraints}
                     />
-                    <div className="expression">{this.state.expresion ? this.state.expresion : ""}</div>
+                    <div className="expression">{this.state.expression ? this.state.expression : ""}</div>
                     <button onClick={() => { this.analyse() }} >Detect</button>
                 </div>
             </div>
