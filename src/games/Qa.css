@@ -1,12 +1,12 @@
-.quizWrapper {
+.quizWrapper, .hint {
     padding: 2em 4em;
     background-color: #F58932;
     color: #fff;
     margin: 0 auto;
     width: 86%;
-    border-radius: 50px;
+    border-radius: 25px;
 }
-.quizWrapper h1 {
+.quizWrapper h1, .hint h1 {
     color: #fff;
 }
 .question {
