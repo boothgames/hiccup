@@ -203,13 +203,17 @@ class Snakes extends Component {
   }
   advanceSnake() {
     if(this.state.snake.length <= 0 || this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
-      this.props.onComplete("failed");  
+      setTimeout(() => {
+        this.props.onComplete("failed");
+      }, 3000);
       this.setState({"gameOver": true});
       return
     }
     if(this.state.score >= 3) {
       this.setState({"gameWon": true});
-      this.props.onComplete("completed");
+      setTimeout(() => {
+        this.props.onComplete("completed");
+      }, 3000);
       return
     }
     setTimeout(() => {
