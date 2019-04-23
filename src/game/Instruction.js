@@ -37,7 +37,7 @@ export default class Instruction extends React.Component {
         <Page>
           <div className="gooey-Ex-large">
             <ProgressBar percent={progress} spinner={false}/>
-            <h2 className='gameName-info'>Instruction</h2>
+            <h2 className='gameName-info'>To Save the Server, you need to complete</h2>
             <ul>{_.map(games, ({Name: name, Title: title}) => {
               return (
                   <li key={name}>
