@@ -1,133 +1,143 @@
 h1 {
-    text-align: center;
-    font-size: 3em;
-    margin: 1em 0;
-    font-style: italic;
-    color: #A07861;
+  text-align: center;
+  font-size: 3em;
+  margin: 1em 0;
+  font-style: italic;
+  color: #a07861;
 }
 
 .gameName {
-    color: #5F3C25;
-    font-size: 3em;
-    font-style: italic;
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    z-index: 1;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
+  color: #5f3c25;
+  font-size: 3em;
+  font-style: italic;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
 }
 
 .gameName-info {
-    font-size: 3em;
-    margin: 1em 0 1em 1em;
-    color: #5F3C25;
-    font-weight: bold;
+  font-size: 3em;
+  margin: 1em 0 1em 1em;
+  color: #5f3c25;
+  font-weight: bold;
 }
 
 ul {
-    margin-left: 2em;
+  margin-left: 2em;
 }
 
 ul li {
-    list-style: none;
-    vertical-align: middle;
-    margin-bottom: 30px;
-    font-size: 3em;
-    font-style: italic;
-    color: #fff;
+  list-style: none;
+  vertical-align: middle;
+  margin-bottom: 30px;
+  font-size: 3em;
+  font-style: italic;
+  color: #fff;
 }
 
 .dot {
-    width: 41px;
-    height: 41px;
-    background: url(../asserts/img/dot.svg) no-repeat center;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 20px;
+  width: 41px;
+  height: 41px;
+  background: url(../asserts/img/dot.svg) no-repeat center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
 }
 
 img {
-    width: 30em;
-    margin: 0 auto;
-    display: block;
+  width: 30em;
+  margin: 0 auto;
+  display: block;
 }
 
 .status-text {
-    font-size: 3em;
-    font-style: italic;
-    text-align: center;
-    font-weight: 900;
-    margin-top: 0;
+  font-size: 3em;
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+  margin-top: 0;
 }
 
 .lost {
-    color: #AD0F13;
+  color: #ad0f13;
 }
 
 a.link {
-    color: #fff;
-    cursor: pointer;
+  color: #fff;
+  cursor: pointer;
 }
 
-
 .App {
-    text-align: center;
-  }
-  
-  .joker {
-    height: 100%;
-    width: 100%;
-  }
-  
-  .container {
-    height: 100%;
-    width: 100%;
-    position: relative;
-  }
-  .happy {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-  }
-  .nothappy {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-  }
-  
-  .App-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #F58932;
-    padding: 3em 0;
-    border-radius: 40px;
-    width: 80%;
-    margin: 0 auto;
-  }
+  text-align: center;
+}
 
-  .App-header video, .expression, .App-header button {
-      position: absolute;
-      left: -999999px;
+.joker {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.happy {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+.nothappy {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f58932;
+  padding: 3em 0;
+  border-radius: 40px;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.App-header video,
+.expression,
+.App-header button {
+  position: absolute;
+  left: -999999px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
-  
+}
+
+.save-the-server {
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 1em;
+  box-shadow: -2px 17px 10px -12px rgba(68, 68, 68, 0.9);
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import blue from '../asserts/img/blue.png';
 import red from '../asserts/img/red.png';
+import './game.css'
 
 class Snakes extends Component {
   constructor(){
@@ -318,18 +319,18 @@ class Snakes extends Component {
     return (
       <div className="App" >
         <header className="App-header">
-        {this.state.gameStarted ? null : <div> PRESS SPACE BAR TO START THE GAME </div> }
-        <div>
+        {this.state.gameStarted ? null : <p className='snakeStart'> PRESS SPACE BAR TO START THE GAME </p> }
+        <p className='snakeScore'>
           Your score: {this.state.score}
-        </div>
+        </p>
         <div className="snakequestion">
-          {this.state.question.title}<br/>
-          <img src={red} height="16" width="16"/> {this.state.question.optionA}<br/>
-          <img src={blue} height="16" width="16"/> {this.state.question.optionB}<br/>
+          <p>{this.state.question.title}</p>
+          <p><img src={red} height="16" width="16" alt="red img"/> - {this.state.question.optionA}</p>
+          <p><img src={blue} height="16" width="16" alt="blue img"/> - {this.state.question.optionB}</p>
         </div> <br/><br/>
         <canvas ref="canvas" id="gameCanvas" width="700" height="500" onKeyDown={(event) => {this.changeDirection(event)}} tabIndex="0"></canvas>
-        {this.state.gameOver ? <div>Game Over</div>: null}
-        {this.state.gameWon ? <div>You've Won</div>: null}
+        {this.state.gameOver ? <p className='gameOver'>Game Over</p>: null}
+        {this.state.gameWon ? <p className='youWon'>You've Won</p>: null}
         </header>
       </div>
     );

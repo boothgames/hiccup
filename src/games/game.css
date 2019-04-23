@@ -1,0 +1,67 @@
+.gameOver {
+    background: #ad0f13;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 266px;
+    height: 87px;
+    padding: 20px;
+    font-size: 2em;
+    border-radius: 30px;
+  }
+  .youWon {
+    background: #008000;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 266px;
+    height: 87px;
+    padding: 20px;
+    font-size: 2em;
+    border-radius: 30px;
+  }
+  .snakequestion {
+    color: #5f3c25;
+    font-size: 20px;
+  }
+  .snakequestion img {
+    border: 1px solid #fff;
+    width: 16px;
+    display: inline;
+  }
+  .snakequestion p {
+    margin-bottom: 5px;
+  }
+  .snakeStart {
+    background: #008000;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 660px;
+    height: 87px;
+    padding: 20px;
+    font-size: 2em;
+    border-radius: 30px;
+  }
+  .snakeScore {
+    position: absolute;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    font-size: 20px;
+    right: 3em;
+    top: 12em;
+    border-radius: 10px;
+  }
