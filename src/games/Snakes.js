@@ -19,6 +19,7 @@ class Snakes extends Component {
     this.getQuestion = this.getQuestion.bind(this);
     this.getRandomInt = this.getRandomInt.bind(this);
     this.didGameEnd = this.didGameEnd.bind(this);
+    this.circleAround = this.circleAround.bind(this);
     this.state = {
       gameOver: false,
       gameWon: false,
@@ -197,14 +198,26 @@ class Snakes extends Component {
         snake[i].y === snake[0].y
       if (didCollide) return true
     }
+    return false;
+  }
+  circleAround(snake) {
     const hitLeftWall = snake[0].x < 0;
+    if(hitLeftWall) {
+      snake[0].x = this.gameCanvas.width - 10;
+    }
     const hitRightWall = snake[0].x > this.gameCanvas.width - 10;
+    if(hitRightWall) {
+      snake[0].x = 0;
+    }
     const hitToptWall = snake[0].y < 0;
+    if(hitToptWall){
+      snake[0].y = this.gameCanvas.height - 10
+    }
     const hitBottomWall = snake[0].y > this.gameCanvas.height - 10;
-    return hitLeftWall || 
-           hitRightWall || 
-           hitToptWall ||
-           hitBottomWall
+    if(hitBottomWall){
+      snake[0].y = 0
+    }
+    this.setState({snake})
   }
   advanceSnake() {
     if(this.state.snake.length <= 0 || this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
@@ -221,6 +234,7 @@ class Snakes extends Component {
       }, 3000);
       return
     }
+    this.circleAround(this.state.snake);
     setTimeout(() => {
       const {dx, dy} = this.state;
       this.clearCanvas();
