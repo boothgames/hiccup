@@ -26,6 +26,7 @@ class Snakes extends Component {
         optionA: ["red", "darkred"],
         optionB: ["blue","darkblue"]
       },
+      gameStarted: false,
       question: {
         "title": "",
         "optionA": "",
@@ -163,8 +164,11 @@ class Snakes extends Component {
       const optionB = this.createOption(snake);
       const question = this.getQuestion();
       this.setState({optionA, optionB, question});
-
-      this.advanceSnake();
+      
+      this.drawOption(optionA.x, optionA.y, "optionA");
+      this.drawOption(optionB.x, optionB.y, "optionB");
+      this.drawSnake(snake);
+      
   }
   clearCanvas() {
     var ctx = this.gameCanvas.getContext("2d");
@@ -286,6 +290,12 @@ class Snakes extends Component {
     const goingDown = dy === 10;
     const goingRight = dx === 10;
     const goingLeft = dx === -10;
+    const SPACE = 32;
+    if(keyPressed === SPACE) {
+      this.advanceSnake();
+      this.setState({gameStarted: true});
+      return;
+    }
     if (keyPressed === LEFT_KEY && !goingRight) {
       dx = -10;
       dy = 0;
@@ -308,6 +318,7 @@ class Snakes extends Component {
     return (
       <div className="App" >
         <header className="App-header">
+        {this.state.gameStarted ? null : <div> PRESS SPACE BAR TO START THE GAME </div> }
         <div>
           Your score: {this.state.score}
         </div>
