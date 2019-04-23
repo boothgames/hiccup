@@ -205,7 +205,7 @@ class Snakes extends Component {
     if(this.state.snake.length <= 0 || this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
       setTimeout(() => {
         this.props.onComplete("failed");
-      }, 3000);
+      }, 300000);
       this.setState({"gameOver": true});
       return
     }
@@ -311,7 +311,7 @@ class Snakes extends Component {
         <div>
           Your score: {this.state.score}
         </div>
-        <div>
+        <div className="snakequestion">
           {this.state.question.title}<br/>
           <img src={red} height="16" width="16"/> {this.state.question.optionA}<br/>
           <img src={blue} height="16" width="16"/> {this.state.question.optionB}<br/>
