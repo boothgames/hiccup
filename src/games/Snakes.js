@@ -202,7 +202,7 @@ class Snakes extends Component {
            hitBottomWall
   }
   advanceSnake() {
-    if(this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
+    if(this.state.snake.length <= 0 || this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
       this.props.onComplete("failed");  
       this.setState({"gameOver": true});
       return
