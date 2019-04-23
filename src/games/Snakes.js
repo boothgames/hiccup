@@ -315,8 +315,8 @@ class Snakes extends Component {
           {this.state.question.title}<br/>
           <img src={red} height="16" width="16"/> {this.state.question.optionA}<br/>
           <img src={blue} height="16" width="16"/> {this.state.question.optionB}<br/>
-        </div>
-        <canvas ref="canvas" id="gameCanvas" width="600" height="400" onKeyDown={(event) => {this.changeDirection(event)}} tabIndex="0"></canvas>
+        </div> <br/><br/>
+        <canvas ref="canvas" id="gameCanvas" width="700" height="500" onKeyDown={(event) => {this.changeDirection(event)}} tabIndex="0"></canvas>
         {this.state.gameOver ? <div>Game Over</div>: null}
         {this.state.gameWon ? <div>You've Won</div>: null}
         </header>
