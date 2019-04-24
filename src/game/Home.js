@@ -81,6 +81,9 @@ export default class Home extends React.Component {
       case "failed":
         publishGameMessage(name, {action});
         return;
+      default:
+        publishGameMessage(name, {action});
+        return;
     }
   }
 

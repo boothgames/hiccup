@@ -37,8 +37,8 @@ export default class Prequel extends React.Component {
       case "ready":
         return (
             <Page>
-              <div className="gooey">
-                <a className="link" onClick={this.kickoff}>Start</a>
+              <div className="gooey" onClick={this.kickoff}>
+                <a className="link">Start</a>
               </div>
             </Page>
         );
@@ -57,19 +57,21 @@ export default class Prequel extends React.Component {
                 <Row>
                   <Col>
                     <div className="save-the-server">
-                      <p>You are in a world that runs on <strong>Open Source Software.</strong> But there are forces beyond reason, that
+                      <p>You are in a world that runs on <strong>Open Source Software.</strong> But there are forces
+                        beyond reason, that
                         are constantly threatening the ways of the internet. </p>
-                      <p>As you’re reading this, hackers are breaking
-                        into your most-dependable open source server. </p>
-                      <p>The future of internet is in your hands right now.
-                        Complete all levels of the challenge and save the day!</p>
+                      <p>As you’re reading this, <strong>hackers</strong> are breaking
+                        into your most-dependable open source web server. </p>
+                      <p>The future of internet is in <strong>your hands</strong> right now. Complete all levels of the
+                        challenge and save the day!</p>
+                      <div className="action">
+                        <a className="link" onClick={this.start}>Save the Server</a>
+                      </div>
                     </div>
                   </Col>
                 </Row>
               </Container>
-              <div className="gooey">
-                <a className="link" onClick={this.start}>Save the Server</a>
-              </div>
+
             </Page>
         );
       default:

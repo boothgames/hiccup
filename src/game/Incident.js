@@ -41,12 +41,12 @@ export default class Instruction extends React.Component {
     const {hint: {takeaway = "ask volunteer"}} = data;
     return (
         <Page>
-          <ProgressBar percent={progress} spinner={false}/>
+          <ProgressBar percent={progress} spinner={"right"}/>
           <h1>Did you Know?</h1>
           <Container>
             <Row>
               <Col>
-                <div className="hint">
+                <div className="hint did-you-know">
                   <ReactMarkdown source={takeaway}/>
                 </div>
               </Col>

@@ -117,6 +117,7 @@ body {
     margin: auto;
     opacity: 1;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .gooey:before,
@@ -186,12 +187,17 @@ div.code {
 }
 
 .hint {
-    padding: 2em 4em;
-    background-color: #F58932;
-    color: #fff;
+    padding: 1em 0;
     margin: 0 auto;
-    width: 86%;
-    border-radius: 25px;
+    font-size: 2em;
+}
+
+.hint.did-you-know {
+    font-size: 2.4em;
+}
+
+.hint h1 {
+    color: #fff;
 }
 
 .hint h1 {

@@ -13,7 +13,7 @@ export default class Instruction extends React.Component {
 
   componentDidMount() {
     const {onRead = _.noop} = this.props;
-    const duration = 5000;
+    const duration = 10000;
     this.timer = countDownTimer({
       tick: ({ms}) => {
         const progress = 100 - Math.round((((duration - ms) / duration) * 100));
@@ -36,7 +36,7 @@ export default class Instruction extends React.Component {
     return (
         <Page>
           <div className="gooey-Ex-large">
-            <ProgressBar percent={progress} spinner={false}/>
+            <ProgressBar percent={progress} spinner={"right"}/>
             <h2 className='gameName-info'>To Save the Server, you need to complete</h2>
             <ul>{_.map(games, ({Name: name, Title: title}) => {
               return (

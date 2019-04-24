@@ -25,10 +25,14 @@ export default class External extends React.Component {
           <h1>{title}</h1>
           <Container>
             <Row>
-              <Col md={{span: 6, offset: 3}}>
+              <div>
+                <h2>How to Play?</h2>
                 <div className="hint">
                   <ReactMarkdown source={instruction}/>
                 </div>
+
+              </div>
+              <Col md={{span: 6, offset: 3}}>
                 <div className="code">
                   <PinInput length={4}
                             type="numeric"

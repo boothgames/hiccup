@@ -134,10 +134,23 @@ a.link {
 }
 
 .save-the-server {
-  background: rgba(0,0,0,0.8);
-  color: #fff;
   padding: 1em;
   margin-top: 1em;
-  border-radius: 1em;
-  box-shadow: -2px 17px 10px -12px rgba(68, 68, 68, 0.9);
+  font-size: 2.2em;
+}
+
+.save-the-server p {
+  padding-bottom: 1em;
+}
+
+.save-the-server .action {
+  padding-top: 1em;
+  text-align: center;
+}
+
+.save-the-server .action .link, .save-the-server .action .link:hover {
+  background: #f58932;
+  padding: .5em;
+  border-radius: 15px;
+  color: #ffffff;
 }
