@@ -1,7 +1,7 @@
 {
-  "name": "gids-ui",
+  "name": "hiccup",
   "version": "0.0.6",
-  "description": "save the server app",
+  "description": "frontend for nightfury",
   "keywords": [],
   "main": "index.js",
   "dependencies": {
@@ -46,8 +46,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "prepackage": "rm -f gids.tar",
-    "package": "tar cf gids.tar default.template Dockerfile build/ scripts/ .dockerignore",
+    "prepackage": "rm -f hiccup.tar",
+    "package": "tar cf hiccup.tar default.template Dockerfile build/ scripts/ .dockerignore",
     "eject": "react-scripts eject"
   },
   "browserslist": [
