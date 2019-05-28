@@ -13,13 +13,13 @@ export default class External extends React.Component {
   }
 
   complete(value) {
-    const {game: {Name: name, Metadata: {codes}}, onComplete = _.noop} = this.props;
+    const {game: {name, metadata: {codes}}, onComplete = _.noop} = this.props;
     const action = _.includes(codes, Number(value)) ? "completed" : "failed";
     onComplete(name, {action});
   }
 
   render() {
-    const {game: {Title: title, Instruction: instruction}} = this.props;
+    const {game: {title, instruction}} = this.props;
     return (
         <Page>
           <h1>{title}</h1>

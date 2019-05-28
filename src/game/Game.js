@@ -8,7 +8,7 @@ let timer;
 
 export default function Game(props) {
   const {game, onComplete = _.noop} = props;
-  const {Mode: mode, Name: name} = game;
+  const {mode, name} = game;
 
   switch (mode) {
     case "external":

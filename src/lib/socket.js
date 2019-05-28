@@ -16,7 +16,7 @@ const noop = () => {
 const configuredGames = () => {
   const {games} = currentSettings();
   return _.chain(games)
-      .map(({Name: name, Selected: selected}) => ({name, selected}))
+      .map(({name, selected}) => ({name, selected}))
       .filter('selected')
       .value();
 };
@@ -32,7 +32,7 @@ const refreshSocket = (socket, {url, onConnected = noop, onMessage = noop}) => {
 };
 
 const clientURL = () => {
-  const {nickname} = currentSettings();
+  const {nickname = 'hiccup'} = currentSettings();
   return wsURL(`/ws/v1/clients/${nickname}`);
 };
 
@@ -49,12 +49,12 @@ const onClientConnected = () => {
 };
 
 const onClientMessage = ({data}) => {
-  const {Action: action, Payload: payload} = JSON.parse(data);
+  const {action, payload} = JSON.parse(data);
   clientEvent.emit(action, payload);
 };
 
 const onGameMessage = ({data}) => {
-  const {Action: action, Payload: payload} = JSON.parse(data);
+  const {action, payload} = JSON.parse(data);
   gameEvent.emit(action, payload);
 };
 

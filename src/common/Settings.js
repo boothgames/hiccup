@@ -20,7 +20,7 @@ class Settings extends Component {
     const {games} = this.state;
     getRegisteredGames().then(registeredGames => {
       const mappedGames = _.reduce(registeredGames, (result, value, name) => {
-        _.merge(result, {[name]: _.pick(value, ['Name','Title'])});
+        _.merge(result, {[name]: _.pick(value, ['name', 'title'])});
         return result;
       }, {});
       _.merge(games, mappedGames);
@@ -40,7 +40,7 @@ class Settings extends Component {
 
   toggleGame({target: {name, checked}}) {
     const {games} = this.state;
-    const game = {[name]: {Selected: checked}};
+    const game = {[name]: {selected: checked}};
     _.merge(games, game);
     this.setState({games});
   }
@@ -68,8 +68,8 @@ class Settings extends Component {
                                         id="nickname"
                                         onChange={this.updateNickname}/>
                         </Form.Group>
-                        {_.map(games, ({Name: name, Title: title}) => {
-                              const {Selected: selected = false} = selectedGames[name];
+                        {_.map(games, ({name, title}) => {
+                              const {selected = false} = selectedGames[name];
                               return (
                                   <Form.Group key={name} controlId={`formGroup${name}`}>
                                     <Form.Check name={name}

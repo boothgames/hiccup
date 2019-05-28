@@ -7,7 +7,7 @@ import ProgressBar from "react-progress-bar-plus";
 import {Col, Container, Row} from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 
-export default class Instruction extends React.Component {
+export default class Incident extends React.Component {
   constructor(props) {
     super(props);
     this.state = {progress: 0};
@@ -38,6 +38,7 @@ export default class Instruction extends React.Component {
   render() {
     const {progress} = this.state;
     const {data = {hint: {}}} = this.props;
+    console.log(data);
     const {hint: {takeaway = "ask volunteer"}} = data;
     return (
         <Page>

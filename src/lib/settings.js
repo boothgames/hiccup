@@ -7,18 +7,18 @@ export const getRegisteredGames = async () => {
   return req.json()
 };
 
-export const getSecurityIncidents = async (count = 3) => {
-  const req = await fetch('/api/security-incidents');
+export const getHints = async (count = 3) => {
+  const req = await fetch('/api/hints');
   const result = await req.json();
-  const incidents = _.map(result, ({Tag: tag, Takeaway: takeaway}) => ({tag, takeaway}));
+  const incidents = _.map(result, ({tag, takeaway}) => ({tag, takeaway}));
   return _(incidents).shuffle().take(count).value();
 };
 
 export const getSelectedGames = async () => {
   const registeredGames = await getRegisteredGames();
-  const {games} = currentSettings();
+  const {games = {}} = currentSettings();
   return _.reduce(games, (result, game, name) => {
-    const {Selected: selected} = game;
+    const {selected} = game;
     if (selected) {
       _.merge(result, {[name]: registeredGames[name]});
     }

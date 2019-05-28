@@ -1,7 +1,7 @@
 import React from "react";
 import './dashboard.css'
 import {connect, publishClientMessage, gameEvent, clientEvent, publishGameMessage} from "../lib/socket";
-import {getSelectedGames, getSecurityIncidents} from "../lib/settings";
+import {getSelectedGames, getHints} from "../lib/settings";
 import Prequel from "./Prequel";
 import Instruction from "./Instruction";
 import Game from "./Game";
@@ -10,7 +10,7 @@ import Lost from "./Lost";
 import Win from "./Win";
 import Incident from "./Incident";
 
-const INVALID_GAME = {Name: 'oops', Instruction: 'Contact volunteer'};
+const INVALID_GAME = {name: 'oops', instruction: 'Contact volunteer'};
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class Home extends React.Component {
     clientEvent.addListener('failed', this.handleGameFailed);
     const fetch = async () => {
       const games = await getSelectedGames();
-      const incidents = await getSecurityIncidents(_.size(games));
+      const incidents = await getHints(_.size(games));
       this.setState({incidents, games: games});
     };
     fetch().then(_.noop);
@@ -52,11 +52,11 @@ export default class Home extends React.Component {
     clientEvent.removeAllListeners('failed');
   }
 
-  handleStartGame({Name: name}) {
+  handleStartGame({name}) {
     this.setState({status: 'in-progress', selectedGame: name, incident: {}});
   }
 
-  handleGameComplete({Name: name}) {
+  handleGameComplete({name}) {
     const {games} = this.state;
     _.merge(games, {[name]: {completed: true}});
     const {true: remainingCount = 0} = _.countBy(games, game => !game.completed);
@@ -64,7 +64,7 @@ export default class Home extends React.Component {
     this.setState({games, status});
   }
 
-  handleGameFailed({Name: name}) {
+  handleGameFailed({name}) {
     const {games} = this.state;
     _.merge(games, {[name]: {failed: true}});
     this.setState({games, status: 'failed'});
@@ -74,7 +74,7 @@ export default class Home extends React.Component {
     switch (action) {
       case "completed":
         const {incidents} = this.state;
-        const hint = incidents.pop();
+        const hint = incidents.pop() || {};
         const incident = {name, action, hint};
         this.setState({status: "show-incident", incident});
         return;
