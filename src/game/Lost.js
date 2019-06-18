@@ -1,22 +1,15 @@
-import React from "react";
-import Page from "../common/Page";
-import './dashboard.css'
-import image from '../asserts/img/strong-warning.png'
+import React from 'react';
+import Page from '../common/Page';
+import './dashboard.css';
+import image from '../asserts/img/strong-warning.png';
 
-export default class Lost extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      game: 'vr',
-    }
-  }
+const Lost = () => {
+  return (
+    <Page>
+      <img src={image} alt='lost'/>
+      <p className='status-text lost'>You Lose, Server is still vulnerable to attack</p>
+    </Page>
+  );
+};
 
-  render() {
-    return (
-        <Page>
-          <img src={image} alt='lost'/>
-          <p className='status-text lost'>You Lose, Server is still vulnerable to attack</p>
-        </Page>
-    );
-  };
-}
+export default Lost;

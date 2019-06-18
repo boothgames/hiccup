@@ -37,7 +37,7 @@ export default function register() {
           };
         })
         .catch(error => {
-          console.error('Error during service worker registration:', error);
+          console.error('Error during service worker registration:', error); // eslint-disable-line no-console
         });
     });
   }

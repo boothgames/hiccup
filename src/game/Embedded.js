@@ -1,9 +1,11 @@
-import * as React from "react";
-import Page from "../common/Page";
+import * as React from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+
+import Page from '../common/Page';
 import Qa from '../games/Qa';
-import WhySoSerious from "./WhySoSerious";
-import _ from "lodash";
-import Snakes from "../games/Snakes";
+import WhySoSerious from './WhySoSerious';
+import Snakes from '../games/Snakes';
 
 export default class Embedded extends React.Component {
   constructor(props) {
@@ -12,19 +14,20 @@ export default class Embedded extends React.Component {
   }
 
   handleComplete(status) {
-    const {game: {name}, onComplete = _.noop} = this.props;
-    onComplete(name, {action: status});
+    const { game: { name }, onComplete } = this.props;
+    onComplete(name, { action: status });
   }
 
   renderGame() {
-    const {game: {name, metadata = {}}} = this.props;
+    const { game: { name, metadata = {} } } = this.props;
+    const { questions = [] } = metadata || {};
+
     switch (name) {
-      case "quiz":
-        const {questions = []} = metadata;
+      case 'quiz':
         return <Qa options={questions} onComplete={this.handleComplete}/>;
-      case "smile":
+      case 'smile':
         return <WhySoSerious onComplete={this.handleComplete}/>;
-      case "snakes":
+      case 'snakes':
         return <Snakes onComplete={this.handleComplete}/>;
       default:
         return <h1>Call volunteer</h1>;
@@ -32,12 +35,25 @@ export default class Embedded extends React.Component {
   }
 
   render() {
-    const {game: {Title: title}} = this.props;
+    const { game: { title } } = this.props;
     return (
-        <Page>
-          <h1>{title}</h1>
-          {this.renderGame()}
-        </Page>
-    )
+      <Page>
+        <h1>{title}</h1>
+        {this.renderGame()}
+      </Page>
+    );
   }
 }
+
+Embedded.propTypes = {
+  game: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    metadata: PropTypes.object,
+  }).isRequired,
+  onComplete: PropTypes.func,
+};
+
+Embedded.defaultProps = {
+  onComplete: _.noop,
+};

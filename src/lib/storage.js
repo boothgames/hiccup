@@ -4,5 +4,5 @@ export const currentSettings = () => {
   if (settings) {
     return JSON.parse(settings);
   }
-  return {games: {}, nickname: 'hiccup'};
+  return { games: {}, nickname: 'hiccup' };
 };

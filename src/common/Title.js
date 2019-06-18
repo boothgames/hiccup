@@ -2,7 +2,7 @@ import React from 'react';
 
 function Title() {
   return (
-      <h1>Save the Server...</h1>
+    <h1>Save the Server...</h1>
   );
 }
 

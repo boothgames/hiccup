@@ -17,39 +17,39 @@ import Settings from "./common/Settings";
 const supportsHistory = 'pushState' in window.history;
 
 const App = () => (
-    <BrowserRouter forceRefresh={!supportsHistory}>
-      <main>
-        <Route
-            render={({location}) => {
+  <BrowserRouter forceRefresh={!supportsHistory}>
+    <main>
+      <Route
+        render={({location}) => {
               const {pathname} = location;
               return (
-                  <TransitionGroup>
-                    <CSSTransition
-                        key={pathname}
-                        classNames="page"
-                        timeout={{
+                <TransitionGroup>
+                  <CSSTransition
+                    key={pathname}
+                    classNames="page"
+                    timeout={{
                           enter: 1000,
                           exit: 1000,
                         }}
-                    >
-                      <Route
-                          location={location}
-                          render={() => (
-                              <Switch>
-                                <Route exact path="/" component={Home}/>
-                                <Route exact path="/settings" component={Settings}/>
-                                <Route component={Error404}/>
-                              </Switch>
+                  >
+                    <Route
+                      location={location}
+                      render={() => (
+                        <Switch>
+                          <Route exact path="/" component={Home} />
+                          <Route exact path="/settings" component={Settings} />
+                          <Route component={Error404} />
+                        </Switch>
                           )}
-                      />
-                    </CSSTransition>
-                  </TransitionGroup>
+                    />
+                  </CSSTransition>
+                </TransitionGroup>
               );
             }}
-        />
-      </main>
+      />
+    </main>
 
-    </BrowserRouter>
+  </BrowserRouter>
 );
 
-render(<App/>, document.getElementById('root'));
+render(<App />, document.getElementById('root'));

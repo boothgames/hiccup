@@ -1,118 +1,143 @@
-import React, {Component} from 'react';
-import {QaModel} from "./qa/QaModel";
-import _ from "lodash";
-import './Qa.css'
+import React, { Component } from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+import QaModel from './qa/QaModel';
+import './Qa.css';
 
 let completedTimer;
+
+const getRandomArbitrary = (min, max) => {
+  const minimum = Math.ceil(min);
+  const maximum = Math.floor(max);
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+};
 
 class Qa extends Component {
   constructor(props, context) {
     super(props, context);
-    let qas = [];
-    let shuffledQuestions = _.shuffle(props.options);
+    const qas = [];
+    const shuffledQuestions = _.shuffle(props.options);
 
     _.each(shuffledQuestions.slice(1, 4), (question) => {
-      qas.push(new QaModel(question.id, question.question, question.options, question.answer))
+      qas.push(new QaModel(question.id, question.question, question.options, question.answer));
     });
 
     this.state = {
       questions: qas,
       currentQuestion: qas[getRandomArbitrary(0, qas.length - 1)],
-      selectedOption: "",
+      selectedOption: '',
       isOver: false,
       correctAnswers: 0,
-      count: qas.length
+      count: qas.length,
     };
   }
 
   handleSubmit = () => {
-    if (!this.state.selectedOption) {
-      return
+    const { selectedOption, correctAnswers, currentQuestion: { answer, id } } = this.state;
+    if (!selectedOption) {
+      return;
     }
 
-    let totalCorrect = this.state.correctAnswers;
-    if (this.state.selectedOption === this.state.currentQuestion.answer) {
-      totalCorrect++
+    let totalCorrect = correctAnswers;
+    if (selectedOption === answer) {
+      totalCorrect += 1;
     }
 
-    let questions = this.removeQuestion(this.state.currentQuestion.id);
+    const questions = this.removeQuestion(id);
     const isOver = _.isEmpty(questions);
+
     this.setState({
-      questions: questions,
+      questions,
       currentQuestion: questions[getRandomArbitrary(0, questions.length - 1)],
       isOver,
       correctAnswers: totalCorrect,
-      selectedOption: ""
+      selectedOption: '',
     });
 
     if (_.isEmpty(questions)) {
-      const {onComplete = _.noop} = this.props;
+      const { onComplete = _.noop } = this.props;
       if (isOver) {
-        const status = this.state.correctAnswers >= 2 ? 'completed' : 'failed';
+        const status = correctAnswers >= 2 ? 'completed' : 'failed';
         clearTimeout(completedTimer);
         completedTimer = setTimeout(() => {
           onComplete(status);
-        }, 3000)
+        }, 3000);
       }
     }
   };
 
   handleOptionChange = (event) => {
-    this.setState({selectedOption: event.target.value})
+    this.setState({ selectedOption: event.target.value });
   };
 
   removeQuestion = (questionID) => {
-    let questions = this.state.questions;
+    const { questions } = this.state;
     _.remove(questions, (question) => {
-      return question.id === questionID
+      return question.id === questionID;
     });
 
     return questions;
   };
 
   render() {
+    const { isOver, currentQuestion = {}, selectedOption, correctAnswers, count } = this.state;
+    const { question, options } = currentQuestion || {};
     return (
-        <div className='quizWrapper'>
-          {!this.state.isOver &&
+      <div className='quizWrapper'>
+        {!isOver && (
           <React.Fragment>
             <form>
               <p className='question'>
-                {this.state.currentQuestion.question}
+                {question}
               </p>
-              {this.state.currentQuestion.options.map((option, index) => {
-                return <div className="form-check" key={index}>
-                  <input
+              {options.map((option) => {
+                return (
+                  <div className="form-check" key={option}>
+                    <input
                       id={option}
                       type="radio"
                       name="react-tips"
                       value={option}
                       className="form-check-input"
                       onChange={this.handleOptionChange}
-                      checked={option === this.state.selectedOption}
-                      key={index}
-                  />
-                  <label htmlFor={option}>{option}</label>
-                </div>
+                      checked={option === selectedOption}
+                      key={option}
+                    />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+                    <label htmlFor={option}>
+                      {option}
+                    </label>
+                  </div>
+                );
               })}
             </form>
-            <button onClick={this.handleSubmit}>Submit</button>
+            <button type="submit" onClick={this.handleSubmit}>Submit</button>
           </React.Fragment>
-          }
-          {this.state.isOver &&
-          <h1>you answered {this.state.correctAnswers}/{this.state.count} right</h1>
-          }
-        </div>
-
+        )}
+        {isOver && (
+          <h1>
+            you answered
+            {correctAnswers}
+            /
+            {count}
+            {' '}
+            right
+          </h1>
+        )}
+      </div>
     );
   }
 }
 
-export default Qa;
+Qa.propTypes = {
+  onComplete: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
 
-function getRandomArbitrary(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+Qa.defaultProps = {
+  onComplete: _.noop,
+};
+
+export default Qa;
 
 

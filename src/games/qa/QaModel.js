@@ -1,25 +1,32 @@
-export class QaModel {
+export default class QaModel {
+  #id = 0;
 
-    constructor(id="", question = "", options=[], answer="") {
-        this._id = id;
-        this._question = question;
-        this._options = options;
-        this._answer = answer;
-    }
+  #question = '';
 
-    get id() {
-        return this._id;
-    }
+  #options = [];
 
-    get question() {
-        return this._question;
-    }
+  #answer = '';
 
-    get options() {
-        return this._options;
-    }
+  constructor(id = '', question = '', options = [], answer = '') {
+    this.#id = id;
+    this.#question = question;
+    this.#options = options;
+    this.#answer = answer;
+  }
 
-    get answer() {
-        return this._answer;
-    }
+  get id() {
+    return this.#id;
+  }
+
+  get question() {
+    return this.#question;
+  }
+
+  get options() {
+    return this.#options;
+  }
+
+  get answer() {
+    return this.#answer;
+  }
 }

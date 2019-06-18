@@ -1,301 +1,303 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+
 import blue from '../asserts/img/blue.png';
 import red from '../asserts/img/red.png';
-import './game.css'
+import './game.css';
 
 class Snakes extends Component {
-  constructor(){
-    super();
+
+  static getRandomInt(min, max) {
+    const minimum = Math.ceil(min);
+    const maximum = Math.floor(max);
+    return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+  }
+
+  static randomTen(min, max) {
+    return Math.round((Math.random() * (max - min) + min) / 10) * 10;
+  }
+
+  static didGameEnd(snake) {
+    for (let i = 4; i < snake.length; i += 1) {
+      const didCollide = snake[i].x === snake[0].x &&
+        snake[i].y === snake[0].y;
+      if (didCollide) return true;
+    }
+    return false;
+  }
+
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
     this.drawSnakePart = this.drawSnakePart.bind(this);
     this.drawSnake = this.drawSnake.bind(this);
     this.advanceSnake = this.advanceSnake.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.changeDirection = this.changeDirection.bind(this);
 
-    this.randomTen = this.randomTen.bind(this);
     this.createOption = this.createOption.bind(this);
     this.drawOption = this.drawOption.bind(this);
     this.optionEaten = this.optionEaten.bind(this);
     this.getQuestion = this.getQuestion.bind(this);
-    this.getRandomInt = this.getRandomInt.bind(this);
-    this.didGameEnd = this.didGameEnd.bind(this);
     this.circleAround = this.circleAround.bind(this);
     this.state = {
       gameOver: false,
       gameWon: false,
       score: 0,
       colors: {
-        optionA: ["red", "darkred"],
-        optionB: ["blue","darkblue"]
+        optionA: ['red', 'darkred'],
+        optionB: ['blue', 'darkblue'],
       },
       gameStarted: false,
       question: {
-        "title": "",
-        "optionA": "",
-        "optionB": ""
+        'title': '',
+        'optionA': '',
+        'optionB': '',
       },
       snake: [
-        {x: 150, y: 150},
-        {x: 140, y: 150},
-        {x: 130, y: 150},
-        {x: 120, y: 150},
-        {x: 110, y: 150}
+        { x: 150, y: 150 },
+        { x: 140, y: 150 },
+        { x: 130, y: 150 },
+        { x: 120, y: 150 },
+        { x: 110, y: 150 },
       ],
       questions: [
         {
-          "title": "What is the full form of CPU?",
-          "optionA": "Central Processing Unit",
-          "optionB": "Central Progressive Unit",
-          "answer": "optionA"
+          'title': 'What is the full form of CPU?',
+          'optionA': 'Central Processing Unit',
+          'optionB': 'Central Progressive Unit',
+          'answer': 'optionA',
         },
         {
-          "title": "What is the full form of ALU?",
-          "optionA": "Arithmetic Local Unit",
-          "optionB": "Arithmetic Logic Unit",
-          "answer": "optionB"
+          'title': 'What is the full form of ALU?',
+          'optionA': 'Arithmetic Local Unit',
+          'optionB': 'Arithmetic Logic Unit',
+          'answer': 'optionB',
         },
         {
-          "title": "Joystick is ?",
-          "optionA": "An input device",
-          "optionB": "An output device",
-          "answer": "optionA"
+          'title': 'Joystick is ?',
+          'optionA': 'An input device',
+          'optionB': 'An output device',
+          'answer': 'optionA',
         },
         {
-          "title": "Who among the following had developed the first commercially available portable computer?",
-          "optionA": "Ada Lovelace",
-          "optionB": "Adam Osborne",
-          "answer": "optionB"
+          'title': 'Who among the following had developed the first commercially available portable computer?',
+          'optionA': 'Ada Lovelace',
+          'optionB': 'Adam Osborne',
+          'answer': 'optionB',
         },
         {
-          "title": "Which among the following is a permanent storage device?",
-          "optionA": "ROM",
-          "optionB": "RAM",
-          "answer": "optionA"
+          'title': 'Which among the following is a permanent storage device?',
+          'optionA': 'ROM',
+          'optionB': 'RAM',
+          'answer': 'optionA',
         },
         {
-          "title": "Which ones is a programming language?",
-          "optionA": "HTTP",
-          "optionB": "HTML",
-          "answer": "optionB"
+          'title': 'Which ones is a programming language?',
+          'optionA': 'HTTP',
+          'optionB': 'HTML',
+          'answer': 'optionB',
         },
         {
-          "title": "Wcich protocol is used to send e-mails?",
-          "optionA": "SMTP",
-          "optionB": "POP3",
-          "answer": "optionA"
+          'title': 'Wcich protocol is used to send e-mails?',
+          'optionA': 'SMTP',
+          'optionB': 'POP3',
+          'answer': 'optionA',
         },
         {
-          "title": "What converts assembly language to machine language",
-          "optionA": "Compiler",
-          "optionB": "Assembler",
-          "answer": "optionB"
+          'title': 'What converts assembly language to machine language',
+          'optionA': 'Compiler',
+          'optionB': 'Assembler',
+          'answer': 'optionB',
         },
         {
-          "title": "Consul is a Open Source Software",
-          "optionA": "True",
-          "optionB": "False",
-          "answer": "optionA"
+          'title': 'Consul is a Open Source Software',
+          'optionA': 'True',
+          'optionB': 'False',
+          'answer': 'optionA',
         },
         {
-          "title": "extension of excel 2007 files",
-          "optionA": ".xlsx",
-          "optionB": ".xls",
-          "answer": "optionB"
+          'title': 'extension of excel 2007 files',
+          'optionA': '.xlsx',
+          'optionB': '.xls',
+          'answer': 'optionB',
         },
-      ]
-    }
-    
-  }
-  randomTen(min, max) {
-    return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+      ],
+    };
   }
 
-  createOption(snake) {
-    const x = this.randomTen(0, this.gameCanvas.width - 10);
-    const y = this.randomTen(0, this.gameCanvas.height - 10);
-    snake.forEach((part) => {
-      const optionOnSnake = part.x === x && part.y === y
-      if (optionOnSnake)
-        this.createOption();
-    });
-    return {x, y}
+  componentDidMount() {
+    const CANVAS_BORDER_COLOUR = 'black';
+    const CANVAS_BACKGROUND_COLOUR = 'white';
+
+    this.gameCanvas = this.canvasRef.current;
+    this.gameCanvas.focus();
+    const ctx = this.gameCanvas.getContext('2d');
+    ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
+    ctx.strokestyle = CANVAS_BORDER_COLOUR;
+    ctx.fillRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+    ctx.strokeRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
+
+    const snake = [
+      { x: 150, y: 150 },
+      { x: 140, y: 150 },
+      { x: 130, y: 150 },
+      { x: 120, y: 150 },
+      { x: 110, y: 150 },
+    ];
+    this.setState({ snake, dx: 10, dy: 0 });
+    const optionA = this.createOption(snake);
+    const optionB = this.createOption(snake);
+    const question = this.getQuestion();
+    this.setState({ optionA, optionB, question });
+
+    this.drawOption(optionA.x, optionA.y, 'optionA');
+    this.drawOption(optionB.x, optionB.y, 'optionB');
+    this.drawSnake(snake);
   }
-  
+
+  getQuestion() {
+    const { questions } = this.state;
+    const index = Snakes.getRandomInt(0, (questions.length - 1));
+    const question = questions[index];
+    questions.splice(index, 1);
+    this.setState({ questions });
+    return question;
+  }
+
   drawOption(x, y, option) {
-    const ctx = this.gameCanvas.getContext("2d");
-    ctx.fillStyle = this.state.colors[option][0]
-    ctx.strokestyle = this.state.colors[option][1]
+    const { colors } = this.state;
+    const [fillStyle, strokeStyle] = colors[option];
+
+    const ctx = this.gameCanvas.getContext('2d');
+    ctx.fillStyle = fillStyle;
+    ctx.strokestyle = strokeStyle;
     ctx.fillRect(x, y, 10, 10);
     ctx.strokeRect(x, y, 10, 10);
   }
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+
+  createOption(snake) {
+    const x = Snakes.randomTen(0, this.gameCanvas.width - 10);
+    const y = Snakes.randomTen(0, this.gameCanvas.height - 10);
+    snake.forEach((part) => {
+      const optionOnSnake = part.x === x && part.y === y;
+      if (optionOnSnake)
+        this.createOption();
+    });
+    return { x, y };
   }
 
-  getQuestion(){
-    const questions = this.state.questions;
-    const index = this.getRandomInt(0, (questions.length - 1));
-    const question = questions[index];
-    questions.splice(index,1)
-    this.setState({questions})
-    return question; 
-  }
-  componentDidMount(){
-    const CANVAS_BORDER_COLOUR = 'black';
-    const CANVAS_BACKGROUND_COLOUR = "white";
-
-      this.gameCanvas = this.refs.canvas
-      this.gameCanvas.focus();
-      var ctx = this.gameCanvas.getContext("2d");
-      ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
-      ctx.strokestyle = CANVAS_BORDER_COLOUR;
-      ctx.fillRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
-      ctx.strokeRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
-
-      let snake = [
-        {x: 150, y: 150},
-        {x: 140, y: 150},
-        {x: 130, y: 150},
-        {x: 120, y: 150},
-        {x: 110, y: 150}
-      ];
-      this.setState({snake, dx: 10,dy: 0})
-      const optionA = this.createOption(snake);
-      const optionB = this.createOption(snake);
-      const question = this.getQuestion();
-      this.setState({optionA, optionB, question});
-      
-      this.drawOption(optionA.x, optionA.y, "optionA");
-      this.drawOption(optionB.x, optionB.y, "optionB");
-      this.drawSnake(snake);
-      
-  }
   clearCanvas() {
-    var ctx = this.gameCanvas.getContext("2d");
-    ctx.fillStyle = "white";
-    ctx.strokeStyle = "black";
+    const ctx = this.gameCanvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
     ctx.fillRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
     ctx.strokeRect(0, 0, this.gameCanvas.width, this.gameCanvas.height);
   }
+
   drawSnake(snake) {
     snake.forEach(this.drawSnakePart);
   }
-  optionEaten(snake){
-    const {x:x1,y:y1} = this.state.optionA;
-    const {x:x2,y:y2} = this.state.optionB;
-    if(snake[0].x === x1 && snake[0].y === y1) {
-      return "optionA"
-    } else if(snake[0].x === x2 && snake[0].y === y2){
-      return "optionB"
+
+  optionEaten(snake) {
+    const { optionA, optionB } = this.state;
+    const { x: x1, y: y1 } = optionA;
+    const { x: x2, y: y2 } = optionB;
+    if (snake[0].x === x1 && snake[0].y === y1) {
+      return 'optionA';
     }
-    return null
-  }
-  didGameEnd(snake) {
-    for (let i = 4; i < snake.length; i++) {
-      const didCollide = snake[i].x === snake[0].x &&
-        snake[i].y === snake[0].y
-      if (didCollide) return true
+    if (snake[0].x === x2 && snake[0].y === y2) {
+      return 'optionB';
     }
-    return false;
+    return null;
   }
-  circleAround(snake) {
+
+  circleAround(input) {
+    const snake = _.clone(input);
     const hitLeftWall = snake[0].x < 0;
-    if(hitLeftWall) {
+    if (hitLeftWall) {
       snake[0].x = this.gameCanvas.width - 10;
     }
     const hitRightWall = snake[0].x > this.gameCanvas.width - 10;
-    if(hitRightWall) {
+    if (hitRightWall) {
       snake[0].x = 0;
     }
     const hitToptWall = snake[0].y < 0;
-    if(hitToptWall){
-      snake[0].y = this.gameCanvas.height - 10
+    if (hitToptWall) {
+      snake[0].y = this.gameCanvas.height - 10;
     }
     const hitBottomWall = snake[0].y > this.gameCanvas.height - 10;
-    if(hitBottomWall){
-      snake[0].y = 0
+    if (hitBottomWall) {
+      snake[0].y = 0;
     }
-    this.setState({snake})
+    this.setState({ snake });
   }
+
   advanceSnake() {
-    if(this.state.snake.length <= 0 || this.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
+    const { snake, questions, score } = this.state;
+    const { onComplete } = this.props;
+    if (snake.length <= 0 || Snakes.didGameEnd(snake) || (questions.length === 0)) {
       setTimeout(() => {
-        this.props.onComplete("failed");
+        onComplete('failed');
       }, 300000);
-      this.setState({"gameOver": true});
-      return
+      this.setState({ 'gameOver': true });
+      return;
     }
-    if(this.state.score >= 3) {
-      this.setState({"gameWon": true});
+    if (score >= 3) {
+      this.setState({ 'gameWon': true });
       setTimeout(() => {
-        this.props.onComplete("completed");
+        onComplete('completed');
       }, 3000);
-      return
+      return;
     }
-    this.circleAround(this.state.snake);
+
+    this.circleAround(snake);
+
     setTimeout(() => {
-      const {dx, dy} = this.state;
+      const { dx, dy, score: oldScore, question } = this.state;
       this.clearCanvas();
-      const snake = this.state.snake;
-      const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
       snake.unshift(head);
       const eatenOption = this.optionEaten(snake);
-      const rightOption = this.state.question.answer;
+      const rightOption = question.answer;
 
-      switch(eatenOption){
-        case "optionA": {
-          if(rightOption !== "optionA") {
-            snake.pop();
-            snake.pop();  
-          } else {
-            const score = this.state.score + 1;
-            this.setState({score});
-          }
-          const optionA = this.createOption(snake);
-          const optionB = this.createOption(snake);
-          const question = this.getQuestion();
-          this.setState({optionA, optionB, question});
-          break;
-        }
-        case "optionB": {
-          if(rightOption !== "optionB") {
-            snake.pop();
-            snake.pop();  
-          }else {
-            const score = this.state.score + 1;
-            this.setState({score});
-          }
-          const optionA = this.createOption(snake);
-          const optionB = this.createOption(snake);
-          const question = this.getQuestion();
-          this.setState({optionA, optionB, question});
-          break;
-        }
-        default:{
-          snake.pop();  
-          break;
-        } 
+      if (eatenOption === rightOption) {
+        const newScore = oldScore + 1;
+        this.setState({ score: newScore });
+      } else {
+        snake.pop();
+        snake.pop();
       }
-      
 
-      this.drawOption(this.state.optionA.x, this.state.optionA.y, "optionA");
-      this.drawOption(this.state.optionB.x, this.state.optionB.y, "optionB");
-      this.drawSnake(snake);
-      this.setState({snake});
-      this.advanceSnake();  
+      const nextQuestion = this.getQuestion();
+      this.setState({
+        optionA: this.createOption(snake),
+        optionB: this.createOption(snake),
+        question: nextQuestion,
+      }, () => {
+        const { optionA, optionB } = this.state;
+
+        this.drawOption(optionA.x, optionA.y, 'optionA');
+        this.drawOption(optionB.x, optionB.y, 'optionB');
+        this.drawSnake(snake);
+        this.setState({ snake });
+        this.advanceSnake();
+      });
     }, 100);
   }
+
   drawSnakePart(snakePart) {
-    var ctx = this.gameCanvas.getContext("2d");
+    const ctx = this.gameCanvas.getContext('2d');
     ctx.fillStyle = 'lightgreen';
     ctx.strokestyle = 'darkgreen';
     ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
     ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
   }
+
   changeDirection(event) {
-    let dx = 0, dy = 0;
+    let dx = 0;
+    let dy = 0;
     const LEFT_KEY = 37;
     const RIGHT_KEY = 39;
     const UP_KEY = 38;
@@ -306,9 +308,9 @@ class Snakes extends Component {
     const goingRight = dx === 10;
     const goingLeft = dx === -10;
     const SPACE = 32;
-    if(keyPressed === SPACE) {
+    if (keyPressed === SPACE) {
       this.advanceSnake();
-      this.setState({gameStarted: true});
+      this.setState({ gameStarted: true });
       return;
     }
     if (keyPressed === LEFT_KEY && !goingRight) {
@@ -327,28 +329,66 @@ class Snakes extends Component {
       dx = 0;
       dy = 10;
     }
-    this.setState({dx, dy})
+    this.setState({ dx, dy });
   }
+
   render() {
+    const { gameStarted, score, question: { title, optionA, optionB }, gameOver, gameWon } = this.state;
+
     return (
-      <div className="App" >
+      <div className="App">
         <header className="App-header">
-        {this.state.gameStarted ? null : <p className='snakeStart'> PRESS SPACE BAR TO START THE GAME </p> }
-        <p className='snakeScore'>
-          Your score: {this.state.score}
-        </p>
-        <div className="snakequestion">
-          <p>{this.state.question.title}</p>
-          <p><img src={red} height="16" width="16" alt="red img"/> - {this.state.question.optionA}</p>
-          <p><img src={blue} height="16" width="16" alt="blue img"/> - {this.state.question.optionB}</p>
-        </div> <br/><br/>
-        <canvas ref="canvas" id="gameCanvas" width="700" height="500" onKeyDown={(event) => {this.changeDirection(event)}} tabIndex="0"></canvas>
-        {this.state.gameOver ? <p className='gameOver'>Game Over</p>: null}
-        {this.state.gameWon ? <p className='youWon'>You've Won</p>: null}
+          {gameStarted ? null : <p className='snakeStart'> PRESS SPACE BAR TO START THE GAME </p>}
+          <p className='snakeScore'>
+            Your score:
+            {' '}
+            {score}
+          </p>
+          <div className="snakequestion">
+            <p>{title}</p>
+            <p>
+              <img src={red} height="16" width="16" alt="red img"/>
+              {' '}
+              -
+              {' '}
+              {optionA}
+            </p>
+            <p>
+              <img src={blue} height="16" width="16" alt="blue img"/>
+              {' '}
+              -
+              {' '}
+              {optionB}
+            </p>
+          </div>
+          {' '}
+          <br/>
+          <br/>
+          <canvas
+            ref={this.canvasRef}
+            id="gameCanvas"
+            width="700"
+            height="500"
+            onKeyDown={(event) => {
+              this.changeDirection(event);
+            }}
+            tabIndex="0"
+          />
+          {gameOver ? <p className='gameOver'>Game Over</p> : null}
+          {gameWon ? <p className='youWon'>You have Won</p> : null}
         </header>
       </div>
     );
   }
 }
+
+Snakes.propTypes = {
+  onComplete: PropTypes.func,
+};
+
+Snakes.defaultProps = {
+  onComplete: _.noop,
+};
+
 
 export default Snakes;
