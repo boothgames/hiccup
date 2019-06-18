@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-import blue from '../asserts/img/blue.png';
-import red from '../asserts/img/red.png';
-import './game.css';
+import blue from '../../../asserts/img/blue.png';
+import red from '../../../asserts/img/red.png';
+import './snake.css';
 
 class Snakes extends Component {
 
@@ -223,8 +223,8 @@ class Snakes extends Component {
     if (hitRightWall) {
       snake[0].x = 0;
     }
-    const hitToptWall = snake[0].y < 0;
-    if (hitToptWall) {
+    const hitTopWall = snake[0].y < 0;
+    if (hitTopWall) {
       snake[0].y = this.gameCanvas.height - 10;
     }
     const hitBottomWall = snake[0].y > this.gameCanvas.height - 10;

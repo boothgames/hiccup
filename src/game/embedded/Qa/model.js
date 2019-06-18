@@ -1,4 +1,4 @@
-export default class QaModel {
+export default class Model {
   #id = 0;
 
   #question = '';

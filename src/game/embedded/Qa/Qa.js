@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import QaModel from './qa/QaModel';
+import Model from './model';
 import './Qa.css';
 
 let completedTimer;
@@ -19,7 +19,7 @@ class Qa extends Component {
     const shuffledQuestions = _.shuffle(props.options);
 
     _.each(shuffledQuestions.slice(1, 4), (question) => {
-      qas.push(new QaModel(question.id, question.question, question.options, question.answer));
+      qas.push(new Model(question.id, question.question, question.options, question.answer));
     });
 
     this.state = {

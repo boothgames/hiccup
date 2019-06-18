@@ -1,24 +1,24 @@
 import React from 'react';
-import _ from "lodash";
+import _ from 'lodash';
 import Page from '../common/Page';
-import External from "./External";
-import Embedded from "./Embedded";
+import External from './External';
+import Embedded from './embedded';
 
 let timer;
 
 export default function Game(props) {
-  const {game, onComplete = _.noop} = props;
-  const {mode, name} = game;
+  const { game, onComplete = _.noop } = props;
+  const { mode, name } = game;
 
   switch (mode) {
-    case "external":
-      return <External game={game} onComplete={onComplete} />;
-    case "embedded":
-      return <Embedded game={game} onComplete={onComplete} />;
+    case 'external':
+      return <External game={game} onComplete={onComplete}/>;
+    case 'embedded':
+      return <Embedded game={game} onComplete={onComplete}/>;
     default: {
       clearTimeout(timer);
       timer = setTimeout(() => {
-        onComplete(name, {action: 'completed'});
+        onComplete(name, { action: 'completed' });
       }, 5000);
       return (
         <Page>

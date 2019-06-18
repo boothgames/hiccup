@@ -2,10 +2,10 @@ import * as React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-import Page from '../common/Page';
-import Qa from '../games/Qa';
-import WhySoSerious from './WhySoSerious';
-import Snakes from '../games/Snakes';
+import Page from '../../common/Page';
+import Qa from './Qa/Qa';
+import WhySoSerious from '../WhySoSerious';
+import Snakes from './Snake/Snakes';
 
 export default class Embedded extends React.Component {
   constructor(props) {
