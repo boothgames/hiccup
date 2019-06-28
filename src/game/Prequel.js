@@ -62,7 +62,7 @@ export default class Prequel extends React.Component {
                   <div className="save-the-server">
                     <p>
                       You are in a world that runs on
-                      <strong>Open Source Software.</strong>
+                      <strong> Open Source Software.</strong>
                       {' '}
                       But there are forces
                       beyond reason, that
@@ -71,7 +71,7 @@ export default class Prequel extends React.Component {
                     </p>
                     <p>
                       As you’re reading this,
-                      <strong>hackers</strong>
+                      <strong> hackers</strong>
                       {' '}
                       are breaking
                       into your most-dependable open source web server.
@@ -79,7 +79,7 @@ export default class Prequel extends React.Component {
                     </p>
                     <p>
                       The future of internet is in
-                      <strong>your hands</strong>
+                      <strong> your hands</strong>
                       {' '}
                       right now. Complete all levels of the
                       challenge and save the day!
