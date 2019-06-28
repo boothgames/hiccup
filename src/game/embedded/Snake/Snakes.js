@@ -237,10 +237,12 @@ class Snakes extends Component {
   advanceSnake() {
     if(this.state.snake.length <= 0 || Snakes.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
       this.setState({"gameOver": true});
+      this.props.onComplete('failed');
       return
     }
     if(this.state.score >= 3) {
       this.setState({"gameWon": true});
+      this.props.onComplete('completed');
       return
     }
     this.circleAround(this.state.snake);
