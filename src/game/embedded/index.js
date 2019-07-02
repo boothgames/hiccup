@@ -6,6 +6,7 @@ import Page from '../../common/Page';
 import Qa from './Qa/Qa';
 import WhySoSerious from '../WhySoSerious';
 import Snakes from './Snake/Snakes';
+import TicTacToe from "./TicTacToe/TicTacToe";
 
 export default class Embedded extends React.Component {
   constructor(props) {
@@ -29,6 +30,8 @@ export default class Embedded extends React.Component {
         return <WhySoSerious onComplete={this.handleComplete}/>;
       case 'snakes':
         return <Snakes onComplete={this.handleComplete}/>;
+      case 'tictactoe':
+        return <TicTacToe onComplete={this.handleComplete}/>;
       default:
         return <h1>Call volunteer</h1>;
     }
