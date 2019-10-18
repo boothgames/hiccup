@@ -8,6 +8,7 @@ import Instruction from './Instruction';
 import Game from './Game';
 import Lost from './Lost';
 import Win from './Win';
+import NoGame from './NoGame';
 import Incident from './Incident';
 
 const INVALID_GAME = { name: 'oops', instruction: 'Contact volunteer' };
@@ -23,7 +24,7 @@ export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { status: 'prequel', games: {} };
+    this.state = { status: '', games: {} };
     this.start = this.start.bind(this);
     this.handleStartGame = this.handleStartGame.bind(this);
     this.handleGameComplete = this.handleGameComplete.bind(this);
@@ -38,7 +39,8 @@ export default class Home extends React.Component {
     const fetch = async () => {
       const games = await getSelectedGames();
       const incidents = await getHints(_.size(games));
-      this.setState({ incidents, games });
+      var status = _.isEmpty(games) ?  'nogame' : 'prequel';
+      this.setState({ incidents, games, status });
     };
     fetch().then(_.noop);
     connect();
@@ -106,10 +108,14 @@ export default class Home extends React.Component {
         return <Win/>;
       case 'failed':
         return <Lost/>;
+      case 'nogame':
+        return <NoGame/>
       case 'show-incident':
         return <Incident data={incident} onRead={Home.hintRead}/>;
-      default:
+      case 'prequel':
         return <Prequel onStart={this.start}/>;
+      default:
+        return <div></div>
     }
   };
 }
