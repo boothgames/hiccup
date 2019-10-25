@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
+import { withRouter } from 'react-router-dom';
 import Page from './Page';
 import { getRegisteredGames } from '../lib/settings';
 import { currentSettings, saveSettings } from '../lib/storage';
@@ -30,8 +32,10 @@ class Settings extends Component {
 
   handleSave(event) {
     const { games, nickname } = this.state;
+    const {history} = this.props;
     saveSettings({ games, nickname });
     event.preventDefault();
+    history.push("/");
   }
 
   updateNickname({ target: { value: nickname } }) {
@@ -94,4 +98,10 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+Settings.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+};
+
+export default withRouter(Settings);
