@@ -7,15 +7,15 @@ UI for puzzle based game. This UI is intented to be used for hosting games in la
 ```bash
 $ git clone https://github.com/boothgames/hiccup.git
 $ cd hiccup
-$ yarn
+$ npm install
 ```
 
 ## Setup
 
-Ensure [nightfury](https://github.com/boothgames/nightfury), setup and running.
+Ensure [nightfury](https://github.com/boothgames/nightfury) is setup and running.
 
 ```bash
-$ yarn start
+$ npm start
 ```
 
 From the browser visit `http://localhost:3000/settings` or the `url/settings` where hiccup is hosted, then
