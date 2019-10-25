@@ -33,14 +33,14 @@ class Qa extends Component {
   }
 
   handleSubmit = () => {
-    const { selectedOption, correctAnswers, currentQuestion: { answer, id } } = this.state;
+    const {selectedOption, currentQuestion: {answer, id}} = this.state;
+    let {correctAnswers} = this.state;
     if (!selectedOption) {
       return;
     }
 
-    let totalCorrect = correctAnswers;
     if (selectedOption === answer) {
-      totalCorrect += 1;
+      correctAnswers += 1;
     }
 
     const questions = this.removeQuestion(id);
@@ -50,7 +50,7 @@ class Qa extends Component {
       questions,
       currentQuestion: questions[getRandomArbitrary(0, questions.length - 1)],
       isOver,
-      correctAnswers: totalCorrect,
+      correctAnswers,
       selectedOption: '',
     });
 
