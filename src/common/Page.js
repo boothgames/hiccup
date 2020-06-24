@@ -11,8 +11,8 @@ function Page({ children, color, background, location: { state } }) {
     <section className={cx} style={{ color, background }}>
       <div className="page__inner">
         {children}
-        <img className="logo" src={logo} alt='logo' />
       </div>
+      {/* <img className="logo" src={logo} alt='logo' /> */}
     </section>
   );
 }
