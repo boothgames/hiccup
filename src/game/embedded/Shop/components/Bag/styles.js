@@ -1,9 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import bag from "../../images/bag.png";
-import filter from "../../images/filter.svg";
-
-
+import bag from '../../images/bag.png';
+import filter from '../../images/filter.svg';
 
 export const Rules = styled.div`
   position: absolute;
@@ -13,7 +11,7 @@ export const Rules = styled.div`
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   background-color: #fff;
   color: #333;
   padding: 1rem;
@@ -36,8 +34,6 @@ export const Rules = styled.div`
     height: 70%;
     width: auto;
   }
-
-
 `;
 export const Container = styled.div`
   grid-area: cart;
@@ -72,11 +68,7 @@ export const Task = styled.div`
   }
 
   > div {
-    background-image: linear-gradient(
-      to right bottom,
-      rgba(0,0,0, 0.1),
-      rgba(0,0,0, 0.2)
-    );
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
     border-radius: 5px;
     display: flex;
     flex-direction: column;

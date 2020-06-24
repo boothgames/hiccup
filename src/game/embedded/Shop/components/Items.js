@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { useImagesContext } from "../../../contexts/ImagesContext";
+import { useImagesContext } from '../../../contexts/ImagesContext';
 
-import { vegetables, fruits, other } from "../config";
+import { vegetables, fruits, other } from '../config';
 
 const Items = styled.div`
   display: flex;
@@ -20,7 +20,6 @@ const Items = styled.div`
     cursor: pointer;
     //width: 100%;
     //height: 100%;
-
 
     @media screen and (max-width: 768px) {
       max-width: 40px;
@@ -46,7 +45,6 @@ const Items = styled.div`
       max-width: 20px;
       max-height: 20px;
     }
-
   }
 `;
 
@@ -65,7 +63,6 @@ const ItemsLeft = styled(Items)`
   @media screen and (max-width: 768px) and (orientation: portrait) {
     ${mixinLeft}
   }
-
 `;
 
 const ItemsRight = styled(Items)`
@@ -80,7 +77,6 @@ const ItemsRight = styled(Items)`
   }
 `;
 
-
 const ItemsBottom = styled(Items)`
   grid-area: items-bottom;
   justify-content: space-around;
@@ -90,20 +86,17 @@ const ItemsBottom = styled(Items)`
   @media screen and (min-width: 768px) and (orientation: portrait) {
     //width: 100%;
   }
-
-
 `;
 
 export default ({ select }) => {
   var { images } = useImagesContext();
-  console.log("**balloon*****"+images["balloon.png"])
 
   return (
     <>
       <ItemsLeft>
         {vegetables.map((name, i) => (
           <div key={i}>
-            <img src={images[name + ".svg"]} alt={name} onClick={select} />
+            <img src={images[name + '.svg']} alt={name} onClick={select} />
           </div>
         ))}
       </ItemsLeft>
@@ -112,7 +105,7 @@ export default ({ select }) => {
         {other.map((name, i) => (
           <div key={i}>
             {/* {images=useImagesContext()} */}
-            <img src={images[name + ".svg"]} alt={name} onClick={select} />
+            <img src={images[name + '.svg']} alt={name} onClick={select} />
           </div>
         ))}
       </ItemsRight>
@@ -121,7 +114,7 @@ export default ({ select }) => {
         {fruits.map((name, i) => (
           <div key={i}>
             {/* {images=useImagesContext()} */}
-            <img src={images[name + ".svg"]} alt={name} onClick={select} />
+            <img src={images[name + '.svg']} alt={name} onClick={select} />
           </div>
         ))}
       </ItemsBottom>

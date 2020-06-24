@@ -1,20 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from 'react';
 
-import Bag from "./components/Bag/Bag";
-import Items from "./components/Items";
-import { Nav, Roof } from "../../../common/styles";
-import Control from "./components/Control";
+import Bag from './components/Bag/Bag';
+import Items from './components/Items';
+import { Nav, Roof } from '../../../common/styles';
+import Control from './components/Control';
 
-import { Game } from "../../../common/styles";
-import { GameContainer, ShopContainer } from "./styles";
+import { Game } from '../../../common/styles';
+import { GameContainer, ShopContainer } from './styles';
 
-import { vegetables, fruits, other } from "./config";
-import bg from "./images/bg.png";
+import { vegetables, fruits, other } from './config';
+import bg from './images/bg.png';
 
 // import { ImagesProvider } from "../../contexts/ImagesContext";
 
 const Shop = props => {
-
   const [productsToBuy, setProductsToBuy] = useState([]);
   const [status, setStatus] = useState(null); // playing, fail, win
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -24,7 +23,7 @@ const Shop = props => {
       .concat(fruits)
       .concat(other)
       .map(item => {
-        return Array.from({ length: 2 }).fill(item);
+        return Array.from({ length: 4 }).fill(item);
       })
       .reduce((acc, arr) => acc.concat(arr), [])
       .sort(() => 0.5 - Math.random())
@@ -33,7 +32,7 @@ const Shop = props => {
       .reduce((acc, val) => {
         const newItem = {
           selected: false,
-          name: val
+          name: val,
         };
         return [...acc, newItem];
       }, []);
@@ -44,30 +43,29 @@ const Shop = props => {
     setRandomItems();
   }, [setRandomItems]);
 
-
   const fail = () => {
-    setStatus("fail");
+    setStatus('fail');
   };
 
   const win = () => {
-    setStatus("win");
+    setStatus('win');
   };
 
   const reset = () => {
-    setStatus("playing");
+    setStatus('playing');
     setRandomItems();
   };
 
   const select = e => {
-    if (status !== "playing") return;
+    if (status !== 'playing') return;
     const foundIndex = productsToBuy.findIndex(
-      item => e.target.alt === item.name && !item.selected
+      item => e.target.alt === item.name && !item.selected,
     );
     if (foundIndex !== -1) {
       const newProductsToBuy = [...productsToBuy];
       newProductsToBuy[foundIndex] = {
         ...productsToBuy[foundIndex],
-        selected: true
+        selected: true,
       };
       setProductsToBuy(newProductsToBuy);
       setSelectedIndex(foundIndex);

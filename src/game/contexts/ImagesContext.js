@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
-import styled from "styled-components";
-import { Loader } from "../../common/styles";
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import styled from 'styled-components';
+import { Loader } from '../../common/styles';
 
 const Background = styled.div`
   height: 100vh;
@@ -11,7 +11,7 @@ const Background = styled.div`
 `;
 
 export const ImagesContext = createContext({
-  images: {}
+  images: {},
 });
 
 export const useImagesContext = () => useContext(ImagesContext);
@@ -27,25 +27,20 @@ export const ImagesProvider = props => {
     let i = 0;
     r.keys().forEach(item => {
       const importedImg = r(item);
-      console.log("old imported image*****"+item)
-      importedImages[
-        item.replace("./", "").replace("items/", "")
-      ] = importedImg;
+      importedImages[item.replace('./', '').replace('items/', '')] = importedImg;
       const img = new Image();
       img.onload = () => {
         i++;
-        console.log("i="+i);
         setImagesReadyCnt(i);
       };
       img.src = importedImg;
-      console.log("imported image*****"+img.src)
     });
     setImages(importedImages);
   }, [r]);
 
   if (Object.keys(images).length !== imagesReadyCnt || imagesReadyCnt < 1) {
     return (
-      <Background className={props.intro ? "intro" : ""}>
+      <Background className={props.intro ? 'intro' : ''}>
         <Loader />
       </Background>
     );
@@ -54,18 +49,12 @@ export const ImagesProvider = props => {
   if (props.intro) {
     return (
       <Background className="intro">
-        <ImagesContext.Provider value={{ images }}>
-          {props.children}
-        </ImagesContext.Provider>
+        <ImagesContext.Provider value={{ images }}>{props.children}</ImagesContext.Provider>
       </Background>
     );
   }
 
-  return (
-    <ImagesContext.Provider value={{ images }}>
-      {props.children}
-    </ImagesContext.Provider>
-  );
+  return <ImagesContext.Provider value={{ images }}>{props.children}</ImagesContext.Provider>;
 };
 
 export const ImagesConsumer = ImagesContext.Consumer;
