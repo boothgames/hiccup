@@ -22,13 +22,13 @@ export const leftOptions = [
   "hashicorp",
   "microsoft",
   "netflix",
-  "redhat",
 ]
 
 export const rightOptions = [
   "sunmicrosystems",
   "soundcloud",
   "thoughtworks",
+  "redhat",
 ]
 
 export const bottomOptions = [
