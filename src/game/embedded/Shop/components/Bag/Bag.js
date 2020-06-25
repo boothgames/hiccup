@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import { useSpring, animated } from 'react-spring';
 
 import { useImagesContext } from '../../../../contexts/ImagesContext';
@@ -18,8 +17,9 @@ export default props => {
   });
 
   function onHit(ev) {
-    const element = <img src={ev.dragData} />;
-    ReactDOM.render(element, document.getElementById(ev.target.parentElement.id));
+    if (ev.target.parentElement.id > 3) {
+      ev.target.src = ev.dragData
+    }
   }
 
   return (
@@ -50,9 +50,7 @@ export default props => {
                     <img src={images[item.name + '.png']} />
                     :
                     <img src={require('./line.png')} />
-
                 }
-
               </div>
             </DropTarget>
           </animated.div>

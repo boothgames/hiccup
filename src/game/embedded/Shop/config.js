@@ -1,18 +1,39 @@
-export const vegetables = [
+export const questions = [
   "airbnb",
   "facebook",
   "apple",
   "atlassian",
   "jetbrains",
-  "hashicorp"
-];
-export const fruits = [
+  "hashicorp",
   "microsoft",
   "netflix",
   "redhat",
-  "soundcloud",
   "sunmicrosystems",
   "twitter",
-  "vmware"
+  "vmware",
+  "soundcloud",
+  "thoughtworks",
+  "nitobi",
+  "lightbend",
 ];
-export const other = ["thoughtworks", "nitobi", "lightbend"];
+
+export const leftOptions = [
+  "jetbrains",
+  "hashicorp",
+  "microsoft",
+  "netflix",
+  "redhat",
+]
+
+export const rightOptions = [
+  "sunmicrosystems",
+  "soundcloud",
+  "thoughtworks",
+]
+
+export const bottomOptions = [
+  "twitter",
+  "vmware",
+  "nitobi",
+  "lightbend"
+]

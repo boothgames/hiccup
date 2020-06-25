@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useImagesContext } from '../../../contexts/ImagesContext';
 
-import { vegetables, fruits, other } from '../config';
+import { leftOptions, rightOptions, bottomOptions } from '../config';
 
 import { DragDropContainer } from 'react-drag-drop-container';
 
@@ -96,7 +96,7 @@ export default ({ select }) => {
   return (
     <>
       <ItemsLeft>
-        {vegetables.map((name, i) => (
+        {leftOptions.map((name, i) => (
           <DragDropContainer
             key={i}
             targetKey="foo"
@@ -108,7 +108,7 @@ export default ({ select }) => {
       </ItemsLeft>
 
       <ItemsRight>
-        {other.map((name, i) => (
+        {rightOptions.map((name, i) => (
           <DragDropContainer
             key={i}
             targetKey="foo"
@@ -121,7 +121,7 @@ export default ({ select }) => {
       </ItemsRight>
 
       <ItemsBottom>
-        {fruits.map((name, i) => (
+        {bottomOptions.map((name, i) => (
           <DragDropContainer
             key={i}
             targetKey="foo"

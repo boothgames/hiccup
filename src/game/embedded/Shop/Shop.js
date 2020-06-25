@@ -8,7 +8,7 @@ import Control from './components/Control';
 import { Game } from '../../../common/styles';
 import { GameContainer, ShopContainer } from './styles';
 
-import { vegetables, fruits, other } from './config';
+import { questions } from './config';
 import bg from './images/bg.png';
 
 const Shop = props => {
@@ -17,16 +17,13 @@ const Shop = props => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const setRandomItems = useCallback(() => {
-    const productsToBuy = vegetables
-      .concat(fruits)
-      .concat(other)
+    const randomNumber = 1 + Math.random() * (8 - 1);
+    const productsToBuy = questions
       .map(item => {
-        return Array.from({ length: 4 }).fill(item);
+        return Array.from({ length: 1 }).fill(item);
       })
       .reduce((acc, arr) => acc.concat(arr), [])
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 8)
-      .sort()
+      .slice(randomNumber, randomNumber + 8)
       .reduce((acc, val) => {
         const newItem = {
           selected: false,
