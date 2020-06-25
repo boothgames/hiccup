@@ -5,6 +5,8 @@ import { useImagesContext } from '../../../contexts/ImagesContext';
 
 import { vegetables, fruits, other } from '../config';
 
+import { DragDropContainer } from 'react-drag-drop-container';
+
 const Items = styled.div`
   display: flex;
   padding: 10px;
@@ -91,21 +93,33 @@ const ItemsBottom = styled(Items)`
 export default ({ select }) => {
   var { images } = useImagesContext();
 
+  function startDrag(ev, name) {
+    ev.dataTransfer.setData("drag-item", name);
+  }
+
+  const onDragStart = (event, taskName) => {
+    console.log('dragstart on div: ', taskName, event);
+    // event.dataTransfer.setData("taskName", taskName);
+  }
+
   return (
     <>
       <ItemsLeft>
         {vegetables.map((name, i) => (
-          <div key={i}>
-            <img src={images[name + '.svg']} alt={name} onClick={select} />
-          </div>
-        ))}
+          <DragDropContainer
+            key={i}
+            targetKey="foo"
+            dragData={images[name + '.png']}>
+            <div key={i}>
+              <img src={images[name + '.png']} alt={name} onClick={select} />
+            </div>
+          </DragDropContainer>))}
       </ItemsLeft>
 
       <ItemsRight>
         {other.map((name, i) => (
           <div key={i}>
-            {/* {images=useImagesContext()} */}
-            <img src={images[name + '.svg']} alt={name} onClick={select} />
+            <img src={images[name + '.png']} alt={name} onClick={select} />
           </div>
         ))}
       </ItemsRight>
@@ -113,8 +127,7 @@ export default ({ select }) => {
       <ItemsBottom>
         {fruits.map((name, i) => (
           <div key={i}>
-            {/* {images=useImagesContext()} */}
-            <img src={images[name + '.svg']} alt={name} onClick={select} />
+            <img src={images[name + '.png']} alt={name} onClick={select} />
           </div>
         ))}
       </ItemsBottom>

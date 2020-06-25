@@ -11,8 +11,6 @@ import { GameContainer, ShopContainer } from './styles';
 import { vegetables, fruits, other } from './config';
 import bg from './images/bg.png';
 
-// import { ImagesProvider } from "../../contexts/ImagesContext";
-
 const Shop = props => {
   const [productsToBuy, setProductsToBuy] = useState([]);
   const [status, setStatus] = useState(null); // playing, fail, win

@@ -1,18 +1,18 @@
 export const vegetables = [
-  "tomato",
-  "onion",
-  "potato",
-  "broccoli",
-  "cabbage",
-  "carrot"
+  "airbnb",
+  "facebook",
+  "apple",
+  "atlassian",
+  "jetbrains",
+  "hashicorp"
 ];
 export const fruits = [
-  "watermelon",
-  "grapes",
-  "orange",
-  "apple",
-  "bananas",
-  "strawberry",
-  "pineapple"
+  "microsoft",
+  "netflix",
+  "redhat",
+  "soundcloud",
+  "sunmicrosystems",
+  "twitter",
+  "vmware"
 ];
-export const other = ["milk", "pasta", "croissant", "mustard", "eggs", "jam"];
+export const other = ["thoughtworks", "nitobi", "lightbend"];
