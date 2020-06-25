@@ -100,7 +100,7 @@ export default ({ select }) => {
           <DragDropContainer
             key={i}
             targetKey="foo"
-            dragData={images[name + '.png']}>
+            dragData={name}>
             <div key={i}>
               <img src={images[name + '.png']} alt={name} onClick={select} />
             </div>
@@ -112,7 +112,7 @@ export default ({ select }) => {
           <DragDropContainer
             key={i}
             targetKey="foo"
-            dragData={images[name + '.png']}>
+            dragData={name}>
             <div key={i}>
               <img src={images[name + '.png']} alt={name} onClick={select} />
             </div>
@@ -125,7 +125,7 @@ export default ({ select }) => {
           <DragDropContainer
             key={i}
             targetKey="foo"
-            dragData={images[name + '.png']}>
+            dragData={name}>
             <div key={i}>
               <img src={images[name + '.png']} alt={name} onClick={select} />
             </div>
