@@ -109,17 +109,27 @@ export default ({ select }) => {
 
       <ItemsRight>
         {other.map((name, i) => (
-          <div key={i}>
-            <img src={images[name + '.png']} alt={name} onClick={select} />
-          </div>
+          <DragDropContainer
+            key={i}
+            targetKey="foo"
+            dragData={images[name + '.png']}>
+            <div key={i}>
+              <img src={images[name + '.png']} alt={name} onClick={select} />
+            </div>
+          </DragDropContainer>
         ))}
       </ItemsRight>
 
       <ItemsBottom>
         {fruits.map((name, i) => (
-          <div key={i}>
-            <img src={images[name + '.png']} alt={name} onClick={select} />
-          </div>
+          <DragDropContainer
+            key={i}
+            targetKey="foo"
+            dragData={images[name + '.png']}>
+            <div key={i}>
+              <img src={images[name + '.png']} alt={name} onClick={select} />
+            </div>
+          </DragDropContainer>
         ))}
       </ItemsBottom>
     </>
