@@ -93,15 +93,6 @@ const ItemsBottom = styled(Items)`
 export default ({ select }) => {
   var { images } = useImagesContext();
 
-  function startDrag(ev, name) {
-    ev.dataTransfer.setData("drag-item", name);
-  }
-
-  const onDragStart = (event, taskName) => {
-    console.log('dragstart on div: ', taskName, event);
-    // event.dataTransfer.setData("taskName", taskName);
-  }
-
   return (
     <>
       <ItemsLeft>
