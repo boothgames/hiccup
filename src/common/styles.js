@@ -7,17 +7,18 @@ export const Game = styled.div`
   justify-content: center;
   height: 100%;
   min-height: 100vh;
-  width: 100%;
-  background-image: ${({ filter}) => {
-      return filter
-        ? " linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), "
-        : "";
-    }}
+  // width: 80%;
+  background-image: ${({ filter }) => {
+    return filter
+      ? " linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), "
+      : "";
+  }}
     url(${({ bg }) => bg});
   background-size: ${({ size }) => size};
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  float:left;
 `;
 
 const hourglass = keyframes`

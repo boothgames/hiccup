@@ -9,6 +9,7 @@ import { Game } from '../../../common/styles';
 import { GameContainer, ShopContainer } from './styles';
 
 import { questions } from './config';
+import logo from '../../../asserts/img/TW-logo.png';
 
 const Shop = props => {
   const [productsToBuy, setProductsToBuy] = useState([]);
@@ -70,27 +71,27 @@ const Shop = props => {
   };
 
   return (
-    <Game size="cover">
-      <Nav type="back" to="/" />
-      <GameContainer>
-        <Roof />
+    <div>
+      <div class='logo'>
+        <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+      </div>
+      <Game>
+        <GameContainer>
+          <ShopContainer>
+            <Bag
+              productsToBuy={productsToBuy}
+              reset={reset}
+              status={status}
+              selectedIndex={selectedIndex}
+            />
 
-        <ShopContainer>
-          <Bag
-            productsToBuy={productsToBuy}
-            reset={reset}
-            status={status}
-            selectedIndex={selectedIndex}
-          />
+            <Control fail={fail} status={status} />
+          </ShopContainer>
 
-          <Control fail={fail} status={status} />
-        </ShopContainer>
-
-        <Items select={select} />
-      </GameContainer>
-
-      <Nav type="next" to="/puzzle" />
-    </Game>
+          <Items select={select} />
+        </GameContainer>
+      </Game>
+    </div>
   );
 };
 

@@ -33,7 +33,7 @@ export const GameContainer = styled.div`
 
 export const ShopContainer = styled.div`
 width: 100%;
-padding: 70px 0 10px 0;
+// padding: 70px 0 10px 0;
 
 @media screen and (max-height: 667px) {
   padding-top: 20px;

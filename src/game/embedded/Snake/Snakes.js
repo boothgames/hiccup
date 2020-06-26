@@ -349,6 +349,9 @@ class Snakes extends Component {
 
     return (
       <div className="App">
+        <div class='snake-logo'>
+          <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+        </div>
         <header className="App-header">
           {gameStarted ? null : <p className='snakeStart'> PRESS SPACE BAR TO START THE GAME </p>}
           <div className="snakequestion">
