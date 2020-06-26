@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import blue from '../../../asserts/img/blue.png';
 import red from '../../../asserts/img/red.png';
 import './snake.css';
+import { Button } from '../../../common/styles';
+import { Rules } from '../Shop/components/Bag/styles';
 
 class Snakes extends Component {
 
@@ -344,6 +346,10 @@ class Snakes extends Component {
     this.setState({ dx, dy });
   }
 
+  btnClick() {
+    window.open("https://www.google.com");
+  }
+
   render() {
     const { gameStarted, score, question: { title, optionA, optionB }, gameOver, gameWon } = this.state;
 
@@ -389,8 +395,16 @@ class Snakes extends Component {
             {' '}
             {score}
           </p>
-          {gameOver ? <p className='gameOver'>Game Over</p> : null}
-          {gameWon ? <p className='youWon'>You have Won</p> : null}
+          {gameOver ?
+            <div class='gamewon'>
+              <p>Game Over</p>
+              <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
+            </div> : null}
+          {gameWon ?
+            <div class='gamewon'>
+              <p>You have Won!</p>
+              <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
+            </div> : null}
         </header>
       </div>
     );

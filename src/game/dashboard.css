@@ -107,10 +107,10 @@ a.link {
 
 .App-header video,
 .expression,
-.App-header button {
+/* .App-header button {
   position: absolute;
   left: -999999px;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
