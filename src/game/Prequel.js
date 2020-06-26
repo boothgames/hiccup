@@ -8,6 +8,7 @@ import Shop from './embedded/Shop/Shop';
 import { ImagesProvider } from "./contexts/ImagesContext";
 import Navbar from 'react-bootstrap/Navbar'
 import Snakes from './embedded/Snake/Snakes';
+import SnakeInstructions from './SnakeInstructions';
 
 export default class Prequel extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class Prequel extends React.Component {
     this.start = this.start.bind(this);
     this.logokickoff = this.logokickoff.bind(this);
     this.snakekickoff = this.snakekickoff.bind(this);
+    this.startSnakeGame = this.startSnakeGame.bind(this);
   }
 
   start() {
@@ -28,6 +30,10 @@ export default class Prequel extends React.Component {
   }
 
   snakekickoff() {
+    this.setState({ status: 'snake-instructions' });
+  }
+
+  startSnakeGame() {
     this.setState({ status: 'snake-start' });
   }
 
@@ -83,7 +89,7 @@ export default class Prequel extends React.Component {
                       <li>Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo consequat.</li>
                       <li> Third instruciton</li>
                     </ul>
-                    <button class='play-button' onClick={this.snakekickoff}>
+                    <button class='play-button' onClick={this.startSnakeGame}>
                       Play
                       </button>
                   </div>
@@ -103,9 +109,11 @@ export default class Prequel extends React.Component {
             true,
             /\.(png|jpe?g|svg)$/
           )}
-        > <Shop playSnakeGame={() => this.setState({ status: 'snake-start' })} onComplete={this.handleComplete} /> </ImagesProvider>;
+        > <Shop playSnakeGame={this.snakekickoff} onComplete={this.handleComplete} /> </ImagesProvider>;
       case 'snake-start':
         return <Snakes onComplete={this.handleComplete} />;
+      case 'snake-instructions':
+        return <SnakeInstructions snakekickoff={this.startSnakeGame} />;
       case 'begin':
         return (
           <Page>

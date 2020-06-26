@@ -2,14 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import Bag from './components/Bag/Bag';
 import Items from './components/Items';
-import { Nav, Roof } from '../../../common/styles';
 import Control from './components/Control';
 
 import { Game } from '../../../common/styles';
 import { GameContainer, ShopContainer } from './styles';
 
 import { questions } from './config';
-import logo from '../../../asserts/img/TW-logo.png';
 
 const Shop = props => {
   const [productsToBuy, setProductsToBuy] = useState([]);
