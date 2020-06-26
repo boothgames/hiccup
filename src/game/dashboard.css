@@ -28,19 +28,6 @@ h1 {
   font-weight: bold;
 }
 
-ul {
-  margin-left: 2em;
-}
-
-ul li {
-  list-style: none;
-  vertical-align: middle;
-  margin-bottom: 30px;
-  font-size: 3em;
-  font-style: italic;
-  color: #fff;
-}
-
 .dot {
   width: 41px;
   height: 41px;

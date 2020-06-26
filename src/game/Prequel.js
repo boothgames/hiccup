@@ -7,7 +7,7 @@ import Page from '../common/Page';
 import Shop from './embedded/Shop/Shop';
 import { ImagesProvider } from "./contexts/ImagesContext";
 import Navbar from 'react-bootstrap/Navbar'
-import Image from 'react-bootstrap/Image'
+import Button from 'react-bootstrap/Button'
 
 export default class Prequel extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class Prequel extends React.Component {
             </div>
             <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
             <div class='Thoughtworks-microsi'>
-              <Navbar expand="lg" variant="light" bg="light" >
+              <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/arts">&lt;  Thoughtworks microsite page
               </Navbar.Brand>
               </Navbar>
@@ -45,20 +45,20 @@ export default class Prequel extends React.Component {
             <Container>
               <h1 class='Lets-play'> Let's play!</h1>
               <div class='play-game-box'>
-                <Container >
+                <Container id='game-box'>
                   <div class='game-preview'>
                     <img class='preview-image' src={require('./screen2.png')} />
                   </div>
                   <div class='Level-1-Instructions'>
                     <p class='text-style-1'>Level 1 Instructions:</p>
-                    <p>
-                      - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                      do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                      - Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                      laboris nisi ut aliquip ex ea commodo consequat.
-                      - Third instruciton
-                  </p>
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua.</li>
+                      <li>Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo consequat.</li>
+                      <li> Third instruciton</li>
+                    </ul>
+                    <button class='play-button' onClick={this.kickoff}>
+                      Play
+                      </button>
                   </div>
                 </Container>
               </div>
