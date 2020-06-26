@@ -4,7 +4,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import './dashboard.css';
 import PropTypes from 'prop-types';
 import Page from '../common/Page';
-import countDownTimer from '../lib/timer';
+import Shop from './embedded/Shop/Shop';
+import { ImagesProvider } from "./contexts/ImagesContext";
+import Navbar from 'react-bootstrap/Navbar'
+import Image from 'react-bootstrap/Image'
 
 export default class Prequel extends React.Component {
   constructor(props) {
@@ -20,16 +23,7 @@ export default class Prequel extends React.Component {
   }
 
   kickoff() {
-    countDownTimer({
-      tick: () => {
-        const { countDown } = this.state;
-        this.setState({ countDown: countDown - 1 });
-      },
-      completed: () => {
-        this.setState({ countDown: 0, status: 'begin' });
-      },
-    });
-    this.setState({ status: 'start', countDown: 3 });
+    this.setState({ status: 'start' });
   }
 
   renderMessage() {
@@ -38,21 +32,49 @@ export default class Prequel extends React.Component {
       case 'ready':
         return (
           <Page>
-            <div className="gooey" onClick={this.kickoff}>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a className="link">Start</a>
+            <div class='logo'>
+              <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
             </div>
-          </Page>
+            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+            <div class='Thoughtworks-microsi'>
+              <Navbar expand="lg" variant="light" bg="light" >
+                <Navbar.Brand href="https://www.thoughtworks.com/arts">&lt;  Thoughtworks microsite page
+              </Navbar.Brand>
+              </Navbar>
+            </div>
+            <Container>
+              <h1 class='Lets-play'> Let's play!</h1>
+              <div class='play-game-box'>
+                <Container >
+                  <div class='game-preview'>
+                    <img class='preview-image' src={require('./screen2.png')} />
+                  </div>
+                  <div class='Level-1-Instructions'>
+                    <p class='text-style-1'>Level 1 Instructions:</p>
+                    <p>
+                      - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                      - Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat.
+                      - Third instruciton
+                  </p>
+                  </div>
+                </Container>
+              </div>
+            </Container>
+            <div onClick={this.kickoff}>
+            </div>
+          </Page >
         );
       case 'start':
-        return (
-          <Page>
-            <div className="gooey">
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a>{countDown}</a>
-            </div>
-          </Page>
-        );
+        return <ImagesProvider
+          r={require.context(
+            "./embedded/Shop/images/",
+            true,
+            /\.(png|jpe?g|svg)$/
+          )}
+        > <Shop onComplete={this.handleComplete} /> </ImagesProvider>;
       case 'begin':
         return (
           <Page>

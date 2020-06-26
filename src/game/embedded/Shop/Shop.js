@@ -71,7 +71,7 @@ const Shop = props => {
   };
 
   return (
-    <Game bg={bg} size="cover">
+    <Game size="cover">
       <Nav type="back" to="/" />
       <GameContainer>
         <Roof />

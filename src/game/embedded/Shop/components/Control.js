@@ -19,7 +19,7 @@ const Control = styled.div`
 const Bear = styled.div`
   width: 100%;
   height: 30%;
-  background-image: url(${bear});
+  // background-image: url(${bear});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 0%;
@@ -35,8 +35,8 @@ export default ({ status, fail }) => {
         {status !== "playing" ? (
           <Timer status={status} />
         ) : (
-          <PlayingTimer onRestHandler={fail} />
-        )}
+            <PlayingTimer onRestHandler={fail} />
+          )}
       </div>
       <Bear />
     </Control>

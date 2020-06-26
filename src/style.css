@@ -35,6 +35,19 @@ body {
     transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
 }
 
+.Thoughtworks-microsi {
+    width: 258px;
+    height: 24px;
+    font-family: OpenSans;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
 .page-enter {
     transform: translate(-100%, 0);
 }
@@ -79,12 +92,62 @@ body {
 }
 
 .logo {
-    position: absolute;
     bottom: 1em;
     left: 0;
     right: 0;
-    margin: auto;
     width: 20em;
+    padding:30px;
+}
+
+.Lets-play {
+    width: 179px;
+    height: 49px;
+    font-family: OpenSans;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+}
+
+
+.game-preview {
+    width: 50%;
+    height: 100%;
+    display: inline;
+    /* margin-left:41px;
+    margin-top:74px;  */
+    margin:0;
+    float: left;
+}
+
+.Level-1-Instructions {
+    font-family: OpenSans;
+    font-size: 16px;
+    letter-spacing: normal;
+    color: #000000;
+    width: 50%;
+    margin:0;
+    float: left;
+}
+
+.preview-image{
+    height: 100%;
+}
+  
+.text-style-1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.play-game-box{
+  height: 586px;
+  width:100%;
+  box-shadow: 2px 2px 4px 2px rgba(162, 162, 162, 0.5);
+  border: solid 1px #808285;
+  background-color: #ffffff;
 }
 
 .counter {

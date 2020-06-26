@@ -17,8 +17,8 @@ const Items = styled.div`
     width: 100%;
   }
   img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     //width: 100%;
     //height: 100%;
