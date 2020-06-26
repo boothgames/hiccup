@@ -7,14 +7,15 @@ import Page from '../common/Page';
 import Shop from './embedded/Shop/Shop';
 import { ImagesProvider } from "./contexts/ImagesContext";
 import Navbar from 'react-bootstrap/Navbar'
-import Button from 'react-bootstrap/Button'
+import Snakes from './embedded/Snake/Snakes';
 
 export default class Prequel extends React.Component {
   constructor(props) {
     super(props);
     this.state = { status: 'ready' };
     this.start = this.start.bind(this);
-    this.kickoff = this.kickoff.bind(this);
+    this.logokickoff = this.logokickoff.bind(this);
+    this.snakekickoff = this.snakekickoff.bind(this);
   }
 
   start() {
@@ -22,8 +23,12 @@ export default class Prequel extends React.Component {
     onStart();
   }
 
-  kickoff() {
-    this.setState({ status: 'start' });
+  logokickoff() {
+    this.setState({ status: 'logo-start' });
+  }
+
+  snakekickoff() {
+    this.setState({ status: 'snake-start' });
   }
 
   renderMessage() {
@@ -50,24 +55,48 @@ export default class Prequel extends React.Component {
                     <img class='preview-image' src={require('./screen2.png')} />
                   </div>
                   <div class='Level-1-Instructions'>
+                    <p class='game-name'>LOGO MATCHING</p>
                     <p class='text-style-1'>Level 1 Instructions:</p>
                     <ul>
                       <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua.</li>
                       <li>Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo consequat.</li>
                       <li> Third instruciton</li>
                     </ul>
-                    <button class='play-button' onClick={this.kickoff}>
+                    <button class='play-button' onClick={this.logokickoff}>
                       Play
                       </button>
                   </div>
                 </Container>
               </div>
+              <br></br>
+              <br></br>
+              <div class='play-game-box'>
+                <Container id='game-box'>
+                  <div class='game-preview'>
+                    <img class='preview-image' src={require('./screen2.png')} />
+                  </div>
+                  <div class='Level-1-Instructions'>
+                    <p class='game-name'>SNAKE QUIZ</p>
+                    <p class='text-style-1'>Level  Instructions:</p>
+                    <ul>
+                      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod tempor incididunt ut labore et dolore magnaaliqua.</li>
+                      <li>Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut aliquip ex ea commodo consequat.</li>
+                      <li> Third instruciton</li>
+                    </ul>
+                    <button class='play-button' onClick={this.snakekickoff}>
+                      Play
+                      </button>
+                  </div>
+                </Container>
+              </div>
+              <br></br>
+              <br></br>
             </Container>
-            <div onClick={this.kickoff}>
+            <div onClick={this.logokickoff}>
             </div>
           </Page >
         );
-      case 'start':
+      case 'logo-start':
         return <ImagesProvider
           r={require.context(
             "./embedded/Shop/images/",
@@ -75,6 +104,8 @@ export default class Prequel extends React.Component {
             /\.(png|jpe?g|svg)$/
           )}
         > <Shop onComplete={this.handleComplete} /> </ImagesProvider>;
+      case 'snake-start':
+        return <Snakes onComplete={this.handleComplete} />;
       case 'begin':
         return (
           <Page>

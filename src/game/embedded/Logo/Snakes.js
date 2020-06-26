@@ -235,67 +235,67 @@ class Snakes extends Component {
   }
 
   advanceSnake() {
-    if(this.state.snake.length <= 0 || Snakes.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
-      this.setState({"gameOver": true});
+    if (this.state.snake.length <= 0 || Snakes.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
+      this.setState({ "gameOver": true });
       this.props.onComplete('failed');
       return
     }
-    if(this.state.score >= 3) {
-      this.setState({"gameWon": true});
+    if (this.state.score >= 3) {
+      this.setState({ "gameWon": true });
       this.props.onComplete('completed');
       return
     }
     this.circleAround(this.state.snake);
     setTimeout(() => {
-      const {dx, dy} = this.state;
+      const { dx, dy } = this.state;
       this.clearCanvas();
       const snake = this.state.snake;
-      const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
       snake.unshift(head);
       const eatenOption = this.optionEaten(snake);
       const rightOption = this.state.question.answer;
 
-      switch(eatenOption){
+      switch (eatenOption) {
         case "optionA": {
-          if(rightOption !== "optionA") {
+          if (rightOption !== "optionA") {
             snake.pop();
-            snake.pop();  
+            snake.pop();
           } else {
             const score = this.state.score + 1;
-            this.setState({score});
+            this.setState({ score });
           }
           const optionA = this.createOption(snake);
           const optionB = this.createOption(snake);
           const question = this.getQuestion();
-          this.setState({optionA, optionB, question});
+          this.setState({ optionA, optionB, question });
           break;
         }
         case "optionB": {
-          if(rightOption !== "optionB") {
+          if (rightOption !== "optionB") {
             snake.pop();
-            snake.pop();  
-          }else {
+            snake.pop();
+          } else {
             const score = this.state.score + 1;
-            this.setState({score});
+            this.setState({ score });
           }
           const optionA = this.createOption(snake);
           const optionB = this.createOption(snake);
           const question = this.getQuestion();
-          this.setState({optionA, optionB, question});
+          this.setState({ optionA, optionB, question });
           break;
         }
-        default:{
-          snake.pop();  
+        default: {
+          snake.pop();
           break;
-        } 
+        }
       }
-      
+
 
       this.drawOption(this.state.optionA.x, this.state.optionA.y, "optionA");
       this.drawOption(this.state.optionB.x, this.state.optionB.y, "optionB");
       this.drawSnake(snake);
-      this.setState({snake});
-      this.advanceSnake();  
+      this.setState({ snake });
+      this.advanceSnake();
     }, 100);
   }
 
@@ -359,14 +359,14 @@ class Snakes extends Component {
           <div className="snakequestion">
             <p>{title}</p>
             <p>
-              <img src={red} height="16" width="16" alt="red img"/>
+              <img src={red} height="16" width="16" alt="red img" />
               {' '}
               -
               {' '}
               {optionA}
             </p>
             <p>
-              <img src={blue} height="16" width="16" alt="blue img"/>
+              <img src={blue} height="16" width="16" alt="blue img" />
               {' '}
               -
               {' '}
@@ -374,8 +374,8 @@ class Snakes extends Component {
             </p>
           </div>
           {' '}
-          <br/>
-          <br/>
+          <br />
+          <br />
           <canvas
             ref={this.canvasRef}
             id="gameCanvas"

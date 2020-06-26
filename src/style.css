@@ -148,7 +148,7 @@ body {
     margin:0;
     float: left;
     padding: 30px;
-    padding-top: 100px;
+    /* padding-top: 100px; */
     font-weight: semi-bold;
 }
 
@@ -159,6 +159,11 @@ body {
 .text-style-1 {
     font-size: 18px;
     font-weight: 600;
+}
+
+.game-name{
+    font-size: 45px;
+    font-weight: 1000;
 }
 
 .play-game-box{

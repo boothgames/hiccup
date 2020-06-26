@@ -56,7 +56,6 @@
     border-radius: 30px;
   }
   .snakeScore {
-    position: absolute;
     color: #fff;
     background: rgba(0,0,0,0.5);
     padding: 10px;
@@ -64,4 +63,5 @@
     right: 3em;
     top: 12em;
     border-radius: 10px;
+    margin-top:25px;
   }
