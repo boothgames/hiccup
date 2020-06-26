@@ -6,14 +6,7 @@ import { Timer, PlayingTimer } from "./Timer";
 import bear from "../images/bear.svg";
 
 const Control = styled.div`
-  padding-top: 10%;
-  height: 100%;
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
+  position: absolute;
 `;
 
 const Bear = styled.div`

@@ -21,7 +21,7 @@ const TimerDefault = ({ status }) => {
   const propsThread = useSpring({
     from: { transform: `scale(0)` },
     to: { transform: `scale(1)` },
-    delay: !status? 0 : 1000
+    delay: !status ? 0 : 1000
   });
 
   return (

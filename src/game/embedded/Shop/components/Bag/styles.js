@@ -37,7 +37,7 @@ export const Rules = styled.div`
 `;
 export const Container = styled.div`
   grid-area: cart;
-  background-image: url(${bag});
+  // background-image: url(${bag});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -46,17 +46,17 @@ export const Container = styled.div`
   align-items: center;
   padding-top: 15%;
   position: relative;
-  width: 70%;
+  width: 80%;
 `;
 
 export const Task = styled.div`
   position: relative;
   width: 65%;
   height: 55%;
-  margin-left: 1%;
+  margin-left: -100px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(24%, 1fr));
-  grid-template-rows: repeat(3, minmax(24%, 1fr));
+  grid-template-columns: repeat(5, minmax(24%, 1fr));
+  grid-template-rows: repeat(2, minmax(24%, 1fr));
   grid-gap: 1%;
 
   @media screen and (max-height: 960px) and (orientation: portrait) {

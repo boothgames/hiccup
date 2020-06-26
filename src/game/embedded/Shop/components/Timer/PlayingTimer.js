@@ -2,7 +2,7 @@ import React from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 
-import {TimerCss, TimerThreadCss} from "./styles";
+import { TimerCss, TimerThreadCss } from "./styles";
 
 const Timer = styled(animated.div)`${TimerCss}`;
 const TimerThread = styled.div`${TimerThreadCss}`;

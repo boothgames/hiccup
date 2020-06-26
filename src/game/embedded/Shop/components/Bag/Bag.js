@@ -39,9 +39,9 @@ export default props => {
 
   function onHit(ev) {
     const currentElementID = ev.target.parentElement.id
-    if (currentElementID > 3) {
+    if (currentElementID > 4) {
       ev.target.src = images[ev.dragData + '.png']
-      const questionImage = document.getElementById(currentElementID - 4).children[0].alt
+      const questionImage = document.getElementById(currentElementID - 5).children[0].alt
       actualAnswers[questionImage] = ev.dragData
     }
   }
@@ -80,7 +80,7 @@ export default props => {
             >
               <div id={i}>
                 {
-                  i < 4 ?
+                  i < 5 ?
                     <img src={images[item.name + '.png']} alt={item.name} />
                     :
                     <img src={require('./line.png')} />

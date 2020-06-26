@@ -1,16 +1,16 @@
-import styled, { keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const balloonColor = "#e74c3c";
+const balloonColor = "white";
 
 export const TimerCss = `
 display: block;
 width: 100%;
 height: 100%;
-min-height: 150px;
-max-height: 180px;
+min-height: 100px;
+max-height: 100px;
 background-color: ${balloonColor};
 border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-color: #fff;
+color: black;
 font-size: 3rem;
 @media screen and (max-height: 568px) {
   font-size: 2rem;
