@@ -61,9 +61,9 @@ export default props => {
       {status !== 'playing' && (
         <Rules>
           {status === 'win' && <>Well done! Your score is{calculateScore()} </>}
-          {status === 'fail' && <>Try one more time! Your score is { calculateScore()}</>}
+          {status === 'fail' && <>Your score is { calculateScore()}/5</>}
           {!status && 'Click on the logo and match them with their creators in 25 seconds!'}
-          <Button onClick={reset}>New game!</Button>
+          {(status === 'win' || status === 'fail') ? <Button onClick={reset}>Go to Home Page!</Button> : <Button onClick={reset}>New Game!</Button>}
         </Rules>
       )}
 
