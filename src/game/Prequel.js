@@ -103,7 +103,7 @@ export default class Prequel extends React.Component {
             true,
             /\.(png|jpe?g|svg)$/
           )}
-        > <Shop onComplete={this.handleComplete} /> </ImagesProvider>;
+        > <Shop playSnakeGame={() => this.setState({ status: 'snake-start' })} onComplete={this.handleComplete} /> </ImagesProvider>;
       case 'snake-start':
         return <Snakes onComplete={this.handleComplete} />;
       case 'begin':

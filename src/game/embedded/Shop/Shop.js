@@ -46,7 +46,11 @@ const Shop = props => {
     setStatus('win');
   };
 
-  const reset = () => {
+  const resetNextGame = () => {
+    props.playSnakeGame();
+  };
+
+  const resetNewGame = () => {
     setStatus('playing');
     setRandomItems();
   };
@@ -80,7 +84,8 @@ const Shop = props => {
           <ShopContainer>
             <Bag
               productsToBuy={productsToBuy}
-              reset={reset}
+              resetNextGame={resetNextGame}
+              resetNewGame={resetNewGame}
               status={status}
               selectedIndex={selectedIndex}
             />

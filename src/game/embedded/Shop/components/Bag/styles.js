@@ -5,7 +5,7 @@ import filter from '../../images/filter.svg';
 
 export const Rules = styled.div`
   position: absolute;
-  top: 55%;
+  top: 23%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
@@ -14,10 +14,11 @@ export const Rules = styled.div`
   align-items: center;
   background-color: #fff;
   color: #333;
-  padding: 1rem;
-  width: 40%;
+  padding: 5px;
+  width: 60%;
   border-radius: 10px;
   text-align: center;
+  border-style:solid;
 
   @media screen and (max-width: 991px) {
     font-size: 1.6rem;

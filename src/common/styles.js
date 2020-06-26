@@ -57,15 +57,14 @@ export const Loader = styled.div`
 `;
 
 export const Button = styled.button`
-  border: 1px #77c76e solid;
-  background: #60af56;
+  // border: 1px #77c76e solid;
+  // background: #60af56;
   color: #fff;
   font-weight: 500;
-  padding: 1rem;
+  // padding: 1rem;
   border-radius: 30px;
-  margin-top: 10%;
+  margin-top: 1%;
   cursor: pointer;
-  font-family: "Indie Flower", cursive, -apple-system;
   text-transform: uppercase;
   transform: scale(1);
   transition: 0.2s all;

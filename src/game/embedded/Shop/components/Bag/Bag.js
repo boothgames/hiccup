@@ -28,7 +28,7 @@ const expectedAnswers = {
 }
 
 export default props => {
-  const { productsToBuy, status, selectedIndex, reset } = props;
+  const { productsToBuy, status, selectedIndex, resetNewGame, resetNextGame } = props;
   const { images } = useImagesContext();
   var score = 0;
 
@@ -61,9 +61,11 @@ export default props => {
       {status !== 'playing' && (
         <Rules>
           {status === 'win' && <>Well done! Your score is{calculateScore()} </>}
-          {status === 'fail' && <>Your score is { calculateScore()}/5</>}
+          {status === 'fail' && <p>Your score is {calculateScore()}/5</p>}
           {!status && 'Click on the logo and match them with their creators in 25 seconds!'}
-          {(status === 'win' || status === 'fail') ? <Button onClick={reset}>Go to Home Page!</Button> : <Button onClick={reset}>New Game!</Button>}
+          {(status === 'win' || status === 'fail') ?
+            <Button onClick={resetNextGame}>Go to Next Game!</Button> :
+            <Button onClick={resetNewGame}>New Game!</Button>}
         </Rules>
       )}
 
