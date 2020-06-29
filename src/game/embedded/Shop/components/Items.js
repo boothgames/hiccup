@@ -25,6 +25,7 @@ const Items = styled.div`
     //height: 100%;
     object-fit: contain;
     padding: 20px;
+    // border-image: url(./line.png) 50 round;
   }
 `;
 
@@ -65,8 +66,11 @@ const ItemsBottom = styled(Items)`
   @media screen and (min-width: 768px) and (orientation: portrait) {
     //width: 100%;
   }
-  display: flex;
+  display: -webkit-box;
   flex-wrap: wrap;
+  -webkit-background-clip: padding-box; 
+  // -webkit-border-radius: 12px; 
+  // -webkit-background-clip: padding-box; 
 `;
 
 export default ({ select }) => {

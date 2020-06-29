@@ -28,7 +28,7 @@ const PlayingTimer = props => {
       <Timer style={propsTimer2}>
         {propsTimer2.text}
       </Timer>
-      <TimerThread />
+      {/* <TimerThread /> */}
     </>
   );
 };

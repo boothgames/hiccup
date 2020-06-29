@@ -38,4 +38,6 @@ export const bottomOptions = [
   "hashicorp",
   "microsoft",
   "netflix",
+  "apple",
+  "google",
 ]

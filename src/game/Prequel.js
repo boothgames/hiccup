@@ -83,7 +83,7 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
@@ -97,9 +97,9 @@ export default class Prequel extends React.Component {
                 <Container id="game-box">
                   <div class="game-preview">
                     <img class="preview-image" src={require('./screen2.png')} />
+                    <p class="game-name">Puzzle Challenge</p>
                   </div>
                   <div class="Level-1-Instructions">
-                    <p class="game-name">LOGO MATCHING</p>
                     <p class="text-style-1">Level 1 Instructions:</p>
                     <ul>
                       <li>
@@ -130,10 +130,10 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
             <div class="Thoughtworks-microsi">
               <Navbar>
-                <Navbar.Brand href="https://www.thoughtworks.com/arts">
+                <Navbar.Brand href="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg">
                   &lt; Thoughtworks microsite page
                 </Navbar.Brand>
               </Navbar>
@@ -167,10 +167,10 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
             <div class="Thoughtworks-microsi">
               <Navbar>
-                <Navbar.Brand href="https://www.thoughtworks.com/arts">
+                <Navbar.Brand href="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg">
                   &lt; Thoughtworks microsite page
                 </Navbar.Brand>
               </Navbar>
@@ -180,13 +180,14 @@ export default class Prequel extends React.Component {
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
-                    <img class="preview-image" src={require('./screen2.png')} />
+                    <img class="preview-image" src={require('./congrats.png')} />
+                    <p class="game-name">Congratulations!!</p>
                   </div>
                   <div class="Level-1-Instructions">
-                    <p class="game-name">Congrats!!</p>
-                    <p class="text-style-1">Your score is {this.calculateScore()}</p>
+                    {/* <p class="game-name">Congratulations!!</p> */}
+                    <p class="text-style-1">Your score is {this.calculateScore()}/5.</p>
                     <p>
-                      Please fill this{' '}
+                      Please take 2 minutes to fill this{' '}
                       <a href="https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india">
                         form.
                       </a>

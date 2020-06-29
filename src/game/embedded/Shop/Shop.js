@@ -4,9 +4,6 @@ import Bag from './components/Bag/Bag';
 import Items from './components/Items';
 import Control from './components/Control';
 
-import { Game } from '../../../common/styles';
-import { GameContainer, ShopContainer } from './styles';
-
 import { questions } from './config';
 import { Container } from 'react-bootstrap';
 
