@@ -128,17 +128,36 @@ body {
 .game-preview {
     width: 50%;
     height: 100%;
+    object-fit: contain;
     display: inline;
     /* margin-left:41px;
     margin-top:74px;  */
     margin:0;
     float: left;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px 2px rgba(128, 128, 128, 0.5);
+    background-color: #ffffff;
+}
+
+.logo-box{
+    width: 80%;
+    height: 100%;
+    display: inline;
+    margin:0;
+    float: left;
+    display:flex;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px 2px rgba(128, 128, 128, 0.5);
+    background-color: #ffffff;
 }
 
 .play-button{
   width: 198px;
   border-radius: 8px;
-  background-color: #ef5ba1;
+  background-color: #f78f31;
   margin-top: 50px;
   font-family: OpenSans;
   font-size: 21px;
@@ -162,7 +181,8 @@ body {
 }
 
 .preview-image{
-    height: 100%;
+    height: 60%;
+    vertical-align: centre;
 }
   
 .text-style-1 {
@@ -176,12 +196,19 @@ body {
 }
 
 .play-game-box{
-  height: 586px;
+  height: 60%;
   width:100%;
   box-shadow: 2px 2px 4px 2px rgba(162, 162, 162, 0.5);
   border: solid 1px #808285;
   background-color: #ffffff;
   padding:50px 30px 50px 30px;
+  display: flex;
+}
+
+.answer_box{
+  width: 141px;
+  height: 1px;
+  border: solid 4px #000000;
 }
 
 .counter {

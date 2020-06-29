@@ -8,10 +8,11 @@ import { Game } from '../../../common/styles';
 import { GameContainer, ShopContainer } from './styles';
 
 import { questions } from './config';
+import { Container } from 'react-bootstrap';
 
 const Shop = props => {
   const [productsToBuy, setProductsToBuy] = useState([]);
-  const [status, setStatus] = useState(null); // playing, fail, win
+  const [status, setStatus] = useState('playing'); // playing, fail, win
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const setRandomItems = useCallback(() => {
@@ -73,28 +74,22 @@ const Shop = props => {
   };
 
   return (
-    <div>
-      <div class='logo'>
-        <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+    <Container>
+      <div class='logo-box'>
+        <Bag
+          productsToBuy={productsToBuy}
+          resetNextGame={resetNextGame}
+          resetNewGame={resetNewGame}
+          status={status}
+          selectedIndex={selectedIndex}
+          displayScore={props.displayScore}
+          actualAnswers={props.actualAnswers}
+        />
       </div>
-      <Game>
-        <GameContainer>
-          <ShopContainer>
-            <Bag
-              productsToBuy={productsToBuy}
-              resetNextGame={resetNextGame}
-              resetNewGame={resetNewGame}
-              status={status}
-              selectedIndex={selectedIndex}
-            />
 
-            <Control fail={fail} status={status} />
-          </ShopContainer>
-
-          <Items select={select} />
-        </GameContainer>
-      </Game>
-    </div>
+      <Control fail={props.displayScore} status={status} />
+      <Items select={select} />
+    </Container >
   );
 };
 

@@ -18,22 +18,24 @@ export const questions = [
 ];
 
 export const leftOptions = [
-  "jetbrains",
-  "hashicorp",
-  "microsoft",
-  "netflix",
+
 ]
 
 export const rightOptions = [
-  "sunmicrosystems",
-  "soundcloud",
-  "thoughtworks",
-  "redhat",
+
 ]
 
 export const bottomOptions = [
   "twitter",
   "vmware",
   "nitobi",
-  "lightbend"
+  "lightbend",
+  "sunmicrosystems",
+  "soundcloud",
+  "thoughtworks",
+  "redhat",
+  "jetbrains",
+  "hashicorp",
+  "microsoft",
+  "netflix",
 ]

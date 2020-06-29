@@ -10,6 +10,25 @@ import Navbar from 'react-bootstrap/Navbar'
 import Snakes from './embedded/Snake/Snakes';
 import SnakeInstructions from './SnakeInstructions';
 
+const expectedAnswers = {
+  "airbnb": "airbnb",
+  "facebook": "facebook",
+  "apple": "apple",
+  "atlassian": "atlassian",
+  "jetbrains": "jetbrains",
+  "hashicorp": "hashicorp",
+  "microsoft": "microsoft",
+  "netflix": "netflix",
+  "redhat": "redhat",
+  "sunmicrosystems": "sunmicrosystems",
+  "twitter": "twitter",
+  "vmware": "vmware",
+  "soundcloud": "soundcloud",
+  "thoughtworks": "thoughtworks",
+  "nitobi": "nitobi",
+  "lightbend": "lightbend",
+}
+
 export default class Prequel extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +37,10 @@ export default class Prequel extends React.Component {
     this.logokickoff = this.logokickoff.bind(this);
     this.snakekickoff = this.snakekickoff.bind(this);
     this.startSnakeGame = this.startSnakeGame.bind(this);
+    this.displayScore = this.displayScore.bind(this);
   }
+
+  actualAnswers = {};
 
   start() {
     const { onStart } = this.props;
@@ -35,6 +57,22 @@ export default class Prequel extends React.Component {
 
   startSnakeGame() {
     this.setState({ status: 'snake-start' });
+  }
+
+  displayScore() {
+    this.calculateScore()
+    this.setState({ status: 'game-over' });
+  }
+
+  calculateScore() {
+    var score = 0;
+    Object.keys(this.actualAnswers).map(key => {
+      if (expectedAnswers[key] == this.actualAnswers[key]) {
+        score++;
+      }
+    })
+    this.actualAnswers = {};
+    return score;
   }
 
   renderMessage() {
@@ -103,13 +141,72 @@ export default class Prequel extends React.Component {
           </Page >
         );
       case 'logo-start':
-        return <ImagesProvider
-          r={require.context(
-            "./embedded/Shop/images/",
-            true,
-            /\.(png|jpe?g|svg)$/
-          )}
-        > <Shop playSnakeGame={this.snakekickoff} onComplete={this.handleComplete} /> </ImagesProvider>;
+        return (
+          <Page>
+            <div class='logo'>
+              <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+            </div>
+            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+            <div class='Thoughtworks-microsi'>
+              <Navbar>
+                <Navbar.Brand href="https://www.thoughtworks.com/arts">&lt;  Thoughtworks microsite page
+              </Navbar.Brand>
+              </Navbar>
+            </div>
+            <Container>
+              <h1 class='Lets-play'> Let's play!</h1>
+              <div class='play-game-box'>
+                <Container id='game-box'>
+                  <ImagesProvider
+                    r={require.context(
+                      "./embedded/Shop/images/",
+                      true,
+                      /\.(png|jpe?g|svg)$/
+                    )}
+                  > <Shop playSnakeGame={this.snakekickoff} displayScore={this.displayScore} actualAnswers={this.actualAnswers} onComplete={this.handleComplete} /> </ImagesProvider>
+                </Container>
+              </div>
+            </Container>
+            <div onClick={this.logokickoff}>
+            </div>
+          </Page >
+        );
+      case 'game-over':
+        return (<Page>
+          <div class='logo'>
+            <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+          </div>
+          <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-665554b185264f7ef2da169a815ab300.jpeg" />
+          <div class='Thoughtworks-microsi'>
+            <Navbar>
+              <Navbar.Brand href="https://www.thoughtworks.com/arts">&lt;  Thoughtworks microsite page
+              </Navbar.Brand>
+            </Navbar>
+          </div>
+          <Container>
+            <h1 class='Lets-play'> Let's play!</h1>
+            <div class='play-game-box'>
+              <Container id='game-box'>
+                <div class='game-preview'>
+                  <img class='preview-image' src={require('./screen2.png')} />
+                </div>
+                <div class='Level-1-Instructions'>
+                  <p class='game-name'>LOGO MATCHING</p>
+                  <p class='text-style-1'>Level 1 Instructions:</p>
+                  <ul>
+                    <li>Congrats!!</li>
+                  </ul>
+                  <button class='play-button' onClick={this.logokickoff}>
+                    Play
+                      </button>
+                </div>
+              </Container>
+            </div>
+          </Container>
+          <div onClick={this.logokickoff}>
+          </div>
+        </Page >
+        );
       case 'snake-start':
         return <Snakes onComplete={this.handleComplete} />;
       case 'snake-instructions':

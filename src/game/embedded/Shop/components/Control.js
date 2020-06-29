@@ -6,7 +6,7 @@ import { Timer, PlayingTimer } from "./Timer";
 import bear from "../images/bear.svg";
 
 const Control = styled.div`
-  position: absolute;
+  float: right; 
 `;
 
 const Bear = styled.div`

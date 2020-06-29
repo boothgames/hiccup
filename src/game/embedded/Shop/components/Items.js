@@ -10,6 +10,7 @@ import { DragDropContainer } from 'react-drag-drop-container';
 const Items = styled.div`
   display: flex;
   padding: 10px;
+  padding-top : 40px;
   height: 100%;
   @media screen and (max-width: 768px) and (orientation: portrait) {
     height: 15%;
@@ -17,36 +18,13 @@ const Items = styled.div`
     width: 100%;
   }
   img {
-    width: 100px;
+    width: 150px;
     height: 100px;
     cursor: pointer;
     //width: 100%;
     //height: 100%;
-
-    @media screen and (max-width: 768px) {
-      max-width: 40px;
-      max-height: 40px;
-    }
-
-    @media screen and (max-width: 320px) {
-      max-width: 25px;
-      max-height: 25px;
-    }
-
-    @media screen and (max-height: 412px) {
-      max-width: 30px;
-      max-height: 30px;
-    }
-
-    @media screen and (max-height: 320px) {
-      max-width: 25px;
-      max-height: 25px;
-    }
-
-    @media screen and (max-height: 213px) {
-      max-width: 20px;
-      max-height: 20px;
-    }
+    object-fit: contain;
+    padding: 20px;
   }
 `;
 
@@ -83,55 +61,29 @@ const ItemsBottom = styled(Items)`
   grid-area: items-bottom;
   justify-content: space-around;
   align-items: center;
-  width: 95%;
-  height: 5%;
+  width: 90%;
   @media screen and (min-width: 768px) and (orientation: portrait) {
     //width: 100%;
   }
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 export default ({ select }) => {
   var { images } = useImagesContext();
 
   return (
-    <>
-      <ItemsLeft>
-        {leftOptions.map((name, i) => (
-          <DragDropContainer
-            key={i}
-            targetKey="foo"
-            dragData={name}>
-            <div key={i}>
-              <img src={images[name + '.png']} alt={name} onClick={select} />
-            </div>
-          </DragDropContainer>))}
-      </ItemsLeft>
-
-      <ItemsRight>
-        {rightOptions.map((name, i) => (
-          <DragDropContainer
-            key={i}
-            targetKey="foo"
-            dragData={name}>
-            <div key={i}>
-              <img src={images[name + '.png']} alt={name} onClick={select} />
-            </div>
-          </DragDropContainer>
-        ))}
-      </ItemsRight>
-
-      <ItemsBottom>
-        {bottomOptions.map((name, i) => (
-          <DragDropContainer
-            key={i}
-            targetKey="foo"
-            dragData={name}>
-            <div key={i}>
-              <img src={images[name + '.png']} alt={name} onClick={select} />
-            </div>
-          </DragDropContainer>
-        ))}
-      </ItemsBottom>
-    </>
+    <ItemsBottom>
+      {bottomOptions.map((name, i) => (
+        <DragDropContainer
+          key={i}
+          targetKey="foo"
+          dragData={name}>
+          <div key={i}>
+            <img style={{ flex: 1, height: undefined, width: undefined }} src={images[name + '.png']} alt={name} onClick={select} />
+          </div>
+        </DragDropContainer>
+      ))}
+    </ItemsBottom>
   );
 };

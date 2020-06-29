@@ -7,28 +7,8 @@ import { Rules, Task, Container } from './styles';
 import { Button } from '../../../../../common/styles';
 import { DropTarget } from 'react-drag-drop-container';
 
-var actualAnswers = {};
-const expectedAnswers = {
-  "airbnb": "airbnb",
-  "facebook": "facebook",
-  "apple": "apple",
-  "atlassian": "atlassian",
-  "jetbrains": "jetbrains",
-  "hashicorp": "hashicorp",
-  "microsoft": "microsoft",
-  "netflix": "netflix",
-  "redhat": "redhat",
-  "sunmicrosystems": "sunmicrosystems",
-  "twitter": "twitter",
-  "vmware": "vmware",
-  "soundcloud": "soundcloud",
-  "thoughtworks": "thoughtworks",
-  "nitobi": "nitobi",
-  "lightbend": "lightbend",
-}
-
 export default props => {
-  const { productsToBuy, status, selectedIndex, resetNewGame, resetNextGame } = props;
+  const { productsToBuy, status, selectedIndex, resetNewGame, resetNextGame, actualAnswers } = props;
   const { images } = useImagesContext();
   var score = 0;
 
@@ -46,29 +26,8 @@ export default props => {
     }
   }
 
-  function calculateScore() {
-    Object.keys(actualAnswers).map(key => {
-      if (expectedAnswers[key] == actualAnswers[key]) {
-        score++;
-      }
-    })
-    actualAnswers = {};
-    return score;
-  }
-
   return (
     <Container>
-      {status !== 'playing' && (
-        <Rules>
-          {status === 'win' && <>Well done! Your score is{calculateScore()} </>}
-          {status === 'fail' && <p>Your score is {calculateScore()}/5</p>}
-          {!status && 'Click on the logo and match them with their creators in 25 seconds!'}
-          {(status === 'win' || status === 'fail') ?
-            <Button onClick={resetNextGame}>Go to Next Game!</Button> :
-            <Button onClick={resetNewGame}>New Game!</Button>}
-        </Rules>
-      )}
-
       <Task>
         {productsToBuy.map((item, i) => (
           <animated.div
@@ -82,7 +41,7 @@ export default props => {
             >
               <div id={i}>
                 {
-                  i < 5 ?
+                  (status == 'playing' || status == 'fail') && i < 5 ?
                     <img src={images[item.name + '.png']} alt={item.name} />
                     :
                     <img src={require('./line.png')} />

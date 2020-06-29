@@ -45,38 +45,36 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 15%;
+  // padding-top: 15%;
   position: relative;
-  width: 80%;
+  width: 100%;
+  float: left;
+  margin: 0;
 `;
 
 export const Task = styled.div`
   position: relative;
-  width: 65%;
-  height: 55%;
-  margin-left: -100px;
+  width: 80%;
   display: grid;
-  grid-template-columns: repeat(5, minmax(24%, 1fr));
-  grid-template-rows: repeat(2, minmax(24%, 1fr));
-  grid-gap: 1%;
-
-  @media screen and (max-height: 960px) and (orientation: portrait) {
-    height: 42%;
-  }
-
-  @media screen and (max-width: 846px) and (orientation: landscape) {
-    width: 59%;
-  }
+  grid-template-columns: repeat(5, minmax(15%, 1fr));
+  grid-template-rows: repeat(2, minmax(15%, 1fr));
+  grid-gap: 5%;
+  min-width: 110px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  // margin-left: -20px;
 
   > div {
-    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 5px;
-
+    
+    border-radius: 3px;
+    border: solid 1px #c8c8c8;
+    background-color: #f8f8f8;
+    
     img {
       width: 100%;
       height: 100%;
