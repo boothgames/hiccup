@@ -13,13 +13,13 @@ const Shop = props => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const setRandomItems = useCallback(() => {
-    const randomNumber = 1 + Math.random() * (4 - 1);
+    const randomNumber = 1 + Math.random() * (6 - 1);
     const productsToBuy = questions
       .map(item => {
         return Array.from({ length: 1 }).fill(item);
       })
       .reduce((acc, arr) => acc.concat(arr), [])
-      .slice(randomNumber, randomNumber + 12)
+      .slice(randomNumber, randomNumber + 10)
       .reduce((acc, val) => {
         const newItem = {
           selected: false,

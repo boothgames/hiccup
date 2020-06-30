@@ -3,7 +3,6 @@ import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 
 import { TimerCss, TimerThreadCss } from "./styles";
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const Timer = styled(animated.div)`${TimerCss}`;
 const TimerThread = styled.div`${TimerThreadCss}`;
@@ -24,27 +23,14 @@ const PlayingTimer = props => {
     })
   };
 
-  const UrgeWithPleasureComponent = () => (
-    <CountdownCircleTimer
-      isPlaying
-      duration={10}
-      colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
-    >
-      {({ remainingTime }) => remainingTime}
-    </CountdownCircleTimer>
-  )
-
   return (
-    <CountdownCircleTimer
-      isPlaying
-      duration={25}
-      size={100}
-      fontSize='200px'
-      colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
-    >
-      {({ remainingTime }) => remainingTime}
-    </CountdownCircleTimer>
-  )
+    <>
+      <Timer style={propsTimer2}>
+        {propsTimer2.text}
+      </Timer>
+      {/* <TimerThread /> */}
+    </>
+  );
 };
 
 export { PlayingTimer }

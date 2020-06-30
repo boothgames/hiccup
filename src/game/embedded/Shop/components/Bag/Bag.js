@@ -19,9 +19,9 @@ export default props => {
 
   function onHit(ev) {
     const currentElementID = ev.target.parentElement.id
-    if (currentElementID > 6) {
+    if (currentElementID > 4) {
       ev.target.src = images[ev.dragData + '.png']
-      const questionImage = document.getElementById(currentElementID - 6).children[0].alt
+      const questionImage = document.getElementById(currentElementID - 5).children[0].alt
       actualAnswers[questionImage] = ev.dragData
     }
   }
@@ -41,12 +41,10 @@ export default props => {
             >
               <div id={i}>
                 {
-                  (i == 0 ? <img src={require('./companies.png')} /> :
-                    (i == 6 ? <img src={require('./products.png')} /> :
-                      (status == 'playing' || status == 'fail') && i < 6 ?
-                        <img src={images[item.name + '.png']} alt={item.name} />
-                        :
-                        <img src={require('./line.png')} />))
+                  (status == 'playing' || status == 'fail') && i < 5 ?
+                    <img src={images[item.name + '.png']} alt={item.name} />
+                    :
+                    <img src={require('./line.png')} />
                 }
               </div>
             </DropTarget>

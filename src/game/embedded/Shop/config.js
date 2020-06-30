@@ -41,8 +41,3 @@ export const bottomOptions = [
   "apple",
   "google",
 ]
-
-export const titles = [
-  "companies",
-  "products"
-]
