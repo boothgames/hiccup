@@ -74,6 +74,8 @@ export default class Prequel extends React.Component {
     return score;
   }
 
+  congratsImage = require('./congrats.png')
+
   renderMessage() {
     const { status, countDown } = this.state;
     switch (status) {
@@ -81,10 +83,10 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="logo">
-              <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
-              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
               <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
@@ -131,10 +133,10 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="logo">
-              <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
-              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
               <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
@@ -171,10 +173,10 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="logo">
-              <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
-              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
               <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
@@ -189,7 +191,7 @@ export default class Prequel extends React.Component {
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
-                    <img class="preview-image" src={require('./congrats.png')} />
+                    <img class="preview-image" src={this.congratsImage} />
                   </div>
                   <div class="Level-1-Instructions">
                     <p class="text-style-1">Congratulations!!</p>
