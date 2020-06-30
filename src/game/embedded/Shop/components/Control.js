@@ -31,7 +31,7 @@ export default ({ status, fail }) => {
             <PlayingTimer onRestHandler={fail} />
           )}
       </div>
-      <Bear />
+      {/* <Bear /> */}
     </Control >
   );
 };
