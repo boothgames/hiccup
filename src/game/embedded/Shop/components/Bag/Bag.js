@@ -33,7 +33,13 @@ export default props => {
           <animated.div
             key={`p${i}`}
             className={`item`}
-            style={item.selected && selectedIndex === i ? propsSelected : propsSelected}
+            style={propsSelected, i == 0 || i == 6 ? {
+              border: 0,
+              backgroundColor: 'white',
+            } : {
+                border: 'solid 1px #c8c8c8',
+                backgroundColor: '#f8f8f8'
+              }}
           >
             <DropTarget
               targetKey="foo"
@@ -53,6 +59,6 @@ export default props => {
           </animated.div>
         ))}
       </Task>
-    </Container>
+    </Container >
   );
 };

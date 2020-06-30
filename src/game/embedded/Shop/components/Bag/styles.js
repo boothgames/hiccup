@@ -72,7 +72,7 @@ export const Task = styled.div`
     padding: 5px;
     
     border-radius: 3px;
-    min-height: 90px;
+    // min-height: 90px;
     border: solid 1px #c8c8c8;
     background-color: #f8f8f8;
     

@@ -82,8 +82,8 @@ export default class Prequel extends React.Component {
       case 'ready':
         return (
           <Page>
-            <div class="logo">
-              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+            <div class="thoughtworks-image">
+              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
               <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
@@ -123,17 +123,16 @@ export default class Prequel extends React.Component {
                   </div>
                 </Container>
               </div>
-              <br></br>
-              <br></br>
+              <div style={{ padding: '30px' }}></div>
             </Container>
             <div onClick={this.logokickoff}></div>
-          </Page>
+          </Page >
         );
       case 'logo-start':
         return (
           <Page>
-            <div class="logo">
-              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+            <div class="thoughtworks-image">
+              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
               <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
@@ -172,8 +171,8 @@ export default class Prequel extends React.Component {
       case 'game-over':
         return (
           <Page>
-            <div class="logo">
-              <img class='tw-logo' src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+            <div class="thoughtworks-image">
+              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
             <div class='banner'>
               <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />

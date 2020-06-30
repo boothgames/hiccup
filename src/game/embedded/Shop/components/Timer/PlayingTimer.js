@@ -29,11 +29,11 @@ const PlayingTimer = props => {
       isPlaying
       duration={25}
       size={100}
-      fontSize='200px'
-      colors={[['#004777', 0.33], ['#F7B801', 0.33], ['#A30000']]}
+      fontSize='20px'
+      colors={[['#f78f31']]}
     >
       {({ remainingTime }) => remainingTime}
-    </CountdownCircleTimer>
+    </CountdownCircleTimer >
   )
 };
 

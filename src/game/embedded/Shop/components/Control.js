@@ -24,7 +24,7 @@ const Bear = styled.div`
 export default ({ status, fail }) => {
   return (
     <Control>
-      <div style={{ minHeight: "40%", width: "100%" }}>
+      <div style={{ minHeight: "40%", width: "100%", fontSize: "30px" }}>
         {status !== "playing" ? (
           <Timer status={status} />
         ) : (
@@ -32,6 +32,6 @@ export default ({ status, fail }) => {
           )}
       </div>
       <Bear />
-    </Control>
+    </Control >
   );
 };
