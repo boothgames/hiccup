@@ -41,7 +41,7 @@ export const ImagesProvider = props => {
   if (Object.keys(images).length !== imagesReadyCnt || imagesReadyCnt < 1) {
     return (
       <Background className={props.intro ? 'intro' : ''}>
-        <Loader />
+        {/* <Loader /> */}
       </Background>
     );
   }

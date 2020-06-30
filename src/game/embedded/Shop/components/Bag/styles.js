@@ -56,13 +56,13 @@ export const Task = styled.div`
   position: relative;
   width: 80%;
   display: grid;
-  grid-template-columns: repeat(5, minmax(15%, 1fr));
+  grid-template-columns: repeat(6, minmax(15%, 1fr));
   grid-template-rows: repeat(2, minmax(15%, 1fr));
   grid-gap: 5%;
   min-width: 110px;
   padding-top: 40px;
   padding-bottom: 40px;
-  // margin-left: -20px;
+  margin-left: -67px;
 
   > div {
     display: flex;
@@ -72,6 +72,7 @@ export const Task = styled.div`
     padding: 5px;
     
     border-radius: 3px;
+    min-height: 90px;
     border: solid 1px #c8c8c8;
     background-color: #f8f8f8;
     

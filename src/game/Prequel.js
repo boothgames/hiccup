@@ -83,16 +83,19 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
+            <div class='banner'>
+              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt; Thoughtworks microsite page
+                  &lt; ThoughtWorks @ GIDS 2020
                 </Navbar.Brand>
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Let's play!</h1>
+              <h1 class="Lets-play"> Logo Match</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
@@ -130,16 +133,19 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
+            <div class='banner'>
+              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
-                <Navbar.Brand href="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg">
-                  &lt; Thoughtworks microsite page
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt; ThoughtWorks @ GIDS 2020
                 </Navbar.Brand>
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Let's play!</h1>
+              <h1 class="Lets-play"> Logo Match</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <ImagesProvider
@@ -167,24 +173,26 @@ export default class Prequel extends React.Component {
             <div class="logo">
               <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <img src="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg" />
+            <div class='banner'>
+              <img src={require("./GIDS-Virtual-Banner-Desktop.png")} />
+              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
-                <Navbar.Brand href="https://dynamic.thoughtworks.com/landing_pages/hero_banner_image_desktop-5a2897cd1e3867c31b7e4105f3a9a554.jpeg">
-                  &lt; Thoughtworks microsite page
+                <Navbar.Brand href=" https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt; ThoughtWorks @ GIDS 2020
                 </Navbar.Brand>
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Let's play!</h1>
+              <h1 class="Lets-play"> Logo Match</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
                     <img class="preview-image" src={require('./congrats.png')} />
-                    <p class="game-name">Congratulations!!</p>
                   </div>
                   <div class="Level-1-Instructions">
-                    {/* <p class="game-name">Congratulations!!</p> */}
+                    <p class="text-style-1">Congratulations!!</p>
                     <p class="text-style-1">Your score is {this.calculateScore()}/5.</p>
                     <p>
                       Please take 2 minutes to fill this{' '}
