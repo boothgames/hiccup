@@ -51,6 +51,17 @@ body {
   margin-bottom: 70px;
 }
 
+.tw-logo{
+  width: 100%;
+  height: 80px;
+  margin: 0 auto;
+  display: block;
+}
+
+.tw-banner{
+  height: 300px;
+}
+
 .page-enter {
   transform: translate(-100%, 0);
 }
@@ -98,7 +109,7 @@ body {
   bottom: 1em;
   left: 0;
   right: 0;
-  padding: 30px;
+  /* padding: 30px; */
   float: left;
   margin-left: 74px;
 }
@@ -134,7 +145,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   position: relative;
 }
 
@@ -180,7 +191,8 @@ body {
 }
 
 .preview-image {
-  height: 100%;
+  /* height: 100%; */
+  height: 439px;
 }
 
 .text-style-1 {
