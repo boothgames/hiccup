@@ -13,13 +13,13 @@ const Shop = props => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const setRandomItems = useCallback(() => {
-    const randomNumber = 1 + Math.random() * (4 - 1);
-    const productsToBuy = questions
+    var shuffledQuestions = shuffle(questions);
+    const productsToBuy = shuffledQuestions
       .map(item => {
         return Array.from({ length: 1 }).fill(item);
       })
       .reduce((acc, arr) => acc.concat(arr), [])
-      .slice(randomNumber, randomNumber + 12)
+      .slice(0, 12)
       .reduce((acc, val) => {
         const newItem = {
           selected: false,
@@ -50,6 +50,17 @@ const Shop = props => {
     setStatus('playing');
     setRandomItems();
   };
+
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex); currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
 
   const select = e => {
     if (status !== 'playing') return;

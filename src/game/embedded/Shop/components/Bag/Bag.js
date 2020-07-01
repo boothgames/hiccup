@@ -47,8 +47,8 @@ export default props => {
             >
               <div id={i}>
                 {
-                  (i == 0 ? <img src={require('./companies.png')} /> :
-                    (i == 6 ? <img src={require('./products.png')} /> :
+                  (i == 0 ? <img src={require('./products.png')} /> :
+                    (i == 6 ? <img src={require('./companies.png')} /> :
                       (status == 'playing' || status == 'fail') && i < 6 ?
                         <img src={images[item.name + '.png']} alt={item.name} />
                         :

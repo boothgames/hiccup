@@ -1,45 +1,47 @@
 export const questions = [
-  "airbnb",
-  "facebook",
-  "apple",
-  "atlassian",
-  "jetbrains",
-  "hashicorp",
-  "microsoft",
-  "netflix",
-  "redhat",
-  "sunmicrosystems",
-  "twitter",
-  "vmware",
-  "soundcloud",
-  "thoughtworks",
-  "nitobi",
-  "lightbend",
+  "hadoop",
+  "kafka",
+  "selenium",
+  "react",
+  "kotlin",
+  "cruisecontrol",
+  "kubernetes",
+  "xbox",
+  "flutter",
+  "swift",
+  "gocd",
+  "confluence",
+  "terraform",
+  "fedora"
+  // "tensor",
+  // "jest",
+  // "firebase",
+  // "couch",
+  // "flux",
+  // "consul",
+  // "cassandra",
+  // "graphsql",
+  // "webRTC",
+  // "trello",
+  // "angular",
 ];
 
-export const leftOptions = [
-
-]
-
-export const rightOptions = [
-
-]
-
 export const bottomOptions = [
-  "twitter",
-  "vmware",
-  "nitobi",
-  "lightbend",
-  "sunmicrosystems",
-  "soundcloud",
-  "thoughtworks",
-  "redhat",
-  "jetbrains",
-  "hashicorp",
-  "microsoft",
-  "netflix",
-  "apple",
+  "facebook",
   "google",
+  "apple",
+  "oracle",
+  "linkedin",
+  "jetbrains",
+  "apache",
+  "thoughtworks",
+  "hashicorp",
+  "twitter",
+  "soundcloud",
+  "nitobi",
+  "redhat",
+  "microsoft",
+  "atlassian"
 ]
 
 export const titles = [
