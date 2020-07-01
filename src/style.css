@@ -155,7 +155,7 @@ body {
 
 .Lets-play {
   /* width: 179px; */
-  height: 49px;
+  /* height: 49px; */
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
   font-size: 32px;
@@ -165,6 +165,10 @@ body {
   line-height: normal;
   letter-spacing: normal;
   color: #000000;
+  background-color: white;
+  margin-top: -50px;
+  padding-top: 20px;
+  position: relative;
 }
 
 .game-preview {
