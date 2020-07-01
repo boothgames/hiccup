@@ -74,7 +74,7 @@ export default class Prequel extends React.Component {
     return score;
   }
 
-  congratsImage = require('./congrats.png')
+  congratsImage = require('./congrats.png');
 
   renderMessage() {
     const { status, countDown } = this.state;
@@ -85,9 +85,9 @@ export default class Prequel extends React.Component {
             <div class="thoughtworks-image">
               <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <div class='banner'>
-              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
-              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            <div class="banner">
+              <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
+              <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
@@ -97,36 +97,32 @@ export default class Prequel extends React.Component {
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Logo Match</h1>
+              <h1 class="Lets-play"> Let's play!</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
                     <img class="preview-image" src={require('./screen2.png')} />
-                    <p class="game-name">Puzzle Challenge</p>
+                    <p class="game-name">Match the logo</p>
                   </div>
                   <div class="Level-1-Instructions">
                     <p class="text-style-1">Level 1 Instructions:</p>
                     <ul>
                       <li>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, seddo eiusmod
-                        tempor incididunt ut labore et dolore magnaaliqua.
+                        Match the software log to its creators by simply dragging and dropping them
+                        in the top grid
                       </li>
-                      <li>
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamcolaboris nisi ut
-                        aliquip ex ea commodo consequat.
-                      </li>
-                      <li> Third instruciton</li>
+                      <li>The game is timed. You get 25 seconds to match 5 logos</li>
+                      <li> Your score will be displayed at the end of the game</li>
                     </ul>
                     <button class="play-button" onClick={this.logokickoff}>
-                      Play
+                      Start playing
                     </button>
                   </div>
                 </Container>
               </div>
               <div style={{ padding: '30px' }}></div>
             </Container>
-            <div onClick={this.logokickoff}></div>
-          </Page >
+          </Page>
         );
       case 'logo-start':
         return (
@@ -134,9 +130,9 @@ export default class Prequel extends React.Component {
             <div class="thoughtworks-image">
               <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <div class='banner'>
-              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
-              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            <div class="banner">
+              <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
+              <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
@@ -146,7 +142,7 @@ export default class Prequel extends React.Component {
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Logo Match</h1>
+              <h1 class="Lets-play"> Match the logo</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <ImagesProvider
@@ -163,7 +159,6 @@ export default class Prequel extends React.Component {
                 </Container>
               </div>
             </Container>
-            <div onClick={this.logokickoff}></div>
             <br></br>
             <br></br>
           </Page>
@@ -174,39 +169,50 @@ export default class Prequel extends React.Component {
             <div class="thoughtworks-image">
               <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
             </div>
-            <div class='banner'>
-              <img class='tw-banner' src={require("./GIDS-Virtual-Banner-Desktop.png")} />
-              <p class='gids-title'>ThoughtWorks @ GIDS 2020</p>
+            <div class="banner">
+              <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
+              <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
-                <Navbar.Brand href=" https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
                   &lt; ThoughtWorks @ GIDS 2020
                 </Navbar.Brand>
               </Navbar>
             </div>
             <Container>
-              <h1 class="Lets-play"> Logo Match</h1>
               <div class="play-game-box">
                 <Container id="game-box">
                   <div class="game-preview">
                     <img class="preview-image" src={this.congratsImage} />
                   </div>
                   <div class="Level-1-Instructions">
-                    <p class="text-style-1">Congratulations!!</p>
-                    <p class="text-style-1">Your score is {this.calculateScore()}/5.</p>
+                    <p class="text-style-1">You scored {this.calculateScore()}/5.</p>
+                    <p class="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <p>
-                      Please take 2 minutes to fill this{' '}
+                      Please take 2 mins and{' '}
                       <a href="https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india">
-                        form.
-                      </a>
+                        sign up
+                      </a>{' '}
+                      for Access ThoughtWorks Careers to stay in touch with the latest happenings
+                      and know about career opportunities at ThoughtWorks.
                       <br />
                     </p>
                   </div>
+                  <button
+                    class="play-button"
+                    type="button"
+                    onClick={e => {
+                      e.preventDefault();
+                      window.location.href =
+                        'https://www.thoughtworks.com/thoughtworks-at-gids2020';
+                    }}
+                  >
+                    Back to main page
+                  </button>
                 </Container>
               </div>
             </Container>
-            <div onClick={this.logokickoff}></div>
             <br></br>
             <br></br>
           </Page>
