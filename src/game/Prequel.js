@@ -99,7 +99,7 @@ export default class Prequel extends React.Component {
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt;&lt; GIDS 2020
+                  &lt;&lt; Back To Home Page
                 </Navbar.Brand>
               </Navbar>
             </div>
@@ -122,7 +122,7 @@ export default class Prequel extends React.Component {
                         Match the software logo to its creators by simply dragging and dropping them
                         in the top grid.
                       </li>
-                      <li>The game is timed.You get 25 seconds to match 5 logos.</li>
+                      <li>The game is timed. You get 25 seconds to match 5 logos.</li>
                       <li>Your score will be displayed at the end of the game.</li>
                     </ul>
                     <button class="play-button" onClick={this.logokickoff}>
@@ -146,7 +146,7 @@ export default class Prequel extends React.Component {
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt;&lt; GIDS 2020
+                  &lt;&lt; Back To Home Page
                 </Navbar.Brand>
               </Navbar>
             </div>
@@ -188,7 +188,7 @@ export default class Prequel extends React.Component {
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt;&lt; GIDS 2020
+                  &lt;&lt; Back To Home Page
                 </Navbar.Brand>
               </Navbar>
             </div>
