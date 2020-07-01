@@ -38,8 +38,6 @@ body {
 }
 
 .Thoughtworks-microsi {
-  width: 258px;
-  height: 24px;
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
@@ -49,9 +47,8 @@ body {
   line-height: normal;
   letter-spacing: normal;
   color: #000000;
-  margin-left: 80px;
-  margin-top: 33px;
-  margin-bottom: 70px;
+  margin-top: 13px;
+  float: right;
 }
 
 .logo-box {
@@ -200,7 +197,7 @@ body {
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
-  text-align: justify;
+  text-align: left;
   letter-spacing: normal;
   /* color: #000000; */
   color: #221d1f;
@@ -212,6 +209,8 @@ body {
   /* padding-top: 100px; */
   font-weight: normal;
   margin-top: 60px;
+  word-spacing: normal;
+  letter-spacing: normal;
 }
 
 .preview-image {

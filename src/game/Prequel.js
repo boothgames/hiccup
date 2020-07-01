@@ -83,18 +83,20 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="thoughtworks-image">
-              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
-            </div>
-            <div class="banner">
-              <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
-              <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
+              <a href="https://www.thoughtworks.com">
+                <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              </a>
             </div>
             <div class="Thoughtworks-microsi">
               <Navbar>
                 <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt; ThoughtWorks @ GIDS 2020
+                  &lt;&lt; GIDS 2020
                 </Navbar.Brand>
               </Navbar>
+            </div>
+            <div class="banner">
+              <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
+              <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
             <Container>
               <h1 class="Lets-play"> Let's play!</h1>
@@ -105,14 +107,14 @@ export default class Prequel extends React.Component {
                     <p class="game-name">Match the logo</p>
                   </div>
                   <div class="Level-1-Instructions">
-                    <p class="text-style-1">Level 1 Instructions:</p>
+                    <p class="text-style-1">Instructions:</p>
                     <ul>
                       <li>
-                        Match the software log to its creators by simply dragging and dropping them
-                        in the top grid
+                        Match the software logo to its creators by simply dragging and dropping them
+                        in the top grid.
                       </li>
-                      <li>The game is timed. You get 25 seconds to match 5 logos</li>
-                      <li> Your score will be displayed at the end of the game</li>
+                      <li>The game is timed.You get 25 seconds to match 5 logos.</li>
+                      <li>Your score will be displayed at the end of the game.</li>
                     </ul>
                     <button class="play-button" onClick={this.logokickoff}>
                       Start playing
@@ -128,19 +130,22 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="thoughtworks-image">
-              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              <a href="https://www.thoughtworks.com">
+                <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              </a>
+            </div>
+            <div class="Thoughtworks-microsi">
+              <Navbar>
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt;&lt; GIDS 2020
+                </Navbar.Brand>
+              </Navbar>
             </div>
             <div class="banner">
               <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
               <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
-            <div class="Thoughtworks-microsi">
-              <Navbar>
-                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt; ThoughtWorks @ GIDS 2020
-                </Navbar.Brand>
-              </Navbar>
-            </div>
+
             <Container>
               <h1 class="Lets-play"> Match the logo</h1>
               <div class="play-game-box">
@@ -167,19 +172,24 @@ export default class Prequel extends React.Component {
         return (
           <Page>
             <div class="thoughtworks-image">
-              <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              <a href="https://www.thoughtworks.com">
+                <img class="thoughtworks" src="https://www.thoughtworks.com/imgs/tw-logo.svg" />
+              </a>
+            </div>
+            <div class="Thoughtworks-microsi">
+              <Navbar>
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt;&lt; GIDS 2020
+                </Navbar.Brand>
+              </Navbar>
             </div>
             <div class="banner">
               <img class="tw-banner" src={require('./GIDS-Virtual-Banner-Desktop.png')} />
               <p class="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
-            <div class="Thoughtworks-microsi">
-              <Navbar>
-                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt; ThoughtWorks @ GIDS 2020
-                </Navbar.Brand>
-              </Navbar>
-            </div>
+            <br></br>
+            <br></br>
+            <br></br>
             <Container>
               <div class="play-game-box">
                 <Container id="game-box">
