@@ -30,7 +30,6 @@ body {
   height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  position: fixed;
   top: 0;
   /* width: 100%; */
   -webkit-overflow-scrolling: touch;
@@ -185,16 +184,77 @@ body {
   position: relative;
 }
 
+.code_jumble_bg {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.code_jumble_title {
+  font-family: OpenSans;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  background-color: #f0f0f0;
+  text-align: center;
+  position: absolute;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px 2px rgba(94, 94, 94, 0.5);
+  border: solid 1px #808285;
+  background-color: #ffffff;
+  top: 5%;
+  overflow: hidden;
+  padding: 20px;
+  margin: 10px;
+}
+
+.code_jumble_submit_button {
+  font-family: OpenSans;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  text-align: center;
+  position: absolute;
+  bottom: 4%;
+  height: auto;
+  overflow: hidden;
+}
+
 .play-button {
   border-radius: 2px;
   background-color: #000000;
-  margin-top: 50px;
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
   font-size: 21px;
   font-weight: bold;
   line-height: normal;
   color: #ffffff;
+}
+
+.back-button {
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  border: #222;
+  border-style: solid;
+  margin-top: 50px;
+  font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: normal;
+  color: #222;
 }
 
 .Level-1-Instructions {
@@ -268,6 +328,14 @@ body {
   background-color: #f8f8f8;
   padding: 50px 30px 50px 30px;
   display: flex;
+}
+
+.code_jumble_buttons {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  flex-direction: column;
+  background-color: #222;
 }
 
 .answer_box {

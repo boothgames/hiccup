@@ -1,37 +1,29 @@
-import React from "react";
-import styled from "styled-components";
-
-import { Timer, PlayingTimer } from "./Timer";
-
-import bear from "../images/bear.svg";
-
+import React from 'react';
+import styled from 'styled-components';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 const Control = styled.div`
-  float: right; 
-`;
-
-const Bear = styled.div`
-  width: 100%;
-  height: 30%;
-  // background-image: url(${bear});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50% 0%;
-  position: absolute;
-  top: 70%;
-  right: -35%;
+  float: right;
 `;
 
 export default ({ status, fail }) => {
   return (
     <Control>
-      <div style={{ minHeight: "40%", width: "100%", fontSize: "30px" }}>
-        {status !== "playing" ? (
-          <Timer status={status} />
-        ) : (
-            <PlayingTimer onRestHandler={fail} />
-          )}
+      <div style={{ minHeight: '40%', width: '100%', fontSize: '30px', margin: '10px' }}>
+        <CountdownCircleTimer
+          isPlaying
+          onComplete={() => {
+            fail();
+            return [false, 1500];
+          }}
+          duration={25}
+          size={100}
+          fontSize="20px"
+          colors={[['#f78f31']]}
+        >
+          {({ remainingTime }) => remainingTime}
+        </CountdownCircleTimer>
       </div>
       {/* <Bear /> */}
-    </Control >
+    </Control>
   );
 };

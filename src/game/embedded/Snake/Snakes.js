@@ -6,10 +6,8 @@ import blue from '../../../asserts/img/blue.png';
 import red from '../../../asserts/img/red.png';
 import './snake.css';
 import { Button } from '../../../common/styles';
-import { Rules } from '../Shop/components/Bag/styles';
 
 class Snakes extends Component {
-
   static getRandomInt(min, max) {
     const minimum = Math.ceil(min);
     const maximum = Math.floor(max);
@@ -22,8 +20,7 @@ class Snakes extends Component {
 
   static didGameEnd(snake) {
     for (let i = 4; i < snake.length; i += 1) {
-      const didCollide = snake[i].x === snake[0].x &&
-        snake[i].y === snake[0].y;
+      const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
       if (didCollide) return true;
     }
     return false;
@@ -53,9 +50,9 @@ class Snakes extends Component {
       },
       gameStarted: false,
       question: {
-        'title': '',
-        'optionA': '',
-        'optionB': '',
+        title: '',
+        optionA: '',
+        optionB: '',
       },
       snake: [
         { x: 150, y: 150 },
@@ -66,64 +63,65 @@ class Snakes extends Component {
       ],
       questions: [
         {
-          'title': 'What is the full form of CPU?',
-          'optionA': 'Central Processing Unit',
-          'optionB': 'Central Progressive Unit',
-          'answer': 'optionA',
+          title: 'What is the full form of CPU?',
+          optionA: 'Central Processing Unit',
+          optionB: 'Central Progressive Unit',
+          answer: 'optionA',
         },
         {
-          'title': 'What is the full form of ALU?',
-          'optionA': 'Arithmetic Local Unit',
-          'optionB': 'Arithmetic Logic Unit',
-          'answer': 'optionB',
+          title: 'What is the full form of ALU?',
+          optionA: 'Arithmetic Local Unit',
+          optionB: 'Arithmetic Logic Unit',
+          answer: 'optionB',
         },
         {
-          'title': 'Joystick is ?',
-          'optionA': 'An input device',
-          'optionB': 'An output device',
-          'answer': 'optionA',
+          title: 'Joystick is ?',
+          optionA: 'An input device',
+          optionB: 'An output device',
+          answer: 'optionA',
         },
         {
-          'title': 'Who among the following had developed the first commercially available portable computer?',
-          'optionA': 'Ada Lovelace',
-          'optionB': 'Adam Osborne',
-          'answer': 'optionB',
+          title:
+            'Who among the following had developed the first commercially available portable computer?',
+          optionA: 'Ada Lovelace',
+          optionB: 'Adam Osborne',
+          answer: 'optionB',
         },
         {
-          'title': 'Which among the following is a permanent storage device?',
-          'optionA': 'ROM',
-          'optionB': 'RAM',
-          'answer': 'optionA',
+          title: 'Which among the following is a permanent storage device?',
+          optionA: 'ROM',
+          optionB: 'RAM',
+          answer: 'optionA',
         },
         {
-          'title': 'Which ones is a programming language?',
-          'optionA': 'HTTP',
-          'optionB': 'HTML',
-          'answer': 'optionB',
+          title: 'Which ones is a programming language?',
+          optionA: 'HTTP',
+          optionB: 'HTML',
+          answer: 'optionB',
         },
         {
-          'title': 'Wcich protocol is used to send e-mails?',
-          'optionA': 'SMTP',
-          'optionB': 'POP3',
-          'answer': 'optionA',
+          title: 'Wcich protocol is used to send e-mails?',
+          optionA: 'SMTP',
+          optionB: 'POP3',
+          answer: 'optionA',
         },
         {
-          'title': 'What converts assembly language to machine language',
-          'optionA': 'Compiler',
-          'optionB': 'Assembler',
-          'answer': 'optionB',
+          title: 'What converts assembly language to machine language',
+          optionA: 'Compiler',
+          optionB: 'Assembler',
+          answer: 'optionB',
         },
         {
-          'title': 'Consul is a Open Source Software',
-          'optionA': 'True',
-          'optionB': 'False',
-          'answer': 'optionA',
+          title: 'Consul is a Open Source Software',
+          optionA: 'True',
+          optionB: 'False',
+          answer: 'optionA',
         },
         {
-          'title': 'extension of excel 2007 files',
-          'optionA': '.xlsx',
-          'optionB': '.xls',
-          'answer': 'optionB',
+          title: 'extension of excel 2007 files',
+          optionA: '.xlsx',
+          optionB: '.xls',
+          answer: 'optionB',
         },
       ],
     };
@@ -161,7 +159,7 @@ class Snakes extends Component {
 
   getQuestion() {
     const { questions } = this.state;
-    const index = Snakes.getRandomInt(0, (questions.length - 1));
+    const index = Snakes.getRandomInt(0, questions.length - 1);
     const question = questions[index];
     questions.splice(index, 1);
     this.setState({ questions });
@@ -182,10 +180,9 @@ class Snakes extends Component {
   createOption(snake) {
     const x = Snakes.randomTen(0, this.gameCanvas.width - 10);
     const y = Snakes.randomTen(0, this.gameCanvas.height - 10);
-    snake.forEach((part) => {
+    snake.forEach(part => {
       const optionOnSnake = part.x === x && part.y === y;
-      if (optionOnSnake)
-        this.createOption();
+      if (optionOnSnake) this.createOption();
     });
     return { x, y };
   }
@@ -237,15 +234,19 @@ class Snakes extends Component {
   }
 
   advanceSnake() {
-    if (this.state.snake.length <= 0 || Snakes.didGameEnd(this.state.snake) || (this.state.questions.length === 0)) {
-      this.setState({ "gameOver": true });
+    if (
+      this.state.snake.length <= 0 ||
+      Snakes.didGameEnd(this.state.snake) ||
+      this.state.questions.length === 0
+    ) {
+      this.setState({ gameOver: true });
       this.props.onComplete('failed');
-      return
+      return;
     }
     if (this.state.score >= 3) {
-      this.setState({ "gameWon": true });
+      this.setState({ gameWon: true });
       this.props.onComplete('completed');
-      return
+      return;
     }
     this.circleAround(this.state.snake);
     setTimeout(() => {
@@ -258,8 +259,8 @@ class Snakes extends Component {
       const rightOption = this.state.question.answer;
 
       switch (eatenOption) {
-        case "optionA": {
-          if (rightOption !== "optionA") {
+        case 'optionA': {
+          if (rightOption !== 'optionA') {
             snake.pop();
             snake.pop();
           } else {
@@ -272,8 +273,8 @@ class Snakes extends Component {
           this.setState({ optionA, optionB, question });
           break;
         }
-        case "optionB": {
-          if (rightOption !== "optionB") {
+        case 'optionB': {
+          if (rightOption !== 'optionB') {
             snake.pop();
             snake.pop();
           } else {
@@ -292,9 +293,8 @@ class Snakes extends Component {
         }
       }
 
-
-      this.drawOption(this.state.optionA.x, this.state.optionA.y, "optionA");
-      this.drawOption(this.state.optionB.x, this.state.optionB.y, "optionB");
+      this.drawOption(this.state.optionA.x, this.state.optionA.y, 'optionA');
+      this.drawOption(this.state.optionB.x, this.state.optionB.y, 'optionB');
       this.drawSnake(snake);
       this.setState({ snake });
       this.advanceSnake();
@@ -347,37 +347,34 @@ class Snakes extends Component {
   }
 
   btnClick() {
-    window.open("https://www.google.com");
+    window.open('https://www.google.com');
   }
 
   render() {
-    const { gameStarted, score, question: { title, optionA, optionB }, gameOver, gameWon } = this.state;
+    const {
+      gameStarted,
+      score,
+      question: { title, optionA, optionB },
+      gameOver,
+      gameWon,
+    } = this.state;
 
     return (
       <div className="App">
-        <div class='snake-logo'>
-          <img src='https://www.thoughtworks.com/imgs/tw-logo.svg' />
+        <div className="snake-logo">
+          <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" alt="" />
         </div>
         <header className="App-header">
-          {gameStarted ? null : <p className='snakeStart'> PRESS SPACE BAR TO START THE GAME </p>}
+          {gameStarted ? null : <p className="snakeStart"> PRESS SPACE BAR TO START THE GAME </p>}
           <div className="snakequestion">
             <p>{title}</p>
             <p>
-              <img src={red} height="16" width="16" alt="red img" />
-              {' '}
-              -
-              {' '}
-              {optionA}
+              <img src={red} height="16" width="16" alt="red img" /> - {optionA}
             </p>
             <p>
-              <img src={blue} height="16" width="16" alt="blue img" />
-              {' '}
-              -
-              {' '}
-              {optionB}
+              <img src={blue} height="16" width="16" alt="blue img" /> - {optionB}
             </p>
-          </div>
-          {' '}
+          </div>{' '}
           <br />
           <br />
           <canvas
@@ -385,26 +382,24 @@ class Snakes extends Component {
             id="gameCanvas"
             width="700"
             height="500"
-            onKeyDown={(event) => {
+            onKeyDown={event => {
               this.changeDirection(event);
             }}
             tabIndex="0"
           />
-          <p className='snakeScore'>
-            Your score:
-            {' '}
-            {score}
-          </p>
-          {gameOver ?
-            <div class='gamewon'>
+          <p className="snakeScore">Your score: {score}</p>
+          {gameOver ? (
+            <div className="gamewon">
               <p>Game Over</p>
               <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
-            </div> : null}
-          {gameWon ?
-            <div class='gamewon'>
+            </div>
+          ) : null}
+          {gameWon ? (
+            <div className="gamewon">
               <p>You have Won!</p>
               <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
-            </div> : null}
+            </div>
+          ) : null}
         </header>
       </div>
     );
@@ -418,6 +413,5 @@ Snakes.propTypes = {
 Snakes.defaultProps = {
   onComplete: _.noop,
 };
-
 
 export default Snakes;

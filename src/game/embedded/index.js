@@ -8,7 +8,7 @@ import WhySoSerious from '../WhySoSerious';
 import Snakes from './Snake/Snakes';
 import Shop from './Shop/Shop';
 
-import { ImagesProvider } from "../contexts/ImagesContext";
+import { ImagesProvider } from '../contexts/ImagesContext';
 
 export default class Embedded extends React.Component {
   constructor(props) {
@@ -17,42 +17,40 @@ export default class Embedded extends React.Component {
   }
 
   handleComplete(status) {
-    const { game: { name }, onComplete } = this.props;
+    const {
+      game: { name },
+      onComplete,
+    } = this.props;
     onComplete(name, { action: status });
   }
 
   renderGame() {
-    const { game: { name, metadata = {} } } = this.props;
+    const {
+      game: { name, metadata = {} },
+    } = this.props;
     const { questions = [] } = metadata || {};
 
     switch (name) {
       case 'quiz':
-        return <Qa options={questions} onComplete={this.handleComplete}/>;
+        return <Qa options={questions} onComplete={this.handleComplete} />;
       case 'smile':
-        return <WhySoSerious onComplete={this.handleComplete}/>;
+        return <WhySoSerious onComplete={this.handleComplete} />;
       case 'snakes':
-        return <Snakes onComplete={this.handleComplete}/>;
+        return <Snakes onComplete={this.handleComplete} />;
       case 'logomatch':
-        return <ImagesProvider
-        r={require.context(
-          "./Shop/images/",
-          true,
-          /\.(png|jpe?g|svg)$/
-        )}
-      > <Shop onComplete={this.handleComplete}/> </ImagesProvider>;
+        return (
+          <ImagesProvider r={require.context('./Shop/images/', true, /\.(png|jpe?g|svg)$/)}>
+            {' '}
+            <Shop onComplete={this.handleComplete} />{' '}
+          </ImagesProvider>
+        );
       default:
         return <h1>Call volunteer</h1>;
     }
   }
 
   render() {
-    const { game: { title } } = this.props;
-    return (
-      <Page>
-        {/* <h1>{title}</h1> */}
-        {this.renderGame()}
-      </Page>
-    );
+    return <Page>{this.renderGame()}</Page>;
   }
 }
 

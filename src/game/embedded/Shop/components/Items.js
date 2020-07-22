@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 import { useImagesContext } from '../../../contexts/ImagesContext';
 
-import { leftOptions, rightOptions, bottomOptions } from '../config';
+import { bottomOptions } from '../config';
 
 import { DragDropContainer } from 'react-drag-drop-container';
 
 const Items = styled.div`
   display: flex;
   padding: 10px;
-  padding-top : 40px;
+  padding-top: 40px;
   height: 100%;
   @media screen and (max-width: 768px) and (orientation: portrait) {
     height: 15%;
@@ -29,35 +29,6 @@ const Items = styled.div`
   }
 `;
 
-const mixinLeft = `
-flex-direction: row;
-padding-top: 0;
-align-items: center;`;
-
-const ItemsLeft = styled(Items)`
-  width: 100%;
-  padding-top: 50px;
-  grid-area: items-left;
-  flex-direction: column;
-  justify-content: space-around;
-
-  @media screen and (max-width: 768px) and (orientation: portrait) {
-    ${mixinLeft}
-  }
-`;
-
-const ItemsRight = styled(Items)`
-  width: 100%;
-  padding-top: 50px;
-  grid-area: items-right;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-  @media screen and (max-width: 768px) and (orientation: portrait) {
-    ${mixinLeft}
-  }
-`;
-
 const ItemsBottom = styled(Items)`
   grid-area: items-bottom;
   justify-content: space-around;
@@ -68,9 +39,9 @@ const ItemsBottom = styled(Items)`
   }
   display: -webkit-box;
   flex-wrap: wrap;
-  -webkit-background-clip: padding-box; 
-  // -webkit-border-radius: 12px; 
-  // -webkit-background-clip: padding-box; 
+  -webkit-background-clip: padding-box;
+  // -webkit-border-radius: 12px;
+  // -webkit-background-clip: padding-box;
 `;
 
 export default ({ select }) => {
@@ -79,12 +50,14 @@ export default ({ select }) => {
   return (
     <ItemsBottom>
       {bottomOptions.map((name, i) => (
-        <DragDropContainer
-          key={i}
-          targetKey="foo"
-          dragData={name}>
+        <DragDropContainer key={i} targetKey="foo" dragData={name}>
           <div key={i}>
-            <img style={{ flex: 1, height: undefined, width: undefined }} src={images[name + '.png']} alt={name} onClick={select} />
+            <img
+              style={{ flex: 1, height: undefined, width: undefined }}
+              src={images[name + '.png']}
+              alt={name}
+              onClick={select}
+            />
           </div>
         </DragDropContainer>
       ))}

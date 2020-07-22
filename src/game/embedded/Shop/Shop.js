@@ -34,10 +34,6 @@ const Shop = props => {
     setRandomItems();
   }, [setRandomItems]);
 
-  const fail = () => {
-    setStatus('fail');
-  };
-
   const win = () => {
     setStatus('win');
   };
@@ -46,15 +42,22 @@ const Shop = props => {
     props.playSnakeGame();
   };
 
+  const displayScore = () => {
+    props.displayScore();
+  };
+
   const resetNewGame = () => {
     setStatus('playing');
     setRandomItems();
   };
 
   function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
     while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex); currentIndex -= 1;
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
@@ -83,21 +86,20 @@ const Shop = props => {
 
   return (
     <Container>
-      <div class='logo-box'>
+      <div className="logo-box">
         <Bag
           productsToBuy={productsToBuy}
           resetNextGame={resetNextGame}
           resetNewGame={resetNewGame}
           status={status}
           selectedIndex={selectedIndex}
-          displayScore={props.displayScore}
           actualAnswers={props.actualAnswers}
         />
       </div>
 
-      <Control fail={props.displayScore} status={status} />
+      <Control fail={() => displayScore()} status={status} />
       <Items select={select} />
-    </Container >
+    </Container>
   );
 };
 
