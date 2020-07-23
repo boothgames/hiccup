@@ -1,16 +1,19 @@
 import React from 'react';
-import _ from 'lodash';
 import { Container } from 'react-bootstrap';
 import './dashboard.css';
 import PropTypes from 'prop-types';
 
-export default class SnakeInstructions extends React.Component {
-  render() {
+const screenBGpng = require('./screen2.png')
+
+const SnakeInstructions = (props) => {
+
+    const {snakekickoff} = props;
+
     return (
       <div className="play-game-box">
         <Container id="game-box">
           <div className="game-preview">
-            <img className="preview-image" src={require('./screen2.png')} alt="" />
+            <img className="preview-image" src={screenBGpng} alt=""/>
           </div>
           <div className="Level-1-Instructions">
             <p className="game-name">SNAKE QUIZ</p>
@@ -26,20 +29,18 @@ export default class SnakeInstructions extends React.Component {
               </li>
               <li> Third instruciton</li>
             </ul>
-            <button className="play-button" onClick={this.props.snakekickoff}>
+            <button className="play-button" type="button" onClick={snakekickoff}>
               Play
             </button>
           </div>
         </Container>
       </div>
     );
-  }
 }
 
+export default {SnakeInstructions};
+
 SnakeInstructions.propTypes = {
-  onStart: PropTypes.func,
+  snakekickoff: PropTypes.func.isRequired,
 };
 
-SnakeInstructions.defaultProps = {
-  onStart: _.noop,
-};

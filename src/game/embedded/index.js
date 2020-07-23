@@ -32,16 +32,17 @@ export default class Embedded extends React.Component {
 
     switch (name) {
       case 'quiz':
-        return <Qa options={questions} onComplete={this.handleComplete} />;
+        return <Qa options={questions} onComplete={this.handleComplete}/>;
       case 'smile':
-        return <WhySoSerious onComplete={this.handleComplete} />;
+        return <WhySoSerious onComplete={this.handleComplete}/>;
       case 'snakes':
-        return <Snakes onComplete={this.handleComplete} />;
+        return <Snakes onComplete={this.handleComplete}/>;
       case 'logomatch':
         return (
           <ImagesProvider r={require.context('./Shop/images/', true, /\.(png|jpe?g|svg)$/)}>
             {' '}
-            <Shop onComplete={this.handleComplete} />{' '}
+            <Shop onComplete={this.handleComplete}/>
+            {' '}
           </ImagesProvider>
         );
       default:

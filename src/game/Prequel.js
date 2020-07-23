@@ -3,11 +3,11 @@ import _ from 'lodash';
 import { Col, Container, Row } from 'react-bootstrap';
 import './dashboard.css';
 import PropTypes from 'prop-types';
+import Navbar from 'react-bootstrap/Navbar';
 import Page from '../common/Page';
 import Shop from './embedded/Shop/Shop';
 import DraggableList from './embedded/Puzzle/DraggableList';
 import { ImagesProvider } from './contexts/ImagesContext';
-import Navbar from 'react-bootstrap/Navbar';
 import Snakes from './embedded/Snake/Snakes';
 import SnakeInstructions from './SnakeInstructions';
 import '../style.css';
@@ -81,7 +81,28 @@ const expectedAnswers = {
   confluence: 'atlassian',
 };
 
+const virtualBannerPng = require('./GIDS-Virtual-Banner-Desktop.png')
+
+const congratsImage = require('./congrats.png');
+
+const screen2png = require('./screen2.png')
+
+const grouppng = require('./group.png')
+
 export default class Prequel extends React.Component {
+
+  actualAnswers = {};
+
+  score = 0;
+   
+  link = "https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india"
+
+  currentCodeJumble = {};
+
+  currentJumbledOrder = [];
+
+  correctOrder = [];
+
   constructor(props) {
     super(props);
     this.state = { status: 'ready' };
@@ -93,16 +114,20 @@ export default class Prequel extends React.Component {
     this.updateScoreAndForCodeJumble = this.updateScoreAndForCodeJumble.bind(this);
   }
 
-  actualAnswers = {};
-
-  score = 0;
-  currentCodeJumble = {};
-  currentJumbledOrder = [];
-  correctOrder = [];
-
-  start() {
-    const { onStart } = this.props;
-    onStart();
+  getJumbledCodeQuestion() {
+    // eslint-disable-next-line prefer-destructuring
+    this.currentCodeJumble = _.shuffle(jumbledCodeQuestions)[0];
+    this.currentJumbledOrder = _.shuffle(this.currentCodeJumble.code);
+    this.correctOrder = [];
+    for (let i = 0; i < this.currentJumbledOrder.length; i += 1) {
+      for (let j = 0; j < this.currentJumbledOrder.length; j += 1) {
+        if (this.currentJumbledOrder[j].key === i) {
+          this.correctOrder[i] = j;
+          break;
+        }
+      }
+    }
+    return this.currentCodeJumble;
   }
 
   logokickoff() {
@@ -132,26 +157,17 @@ export default class Prequel extends React.Component {
   calculateScore() {
     Object.keys(this.actualAnswers).map(key => {
       if (expectedAnswers[key] === this.actualAnswers[key]) {
-        this.score++;
+        this.score += 1;
       }
+      return null
     });
     this.actualAnswers = {};
     return this.score;
   }
 
-  getJumbledCodeQuestion() {
-    this.currentCodeJumble = _.shuffle(jumbledCodeQuestions)[0];
-    this.currentJumbledOrder = _.shuffle(this.currentCodeJumble.code);
-    this.correctOrder = [];
-    for (var i = 0; i < this.currentJumbledOrder.length; i++) {
-      for (var j = 0; j < this.currentJumbledOrder.length; j++) {
-        if (this.currentJumbledOrder[j].key === i) {
-          this.correctOrder[i] = j;
-          break;
-        }
-      }
-    }
-    return this.currentCodeJumble;
+  start() {
+    const { onStart } = this.props;
+    onStart();
   }
 
   updateOrder(order) {
@@ -166,8 +182,6 @@ export default class Prequel extends React.Component {
       this.score = 0;
     }
   }
-
-  congratsImage = require('./congrats.png');
 
   renderMessage() {
     const { status } = this.state;
@@ -194,17 +208,17 @@ export default class Prequel extends React.Component {
             <div className="banner">
               <img
                 className="tw-banner"
-                src={require('./GIDS-Virtual-Banner-Desktop.png')}
+                src={virtualBannerPng}
                 alt=""
               />
               <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
             <Container>
-              <h1 className="Lets-play"> Let's play!</h1>
+              <h1 className="Lets-play"> Lets play!</h1>
               <div className="play-game-box">
                 <Container id="game-box">
                   <div className="game-preview">
-                    <img className="preview-image" src={require('./screen2.png')} alt="" />
+                    <img className="preview-image" src={screen2png} alt=""/>
                     <p className="game-name">Match the logo</p>
                   </div>
                   <div className="Level-1-Instructions">
@@ -217,14 +231,14 @@ export default class Prequel extends React.Component {
                       <li>The game is timed. You get 25 seconds to match 5 logos.</li>
                       <li>Your score will be displayed at the end of the game.</li>
                     </ul>
-                    <br></br>
-                    <button className="play-button" onClick={this.logokickoff}>
+                    <br/>
+                    <button className="play-button" type="button" onClick={this.logokickoff}>
                       Start playing
                     </button>
                   </div>
                 </Container>
               </div>
-              <div style={{ padding: '30px' }}></div>
+              <div style={{ padding: '30px' }}/>
             </Container>
           </Page>
         );
@@ -250,7 +264,7 @@ export default class Prequel extends React.Component {
             <div className="banner">
               <img
                 className="tw-banner"
-                src={require('./GIDS-Virtual-Banner-Desktop.png')}
+                src={virtualBannerPng}
                 alt=""
               />
               <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
@@ -269,13 +283,14 @@ export default class Prequel extends React.Component {
                       displayScore={() => this.displayScore()}
                       actualAnswers={this.actualAnswers}
                       onComplete={this.handleComplete}
-                    />{' '}
+                    />
+                    {' '}
                   </ImagesProvider>
                 </Container>
               </div>
             </Container>
-            <br></br>
-            <br></br>
+            <br/>
+            <br/>
           </Page>
         );
       case 'code_jumble_start':
@@ -289,9 +304,9 @@ export default class Prequel extends React.Component {
                 width: '100vw',
                 height: '100vh',
               }}
-              src={require('./group.png')}
+              src={grouppng}
               alt=""
-            ></img>
+            />
             <div className="code_jumble_title">{this.getJumbledCodeQuestion().question}</div>
             <DraggableList
               callBack={this.updateScoreAndForCodeJumble}
@@ -334,35 +349,42 @@ export default class Prequel extends React.Component {
             <div className="banner">
               <img
                 className="tw-banner"
-                src={require('./GIDS-Virtual-Banner-Desktop.png')}
+                src={virtualBannerPng}
                 alt=""
               />
               <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
+            <br/>
+            <br/>
+            <br/>
             <Container>
               <div className="play-game-box">
                 <Container id="game-box">
                   <div className="game-preview">
-                    <img className="preview-image" src={this.congratsImage} alt="" />
+                    <img className="preview-image" src={congratsImage} alt=""/>
                   </div>
                   <div className="Level-1-Instructions">
-                    <p className="text-style-1">You scored {this.calculateScore()}/5.</p>
+                    <p className="text-style-1">
+                    You scored  
+                      {' '}
+                      {this.calculateScore()} 
+/5.
+                    </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
                       <p>
-                        Please take 2 mins and{' '}
-                        <a href="https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india">
+                        Please take 2 mins and
+                        {' '}
+                        <a href={this.link}>
                           sign up
-                        </a>{' '}
+                        </a>
+                        {' '}
                         for Access ThoughtWorks Careers to stay in touch with the latest happenings
                         and know about career opportunities at ThoughtWorks.
-                        <br />
+                        <br/>
                       </p>
                     </div>
-                    <br></br>
+                    <br/>
                     {this.score > -1 ? (
                       <div className="code_jumble_buttons-box">
                         <button
@@ -404,8 +426,8 @@ export default class Prequel extends React.Component {
                 </Container>
               </div>
             </Container>
-            <br></br>
-            <br></br>
+            <br/>
+            <br/>
           </Page>
         );
       case 'jumbled-game-over':
@@ -430,35 +452,41 @@ export default class Prequel extends React.Component {
             <div className="banner">
               <img
                 className="tw-banner"
-                src={require('./GIDS-Virtual-Banner-Desktop.png')}
+                src={virtualBannerPng}
                 alt=""
               />
               <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
+            <br/>
+            <br/>
+            <br/>
             <Container>
               <div className="play-game-box">
                 <Container id="game-box">
                   <div className="game-preview">
-                    <img className="preview-image" src={this.congratsImage} alt="" />
+                    <img className="preview-image" src={congratsImage} alt=""/>
                   </div>
                   <div className="Level-1-Instructions">
-                    <p className="text-style-1">You {this.score === 1 ? 'won' : 'lost'}</p>
+                    <p className="text-style-1">
+You 
+                      {' '}
+                      {this.score === 1 ? 'won' : 'lost'}
+                    </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
                       <p>
-                        Please take 2 mins and{' '}
-                        <a href="https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india">
+                        Please take 2 mins and
+                        {' '}
+                        <a href={this.link}>
                           sign up
-                        </a>{' '}
+                        </a>
+                        {' '}
                         for Access ThoughtWorks Careers to stay in touch with the latest happenings
                         and know about career opportunities at ThoughtWorks.
-                        <br />
+                        <br/>
                       </p>
                     </div>
-                    <br></br>
+                    <br/>
                     <button
                       className="back-button"
                       type="button"
@@ -474,14 +502,14 @@ export default class Prequel extends React.Component {
                 </Container>
               </div>
             </Container>
-            <br></br>
-            <br></br>
+            <br/>
+            <br/>
           </Page>
         );
       case 'snake-start':
-        return <Snakes onComplete={this.handleComplete} />;
+        return <Snakes onComplete={this.handleComplete}/>;
       case 'snake-instructions':
-        return <SnakeInstructions snakekickoff={this.startSnakeGame} />;
+        return <SnakeInstructions snakekickoff={this.startSnakeGame}/>;
       case 'begin':
         return (
           <Page>
@@ -491,17 +519,25 @@ export default class Prequel extends React.Component {
                   <div className="save-the-server">
                     <p>
                       You are in a world that runs on
-                      <strong> Open Source Software.</strong> But there are forces beyond reason,
-                      that are constantly threatening the ways of the internet.{' '}
+                      <strong> Open Source Software.</strong>
+                      {' '}
+But there are forces beyond reason,
+                      that are constantly threatening the ways of the internet.
+                      {' '}
                     </p>
                     <p>
                       As you’re reading this,
-                      <strong> hackers</strong> are breaking into your most-dependable open source
-                      web server.{' '}
+                      <strong> hackers</strong>
+                      {' '}
+are breaking into your most-dependable open source
+                      web server.
+                      {' '}
                     </p>
                     <p>
                       The future of internet is in
-                      <strong> your hands</strong> right now. Complete all levels of the challenge
+                      <strong> your hands</strong>
+                      {' '}
+right now. Complete all levels of the challenge
                       and save the day!
                     </p>
                     <div className="action">

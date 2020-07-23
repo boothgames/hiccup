@@ -1,15 +1,20 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 
+import { DropTarget } from 'react-drag-drop-container';
+import {PropTypes} from 'prop-types';
 import { useImagesContext } from '../../../../contexts/ImagesContext';
 
 import { Task, Container } from './styles';
-import { DropTarget } from 'react-drag-drop-container';
 
-export default props => {
-  const { productsToBuy, status, actualAnswers } = props;
+const products = require('./products.png');
+const companies = require('./companies.png');
+const line = require('./line.png');
+
+export default ({ productsToBuy, status, actualAnswers }) => {
   const { images } = useImagesContext();
-
   const propsSelected = useSpring({
     from: { transform: 'scale(1)' },
     to: [{ transform: 'scale(1.1)' }, { transform: 'scale(1)' }],
@@ -18,8 +23,10 @@ export default props => {
   function onHit(ev) {
     const currentElementID = ev.target.parentElement.id;
     if (currentElementID > 6) {
-      ev.target.src = images[ev.dragData + '.png'];
+      // eslint-disable-next-line no-param-reassign
+      ev.target.src = images[`${ev.dragData  }.png`];
       const questionImage = document.getElementById(currentElementID - 6).children[0].alt;
+      // eslint-disable-next-line no-param-reassign
       actualAnswers[questionImage] = ev.dragData;
     }
   }
@@ -30,7 +37,7 @@ export default props => {
         {productsToBuy.map((item, i) => (
           <animated.div
             key={`p${i}`}
-            className={`item`}
+            className="item"
             style={
               (propsSelected,
               i === 0 || i === 6
@@ -47,13 +54,13 @@ export default props => {
             <DropTarget targetKey="foo" onHit={onHit}>
               <div id={i}>
                 {i === 0 ? (
-                  <img src={require('./products.png')} alt="" />
+                  <img src={products} alt=""/>
                 ) : i === 6 ? (
-                  <img src={require('./companies.png')} alt="" />
+                  <img src={companies} alt=""/>
                 ) : (status === 'playing' || status === 'fail') && i < 6 ? (
-                  <img src={images[item.name + '.png']} alt={item.name} />
+                  <img src={images[`${item.name  }.png`]} alt={item.name}/>
                 ) : (
-                  <img src={require('./line.png')} alt="" />
+                  <img src={line} alt=""/>
                 )}
               </div>
             </DropTarget>

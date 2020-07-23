@@ -1,11 +1,12 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import styled from 'styled-components';
 
+import { DragDropContainer } from 'react-drag-drop-container';
 import { useImagesContext } from '../../../contexts/ImagesContext';
 
 import { bottomOptions } from '../config';
 
-import { DragDropContainer } from 'react-drag-drop-container';
 
 const Items = styled.div`
   display: flex;
@@ -44,8 +45,8 @@ const ItemsBottom = styled(Items)`
   // -webkit-background-clip: padding-box;
 `;
 
-export default ({ select }) => {
-  var { images } = useImagesContext();
+export default () => {
+  const { images } = useImagesContext();
 
   return (
     <ItemsBottom>
@@ -54,9 +55,8 @@ export default ({ select }) => {
           <div key={i}>
             <img
               style={{ flex: 1, height: undefined, width: undefined }}
-              src={images[name + '.png']}
+              src={images[`${name  }.png`]}
               alt={name}
-              onClick={select}
             />
           </div>
         </DragDropContainer>

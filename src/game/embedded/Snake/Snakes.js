@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import PropTypes from 'prop-types';
 
 import blue from '../../../asserts/img/blue.png';
 import red from '../../../asserts/img/red.png';
@@ -234,29 +233,29 @@ class Snakes extends Component {
   }
 
   advanceSnake() {
+    const {snake, questions,score, question, onComplete} = this.state;
     if (
-      this.state.snake.length <= 0 ||
-      Snakes.didGameEnd(this.state.snake) ||
-      this.state.questions.length === 0
+      snake.length <= 0 ||
+      Snakes.didGameEnd(snake) ||
+      questions.length === 0
     ) {
       this.setState({ gameOver: true });
-      this.props.onComplete('failed');
+      onComplete('failed');
       return;
     }
-    if (this.state.score >= 3) {
+    if (score >= 3) {
       this.setState({ gameWon: true });
-      this.props.onComplete('completed');
+      onComplete('completed');
       return;
     }
-    this.circleAround(this.state.snake);
+    this.circleAround(snake);
     setTimeout(() => {
       const { dx, dy } = this.state;
       this.clearCanvas();
-      const snake = this.state.snake;
       const head = { x: snake[0].x + dx, y: snake[0].y + dy };
       snake.unshift(head);
       const eatenOption = this.optionEaten(snake);
-      const rightOption = this.state.question.answer;
+      const rightOption = question.answer;
 
       switch (eatenOption) {
         case 'optionA': {
@@ -264,13 +263,12 @@ class Snakes extends Component {
             snake.pop();
             snake.pop();
           } else {
-            const score = this.state.score + 1;
-            this.setState({ score });
+            this.setState({ score: score + 1 });
           }
           const optionA = this.createOption(snake);
           const optionB = this.createOption(snake);
-          const question = this.getQuestion();
-          this.setState({ optionA, optionB, question });
+          const quest = this.getQuestion();
+          this.setState({ optionA, optionB, question: quest });
           break;
         }
         case 'optionB': {
@@ -278,13 +276,12 @@ class Snakes extends Component {
             snake.pop();
             snake.pop();
           } else {
-            const score = this.state.score + 1;
-            this.setState({ score });
+            this.setState({ score: score + 1 });
           }
           const optionA = this.createOption(snake);
           const optionB = this.createOption(snake);
-          const question = this.getQuestion();
-          this.setState({ optionA, optionB, question });
+          const quest = this.getQuestion();
+          this.setState({ optionA, optionB, question: quest });
           break;
         }
         default: {
@@ -292,9 +289,9 @@ class Snakes extends Component {
           break;
         }
       }
-
-      this.drawOption(this.state.optionA.x, this.state.optionA.y, 'optionA');
-      this.drawOption(this.state.optionB.x, this.state.optionB.y, 'optionB');
+      const {optionA, optionB} = this.state;
+      this.drawOption(optionA.x, optionA.y, 'optionA');
+      this.drawOption(optionB.x, optionB.y, 'optionB');
       this.drawSnake(snake);
       this.setState({ snake });
       this.advanceSnake();
@@ -347,7 +344,7 @@ class Snakes extends Component {
   }
 
   btnClick() {
-    window.open('https://www.google.com');
+    this.window.open('https://www.google.com');
   }
 
   render() {
@@ -362,21 +359,28 @@ class Snakes extends Component {
     return (
       <div className="App">
         <div className="snake-logo">
-          <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" alt="" />
+          <img src="https://www.thoughtworks.com/imgs/tw-logo.svg" alt=""/>
         </div>
         <header className="App-header">
           {gameStarted ? null : <p className="snakeStart"> PRESS SPACE BAR TO START THE GAME </p>}
           <div className="snakequestion">
             <p>{title}</p>
             <p>
-              <img src={red} height="16" width="16" alt="red img" /> - {optionA}
+              <img src={red} height="16" width="16" alt="red img"/>
+              {' '}
+-
+              {optionA}
             </p>
             <p>
-              <img src={blue} height="16" width="16" alt="blue img" /> - {optionB}
+              <img src={blue} height="16" width="16" alt="blue img"/>
+              {' '}
+-
+              {optionB}
             </p>
-          </div>{' '}
-          <br />
-          <br />
+          </div>
+          {' '}
+          <br/>
+          <br/>
           <canvas
             ref={this.canvasRef}
             id="gameCanvas"
@@ -387,17 +391,20 @@ class Snakes extends Component {
             }}
             tabIndex="0"
           />
-          <p className="snakeScore">Your score: {score}</p>
+          <p className="snakeScore">
+Your score:
+            {score}
+          </p>
           {gameOver ? (
             <div className="gamewon">
               <p>Game Over</p>
-              <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
+              <Button onClick={this.btnClick}>Go to Home Page</Button>
             </div>
           ) : null}
           {gameWon ? (
             <div className="gamewon">
               <p>You have Won!</p>
-              <Button onClick={this.btnClick.bind(this)}>Go to Home Page</Button>
+              <Button onClick={this.btnClick}>Go to Home Page</Button>
             </div>
           ) : null}
         </header>
@@ -405,10 +412,6 @@ class Snakes extends Component {
     );
   }
 }
-
-Snakes.propTypes = {
-  onComplete: PropTypes.func,
-};
 
 Snakes.defaultProps = {
   onComplete: _.noop,

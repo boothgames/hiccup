@@ -18,7 +18,7 @@ export const useImagesContext = () => useContext(ImagesContext);
 export const ImagesProvider = props => {
   const [images, setImages] = useState({});
   const [imagesReadyCnt, setImagesReadyCnt] = useState(0);
-  const { r } = props;
+  const { r, intro, children } = props;
 
   // import and preload images
   useEffect(() => {
@@ -29,7 +29,7 @@ export const ImagesProvider = props => {
       importedImages[item.replace('./', '').replace('items/', '')] = importedImg;
       const img = new Image();
       img.onload = () => {
-        i++;
+        i += 1;
         setImagesReadyCnt(i);
       };
       img.src = importedImg;
@@ -38,18 +38,18 @@ export const ImagesProvider = props => {
   }, [r]);
 
   if (Object.keys(images).length !== imagesReadyCnt || imagesReadyCnt < 1) {
-    return <Background className={props.intro ? 'intro' : ''}>{/* <Loader /> */}</Background>;
+    return <Background className={intro ? 'intro' : ''}>{/* <Loader /> */}</Background>;
   }
 
-  if (props.intro) {
+  if (intro) {
     return (
       <Background className="intro">
-        <ImagesContext.Provider value={{ images }}>{props.children}</ImagesContext.Provider>
+        <ImagesContext.Provider value={{ images }}>{children}</ImagesContext.Provider>
       </Background>
     );
   }
 
-  return <ImagesContext.Provider value={{ images }}>{props.children}</ImagesContext.Provider>;
+  return <ImagesContext.Provider value={{ images }}>{children}</ImagesContext.Provider>;
 };
 
 export const ImagesConsumer = ImagesContext.Consumer;

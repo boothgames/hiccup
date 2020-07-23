@@ -1,20 +1,36 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
+import { Container } from 'react-bootstrap';
 import Bag from './components/Bag/Bag';
 import Items from './components/Items';
 import Control from './components/Control';
 
 import { questions } from './config';
-import { Container } from 'react-bootstrap';
 
 const Shop = props => {
   const [productsToBuy, setProductsToBuy] = useState([]);
   const [status, setStatus] = useState('playing'); // playing, fail, win
   const [selectedIndex, setSelectedIndex] = useState(-1);
-
+  const {actualAnswers} = props;
   const setRandomItems = useCallback(() => {
-    var shuffledQuestions = shuffle(questions);
-    const productsToBuy = shuffledQuestions
+
+    function shuffle(array) {
+      const updatedArray = array;
+      let currentIndex = array.length;
+        let temporaryValue;
+        let randomIndex;
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        updatedArray[currentIndex] = array[randomIndex];
+        updatedArray[randomIndex] = temporaryValue;
+      }
+      return updatedArray;
+    }
+
+    const shuffledQuestions = shuffle(questions);
+    const productsBuy = shuffledQuestions
       .map(item => {
         return Array.from({ length: 1 }).fill(item);
       })
@@ -27,7 +43,7 @@ const Shop = props => {
         };
         return [...acc, newItem];
       }, []);
-    setProductsToBuy(productsToBuy);
+    setProductsToBuy(productsBuy);
   }, []);
 
   useEffect(() => {
@@ -50,20 +66,6 @@ const Shop = props => {
     setStatus('playing');
     setRandomItems();
   };
-
-  function shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
-  }
 
   const select = e => {
     if (status !== 'playing') return;
@@ -93,12 +95,12 @@ const Shop = props => {
           resetNewGame={resetNewGame}
           status={status}
           selectedIndex={selectedIndex}
-          actualAnswers={props.actualAnswers}
+          actualAnswers={actualAnswers}
         />
       </div>
 
-      <Control fail={() => displayScore()} status={status} />
-      <Items select={select} />
+      <Control fail={() => displayScore()} status={status}/>
+      <Items select={select}/>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {PropTypes} from "prop-types";
 
 const NavSection = styled.div`
   width: 10%;
@@ -35,7 +36,7 @@ const NavNext = styled(NavSection)`
   text-align: right;
 `;
 
-const Nav = ({ type, to }) => {
+export const Nav = ({ type, to }) => {
   const link = (
     <Link to={to}>
       {type === "back" ? <>&larr;</> : <>&rarr;</>}
@@ -43,7 +44,12 @@ const Nav = ({ type, to }) => {
   );
 
   if (type === "back") return <NavSection>{link}</NavSection>;
-  else return <NavNext>{link}</NavNext>;
+  return <NavNext>{link}</NavNext>;
 };
 
-export { Nav };
+Nav.propTypes = {
+type: PropTypes.string.isRequired,
+to: PropTypes.string.isRequired
+}
+
+export default Nav;

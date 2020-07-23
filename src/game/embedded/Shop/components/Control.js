@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import {PropTypes} from 'prop-types';
+
 const Control = styled.div`
   float: right;
 `;
 
-export default ({ status, fail }) => {
+export default ({ fail }) => {
+
   return (
     <Control>
       <div style={{ minHeight: '40%', width: '100%', fontSize: '30px', margin: '10px' }}>
@@ -23,7 +26,10 @@ export default ({ status, fail }) => {
           {({ remainingTime }) => remainingTime}
         </CountdownCircleTimer>
       </div>
-      {/* <Bear /> */}
     </Control>
   );
 };
+
+Control.propTypes = {
+  fail: PropTypes.function
+}

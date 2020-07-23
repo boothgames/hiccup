@@ -1,21 +1,26 @@
 import React from 'react';
-import { animated, useSpring } from 'react-spring';
+import { animated } from 'react-spring';
 import styled from 'styled-components';
+import {PropTypes} from 'prop-types';
 
 import { TimerCss, Bum } from './styles';
 
-const Timer = styled(animated.div)`
+const TimerDiv = styled(animated.div)`
   ${TimerCss}
 `;
 
-const TimerDefault = ({ status }) => {
+const Timer = ({ status }) => {
   return (
     <>
-      {status === 'fail' ? <Bum /> : null}
+      {status === 'fail' ? <Bum/> : null}
 
-      <Timer>25</Timer>
+      <TimerDiv>25</TimerDiv>
     </>
   );
 };
 
-export { TimerDefault as Timer };
+export default Timer;
+
+Timer.propTypes = {
+  status: PropTypes.string.isRequired
+}

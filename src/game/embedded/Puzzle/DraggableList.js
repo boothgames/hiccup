@@ -21,13 +21,13 @@ const fn = (order, down, originalIndex, curIndex, y) => index =>
     : { y: order.indexOf(index) * 60, scale: 1, zIndex: '0', shadow: 1, immediate: false };
 
 export default function DraggableList({ items, callBack, updateOrder }) {
-  const order = useRef(items.map((_, index) => index)); // Store indicies as a local ref, this represents the item order
-  const [springs, setSprings] = useSprings(items.length, fn(order.current)); // Create springs, each corresponds to an item, controlling its transform, scale, etc.
+  const order = useRef(items.map((_, index) => index));
+  const [springs, setSprings] = useSprings(items.length, fn(order.current)); 
   const bind = useDrag(({ args: [originalIndex], down, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
     const curRow = clamp(Math.round((curIndex * 60 + y) / 60), 0, items.length - 1);
     const newOrder = swap(order.current, curIndex, curRow);
-    setSprings(fn(newOrder, down, originalIndex, curIndex, y)); // Feed springs new style data, they'll animate the view without causing a single render
+    setSprings(fn(newOrder, down, originalIndex, curIndex, y));
     if (!down) {
       order.current = newOrder;
     }
@@ -40,6 +40,7 @@ export default function DraggableList({ items, callBack, updateOrder }) {
           {springs.map(({ zIndex, shadow, y, scale }, i) => (
             <animated.div
               {...bind(i)}
+              // eslint-disable-next-line react/no-array-index-key
               key={i}
               style={{
                 zIndex,
@@ -48,11 +49,12 @@ export default function DraggableList({ items, callBack, updateOrder }) {
                 scale,
               }}
               id={items[i].key}
-              children={items[i].value}
-            />
+            >
+              {items[i].value}
+            </animated.div>
           ))}
         </div>
-        <Control fail={() => updateOrder(order)} status="playing"></Control>
+        <Control fail={() => updateOrder(order)} status="playing"/>
       </div>
     </div>
   );

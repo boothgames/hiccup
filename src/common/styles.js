@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
 export { Nav } from "./Nav";
-export { Roof } from "./Roof";
 
 export const Game = styled.div`
   justify-content: center;

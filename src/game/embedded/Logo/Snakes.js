@@ -249,7 +249,7 @@ class Snakes extends Component {
     setTimeout(() => {
       const { dx, dy } = this.state;
       this.clearCanvas();
-      const snake = this.state.snake;
+      const {snake} = this.state;
       const head = { x: snake[0].x + dx, y: snake[0].y + dy };
       snake.unshift(head);
       const eatenOption = this.optionEaten(snake);
@@ -359,14 +359,14 @@ class Snakes extends Component {
           <div className="snakequestion">
             <p>{title}</p>
             <p>
-              <img src={red} height="16" width="16" alt="red img" />
+              <img src={red} height="16" width="16" alt="red img"/>
               {' '}
               -
               {' '}
               {optionA}
             </p>
             <p>
-              <img src={blue} height="16" width="16" alt="blue img" />
+              <img src={blue} height="16" width="16" alt="blue img"/>
               {' '}
               -
               {' '}
@@ -374,8 +374,8 @@ class Snakes extends Component {
             </p>
           </div>
           {' '}
-          <br />
-          <br />
+          <br/>
+          <br/>
           <canvas
             ref={this.canvasRef}
             id="gameCanvas"

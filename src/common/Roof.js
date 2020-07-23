@@ -24,10 +24,11 @@ const RoofEl = styled.div`
 
 const Roof = () => {
   const content = Array.from({ length: 11 }, (v, k) => k).map((v, i) => (
-    <RoofEl key={i}></RoofEl>
+    // eslint-disable-next-line react/no-array-index-key
+    <RoofEl key={i}/>
   ));
 
   return <RoofContainer>{content}</RoofContainer>
 };
 
-export { Roof };
+export default Roof;
