@@ -1,41 +1,42 @@
 import React from 'react';
 import _ from 'lodash';
-import { Col, Container, Row } from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 import './dashboard.css';
 import PropTypes from 'prop-types';
 import Navbar from 'react-bootstrap/Navbar';
 import Page from '../common/Page';
 import Shop from './embedded/Shop/Shop';
 import DraggableList from './embedded/Puzzle/DraggableList';
-import { ImagesProvider } from './contexts/ImagesContext';
+import {ImagesProvider} from './contexts/ImagesContext';
 import Snakes from './embedded/Snake/Snakes';
 import SnakeInstructions from './SnakeInstructions';
+import {publishGameMessage} from '../lib/socket'
 import '../style.css';
 
 const jumbledCodeQuestions = [
   {
     question: 'Check if n is a prime number',
     code: [
-      { key: 0, value: 'if (n == 1)' },
-      { value: 'print 1 is not prime number', key: 1 },
-      { value: 'for (int i = 2; i < n; i++)', key: 2 },
-      { value: 'if (n % i == 0)', key: 3 },
-      { value: 'print n is not prime number', key: 4 },
-      { value: 'end loop', key: 5 },
-      { value: 'print n is a prime number', key: 6 },
+      {key: 0, value: 'if (n == 1)'},
+      {value: 'print 1 is not prime number', key: 1},
+      {value: 'for (int i = 2; i < n; i++)', key: 2},
+      {value: 'if (n % i == 0)', key: 3},
+      {value: 'print n is not prime number', key: 4},
+      {value: 'end loop', key: 5},
+      {value: 'print n is a prime number', key: 6},
     ],
   },
   {
     question: 'Find square root of "n" using newtons method."l" is Tolerance level',
     code: [
-      { key: 0, value: 'double root; double x = n;' },
-      { value: 'while (1) ', key: 1 },
-      { value: 'root = 0.5 * (x + (n / x)); ', key: 2 },
-      { value: 'if (abs(root - x) < l) ', key: 3 },
-      { value: 'break;', key: 4 },
-      { value: 'x = root; ', key: 5 },
-      { value: 'end loop;', key: 6 },
-      { value: 'return root;', key: 7 },
+      {key: 0, value: 'double root; double x = n;'},
+      {value: 'while (1) ', key: 1},
+      {value: 'root = 0.5 * (x + (n / x)); ', key: 2},
+      {value: 'if (abs(root - x) < l) ', key: 3},
+      {value: 'break;', key: 4},
+      {value: 'x = root; ', key: 5},
+      {value: 'end loop;', key: 6},
+      {value: 'return root;', key: 7},
     ],
   },
   // {
@@ -94,7 +95,7 @@ export default class Prequel extends React.Component {
   actualAnswers = {};
 
   score = 0;
-   
+
   link = "https://www.thoughtworks.com/careers/access?utm_source=event&utm_medium=virtual&utm_campaign=GIDS2020&utm_term=india"
 
   currentCodeJumble = {};
@@ -105,7 +106,7 @@ export default class Prequel extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { status: 'ready' };
+    this.state = {status: 'ready'};
     this.start = this.start.bind(this);
     this.logokickoff = this.logokickoff.bind(this);
     this.snakekickoff = this.snakekickoff.bind(this);
@@ -131,27 +132,31 @@ export default class Prequel extends React.Component {
   }
 
   logokickoff() {
-    this.setState({ status: 'logo-start' });
+    this.setState({status: 'logo-start'});
+    publishGameMessage('logo-match', {action: 'started'})
   }
 
   snakekickoff() {
-    this.setState({ status: 'snake-instructions' });
+    this.setState({status: 'snake-instructions'});
   }
 
   startSnakeGame() {
-    this.setState({ status: 'snake-start' });
+    this.setState({status: 'snake-start'});
   }
 
   startCodeJumbleGame() {
-    this.setState({ status: 'code_jumble_start' });
+    this.setState({status: 'code_jumble_start'});
+    publishGameMessage('code-jumble', {action: 'started'})
   }
 
   displayScore() {
-    this.setState({ status: 'game-over' });
+    publishGameMessage('logo-match', {action: 'completed', score: 5})
+    this.setState({status: 'game-over'});
   }
 
   displayScoreForCodeJumble() {
-    this.setState({ status: 'jumbled-game-over' });
+    publishGameMessage('code-jumble', {action: 'completed', score: 5})
+    this.setState({status: 'jumbled-game-over'});
   }
 
   calculateScore() {
@@ -166,7 +171,7 @@ export default class Prequel extends React.Component {
   }
 
   start() {
-    const { onStart } = this.props;
+    const {onStart} = this.props;
     onStart();
   }
 
@@ -184,7 +189,7 @@ export default class Prequel extends React.Component {
   }
 
   renderMessage() {
-    const { status } = this.state;
+    const {status} = this.state;
     switch (status) {
       case 'ready':
         return (
@@ -238,7 +243,7 @@ export default class Prequel extends React.Component {
                   </div>
                 </Container>
               </div>
-              <div style={{ padding: '30px' }}/>
+              <div style={{padding: '30px'}}/>
             </Container>
           </Page>
         );
@@ -365,10 +370,10 @@ export default class Prequel extends React.Component {
                   </div>
                   <div className="Level-1-Instructions">
                     <p className="text-style-1">
-                    You scored  
+                      You scored
                       {' '}
-                      {this.calculateScore()} 
-/5.
+                      {this.calculateScore()}
+                      /5.
                     </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
@@ -468,7 +473,7 @@ export default class Prequel extends React.Component {
                   </div>
                   <div className="Level-1-Instructions">
                     <p className="text-style-1">
-You 
+                      You
                       {' '}
                       {this.score === 1 ? 'won' : 'lost'}
                     </p>
@@ -521,7 +526,7 @@ You
                       You are in a world that runs on
                       <strong> Open Source Software.</strong>
                       {' '}
-But there are forces beyond reason,
+                      But there are forces beyond reason,
                       that are constantly threatening the ways of the internet.
                       {' '}
                     </p>
@@ -529,7 +534,7 @@ But there are forces beyond reason,
                       As you’re reading this,
                       <strong> hackers</strong>
                       {' '}
-are breaking into your most-dependable open source
+                      are breaking into your most-dependable open source
                       web server.
                       {' '}
                     </p>
@@ -537,7 +542,7 @@ are breaking into your most-dependable open source
                       The future of internet is in
                       <strong> your hands</strong>
                       {' '}
-right now. Complete all levels of the challenge
+                      right now. Complete all levels of the challenge
                       and save the day!
                     </p>
                     <div className="action">

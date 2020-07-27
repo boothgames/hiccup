@@ -4,5 +4,10 @@ export const currentSettings = () => {
   if (settings) {
     return JSON.parse(settings);
   }
-  return { games: {}, nickname: 'hiccup' };
+  return {
+    games: [
+      {name: "code-jumble", selected: true},
+      {name: "logo-match", selected: true}
+    ], nickname: 'hiccup'
+  };
 };
