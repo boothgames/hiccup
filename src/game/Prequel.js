@@ -15,15 +15,39 @@ import '../style.css';
 
 const jumbledCodeQuestions = [
   {
-    question: 'Check if n is a prime number',
+    question: 'Check if n is a prime number. n > 1',
     code: [
-      {key: 0, value: 'if (n == 1)'},
-      {value: 'print 1 is not prime number', key: 1},
-      {value: 'for (int i = 2; i < n; i++)', key: 2},
-      {value: 'if (n % i == 0)', key: 3},
-      {value: 'print n is not prime number', key: 4},
-      {value: 'end loop', key: 5},
-      {value: 'print n is a prime number', key: 6},
+      {value: 'for (int i = 2; i < n; i++)', key: 0},
+      {value: 'if (n % i == 0)', key: 1},
+      {value: 'return false', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'end loop', key: 4},
+      {value: 'return true', key: 5},
+    ],
+  },
+  {
+    question: 'Bubble sort',
+    code: [
+      {value: 'do', key: 0},
+      {value: 'swapped <-- false', key: 1},
+      {value: 'for each i in 1 to length(S) - 1 ', key: 2},
+      {value: 'if S[i-1]>S[i] then', key: 3},
+      {value: 'swap(S[i-1],S[i])', key: 4},
+      {value: 'swapped <-- true', key: 5},
+      {value: 'end if', key: 6},
+      {value: 'end for', key: 7},
+      {value: 'while swapped', key: 8},
+    ],
+  },
+  {
+    question: 'Linear Search. List "a", size "n", desired item "x"',
+    code: [
+      {value: 'for i=0 to n-1 do', key: 0},
+      {value: 'if a[i]==x then', key: 1},
+      {value: 'return i', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'end for', key: 4},
+      {value: 'return nil', key: 5},
     ],
   },
   {
@@ -34,9 +58,26 @@ const jumbledCodeQuestions = [
       {value: 'root = 0.5 * (x + (n / x)); ', key: 2},
       {value: 'if (abs(root - x) < l) ', key: 3},
       {value: 'break;', key: 4},
-      {value: 'x = root; ', key: 5},
-      {value: 'end loop;', key: 6},
-      {value: 'return root;', key: 7},
+      {value: 'end if; ', key: 5},
+      {value: 'x = root; ', key: 6},
+      {value: 'end for loop;', key: 7},
+      {value: 'return root;', key: 8},
+    ],
+  },
+  {
+    question: 'Find "x" from sorted array "A" of size N using Binary search.',
+    code: [
+      {key: 0, value: 'low = 0, high = N - 1'},
+      {value: 'while (low <= high) ', key: 1},
+      {value: 'mid = (low + high) / 2', key: 2},
+      {value: 'if (A[mid] > value)', key: 3},
+      {value: 'high = mid - 1', key: 4},
+      {value: 'else if (A[mid] < value)', key: 5},
+      {value: 'low = mid + 1', key: 6},
+      {value: 'else', key: 7},
+      {value: 'return mid', key: 8},
+      {value: 'end while', key: 9},
+      {value: 'return not_found', key: 10},
     ],
   },
   // {
@@ -150,12 +191,10 @@ export default class Prequel extends React.Component {
   }
 
   displayScore() {
-    publishGameMessage('logo-match', {action: 'completed', score: 5})
     this.setState({status: 'game-over'});
   }
 
   displayScoreForCodeJumble() {
-    publishGameMessage('code-jumble', {action: 'completed', score: 5})
     this.setState({status: 'jumbled-game-over'});
   }
 
@@ -374,6 +413,7 @@ export default class Prequel extends React.Component {
                       {' '}
                       {this.calculateScore()}
                       /5.
+                      {publishGameMessage('logo-match', {action: this.score > 3 ? 'completed' : 'failed', score: this.score})}
                     </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
@@ -476,6 +516,7 @@ export default class Prequel extends React.Component {
                       You
                       {' '}
                       {this.score === 1 ? 'won' : 'lost'}
+                      {publishGameMessage('logo-match', {action: this.score === 1 ? 'completed' : 'failed', score: this.score})}
                     </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
