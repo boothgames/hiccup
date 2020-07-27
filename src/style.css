@@ -76,10 +76,6 @@ body {
   display: block;
 }
 
-.tw-banner {
-  height: 380px;
-}
-
 .page-enter {
   transform: translate(-100%, 0);
 }
@@ -318,6 +314,7 @@ body {
 .banner {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .play-game-box {
