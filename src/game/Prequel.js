@@ -80,6 +80,27 @@ const jumbledCodeQuestions = [
       {value: 'return not_found', key: 10},
     ],
   },
+  {
+    question: 'Add two number x and y.',
+    code: [
+      {key: 0, value: 'while (y != 0) '},
+      {value: 'int carry = x & y;', key: 1},
+      {value: 'x = x ^ y;', key: 2},
+      {value: 'y = carry << 1;', key: 3},
+      {value: 'end for loop', key: 4},
+      {value: 'return x', key: 5},
+    ],
+  },
+  {
+    question: 'Swap and print the given two numbers.',
+    code: [
+      {value: 'x =10, y =20;', key: 0},
+      {value: 'x = x + y;', key: 1},
+      {value: 'y = x - y;', key: 2},
+      {value: 'x = x - y;', key: 3},
+      {value: 'Print x y', key: 4},
+    ],
+  },
   // {
   //   question: 'Print "c1=1010, c2=1100"',
   //   code: [
@@ -174,7 +195,7 @@ export default class Prequel extends React.Component {
 
   logokickoff() {
     this.setState({status: 'logo-start'});
-    publishGameMessage('logo-match', {action: 'started'})
+    publishGameMessage('logo-match', {action: 'inProgress'})
   }
 
   snakekickoff() {
@@ -187,7 +208,7 @@ export default class Prequel extends React.Component {
 
   startCodeJumbleGame() {
     this.setState({status: 'code_jumble_start'});
-    publishGameMessage('code-jumble', {action: 'started'})
+    publishGameMessage('code-jumble', {action: 'inProgress'})
   }
 
   displayScore() {
@@ -516,7 +537,7 @@ export default class Prequel extends React.Component {
                       You
                       {' '}
                       {this.score === 1 ? 'won' : 'lost'}
-                      {publishGameMessage('logo-match', {action: this.score === 1 ? 'completed' : 'failed', score: this.score})}
+                      {publishGameMessage('code-jumble', {action: this.score === 1 ? 'completed' : 'failed', score: this.score})}
                     </p>
                     <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
