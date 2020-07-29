@@ -7,7 +7,7 @@ const Control = styled.div`
   float: right;
 `;
 
-export default ({ fail }) => {
+export default ({ duration, fail }) => {
 
   return (
     <Control>
@@ -18,7 +18,7 @@ export default ({ fail }) => {
             fail();
             return [false, 1500];
           }}
-          duration={25}
+          duration={duration}
           size={100}
           fontSize="20px"
           colors={[['#f78f31']]}

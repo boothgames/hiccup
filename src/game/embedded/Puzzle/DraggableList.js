@@ -22,6 +22,7 @@ const fn = (order, down, originalIndex, curIndex, y) => index =>
 
 export default function DraggableList({ items, callBack, updateOrder }) {
   const order = useRef(items.map((_, index) => index));
+  const duration = 60;
   const [springs, setSprings] = useSprings(items.length, fn(order.current)); 
   const bind = useDrag(({ args: [originalIndex], down, movement: [, y] }) => {
     const curIndex = order.current.indexOf(originalIndex);
@@ -54,7 +55,7 @@ export default function DraggableList({ items, callBack, updateOrder }) {
             </animated.div>
           ))}
         </div>
-        <Control fail={() => updateOrder(order)} status="playing"/>
+        <Control duration={duration} fail={() => updateOrder(order)} status="playing"/>
       </div>
     </div>
   );

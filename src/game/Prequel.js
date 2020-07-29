@@ -13,6 +13,8 @@ import SnakeInstructions from './SnakeInstructions';
 import {publishGameMessage} from '../lib/socket'
 import '../style.css';
 
+const preloadedImages = require.context('./embedded/Shop/images/', true, /\.(png|jpe?g|svg)$/)
+
 const jumbledCodeQuestions = [
   {
     question: 'Check if n is a prime number. n > 1',
@@ -26,7 +28,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Bubble sort',
+    question: 'Bubble sort list of numbers "S"',
     code: [
       {value: 'do', key: 0},
       {value: 'swapped <-- false', key: 1},
@@ -87,18 +89,18 @@ const jumbledCodeQuestions = [
       {value: 'int carry = x & y;', key: 1},
       {value: 'x = x ^ y;', key: 2},
       {value: 'y = carry << 1;', key: 3},
-      {value: 'end for loop', key: 4},
+      {value: 'end while', key: 4},
       {value: 'return x', key: 5},
     ],
   },
   {
-    question: 'Swap and print the given two numbers.',
+    question: 'Print 20 10.',
     code: [
       {value: 'x =10, y =20;', key: 0},
       {value: 'x = x + y;', key: 1},
       {value: 'y = x - y;', key: 2},
       {value: 'x = x - y;', key: 3},
-      {value: 'Print x y', key: 4},
+      {value: 'Print x  y', key: 4},
     ],
   },
   // {
@@ -150,7 +152,7 @@ const congratsImage = require('./congrats.png');
 
 const screen2png = require('./screen2.png')
 
-const grouppng = require('./group.png')
+const grouppng = require('./group.jpg')
 
 export default class Prequel extends React.Component {
 
@@ -168,12 +170,15 @@ export default class Prequel extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {status: 'ready'};
+    this.state = {status: 'intro'};
     this.start = this.start.bind(this);
     this.logokickoff = this.logokickoff.bind(this);
+    this.showLevel1Page = this.showLevel1Page.bind(this);
     this.snakekickoff = this.snakekickoff.bind(this);
     this.startSnakeGame = this.startSnakeGame.bind(this);
+    this.startCodeJumbleGame = this.startCodeJumbleGame.bind(this);
     this.updateOrder = this.updateOrder.bind(this);
+    this.showCodeJumbleInstructions = this.showCodeJumbleInstructions.bind(this);
     this.updateScoreAndForCodeJumble = this.updateScoreAndForCodeJumble.bind(this);
   }
 
@@ -198,12 +203,20 @@ export default class Prequel extends React.Component {
     publishGameMessage('logo-match', {action: 'inProgress'})
   }
 
+  showLevel1Page() {
+    this.setState({status: 'ready'});
+  }
+
   snakekickoff() {
     this.setState({status: 'snake-instructions'});
   }
 
   startSnakeGame() {
     this.setState({status: 'snake-start'});
+  }
+
+  showCodeJumbleInstructions() {
+    this.setState({status: 'code_jumble_instructions'});
   }
 
   startCodeJumbleGame() {
@@ -251,7 +264,7 @@ export default class Prequel extends React.Component {
   renderMessage() {
     const {status} = this.state;
     switch (status) {
-      case 'ready':
+      case 'intro':
         return (
           <Page>
             <div className="thoughtworks-image">
@@ -284,6 +297,68 @@ export default class Prequel extends React.Component {
                 <Container id="game-box">
                   <div className="game-preview">
                     <img className="preview-image" src={screen2png} alt=""/>
+                  </div>
+                  <div className="Level-1-Instructions">
+                    <p className="text-style-1">
+                      Welcome to ThoughtWorks virtual games, a fun tech challenge for you to take a break from the day-long sessions.
+                    </p>
+                    <p className="text-style-1">
+                      There are 2 levels to this challenge:
+                    </p>
+                    <ul>
+                      <li className="text-style-1">
+                      Level 1 - Match the logo.
+                      </li>
+                      <li className="text-style-1">
+                        Level 2 - Code jumble.
+                      </li>
+                    </ul>
+                    <p className="text-style-1">
+                      Are you ready? Lets head over to the game instructions.
+                    </p>
+                    <br/>
+                    <button className="play-button" type="button" onClick={this.showLevel1Page}>
+                    Next
+                    </button>
+                  </div>
+                </Container>
+              </div>
+              <div style={{padding: '30px'}}/>
+            </Container>
+          </Page>
+        );
+      case 'ready':
+        return (
+          <Page>
+            <div className="thoughtworks-image">
+              <a href="https://www.thoughtworks.com">
+                <img
+                  className="thoughtworks"
+                  src="https://www.thoughtworks.com/imgs/tw-logo.svg"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div className="Thoughtworks-microsi">
+              <Navbar>
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt;&lt; Back To Home Page
+                </Navbar.Brand>
+              </Navbar>
+            </div>
+            <div className="banner">
+              <img
+                className="tw-banner"
+                src={virtualBannerPng}
+                alt=""
+              />
+              <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
+            </div>
+            <Container>
+              <div className="play-game-box">
+                <Container id="game-box">
+                  <div className="game-preview">
+                    <img className="preview-image" src={screen2png} alt=""/>
                     <p className="game-name">Match the logo</p>
                   </div>
                   <div className="Level-1-Instructions">
@@ -295,6 +370,9 @@ export default class Prequel extends React.Component {
                       </li>
                       <li>The game is timed. You get 25 seconds to match 5 logos.</li>
                       <li>Your score will be displayed at the end of the game.</li>
+                      <li>
+                        If you get a minimum of 4 out of 5 logos matched correctly you will move on to level 2.
+                      </li>
                     </ul>
                     <br/>
                     <button className="play-button" type="button" onClick={this.logokickoff}>
@@ -340,7 +418,7 @@ export default class Prequel extends React.Component {
               <div className="play-game-box">
                 <Container id="game-box">
                   <ImagesProvider
-                    r={require.context('./embedded/Shop/images/', true, /\.(png|jpe?g|svg)$/)}
+                    r={preloadedImages}
                   >
                     {' '}
                     <Shop
@@ -356,6 +434,153 @@ export default class Prequel extends React.Component {
             </Container>
             <br/>
             <br/>
+          </Page>
+        );
+        case 'game-over':
+          return (
+            <Page>
+              <div className="thoughtworks-image">
+                <a href="https://www.thoughtworks.com">
+                  <img
+                    className="thoughtworks"
+                    src="https://www.thoughtworks.com/imgs/tw-logo.svg"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div className="Thoughtworks-microsi">
+                <Navbar>
+                  <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                    &lt;&lt; Back To Home Page
+                  </Navbar.Brand>
+                </Navbar>
+              </div>
+              <div className="banner">
+                <img
+                  className="tw-banner"
+                  src={virtualBannerPng}
+                  alt=""
+                />
+                <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <Container>
+                <div className="play-game-box">
+                  <Container id="game-box">
+                    <div className="game-preview">
+                      <img className="preview-image" src={congratsImage} alt=""/>
+                    </div>
+                    <div className="Level-1-Instructions">
+                      {this.calculateScore() > 1 ? 
+                      (
+                        <div>
+                          <p className="text-style-1">
+                        Congratulations!  You scored 
+                            {' '}
+                            {this.score}
+  /5. 
+                            <br/>
+                            <br/>
+                            <p className="text-style-1">Lets move on to level 2 - Code jumble.</p>
+                          </p>
+                        </div>
+  ) : (
+    <p className="text-style-1">
+                        Well done! You scored
+      {' '}
+      {this.score}
+                        /5.
+    </p>
+  ) }
+                      {publishGameMessage('logo-match', {action: this.score > 3 ? 'completed' : 'failed', score: this.score})}
+                      <br/>
+                      {this.score > 1 ? (
+                        <div className="code_jumble_buttons-box">
+                          <button
+                            className="play-button"
+                            type="button"
+                            onClick={e => {
+                              e.preventDefault();
+                              this.showCodeJumbleInstructions();
+                            }}
+                          >
+                            Next
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          className="play-button"
+                          type="button"
+                          onClick={e => {
+                            e.preventDefault();
+                            this.logokickoff();
+                          }}
+                        >
+                          Try Again!
+                        </button>
+                      )}
+                    </div>
+                  </Container>
+                </div>
+              </Container>
+              <br/>
+              <br/>
+            </Page>
+          );  
+      case 'code_jumble_instructions':
+        return (
+          <Page>
+            <div className="thoughtworks-image">
+              <a href="https://www.thoughtworks.com">
+                <img
+                  className="thoughtworks"
+                  src="https://www.thoughtworks.com/imgs/tw-logo.svg"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div className="Thoughtworks-microsi">
+              <Navbar>
+                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
+                  &lt;&lt; Back To Home Page
+                </Navbar.Brand>
+              </Navbar>
+            </div>
+            <div className="banner">
+              <img
+                className="tw-banner"
+                src={virtualBannerPng}
+                alt=""
+              />
+              <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
+            </div>
+            <Container>
+              <div className="play-game-box">
+                <Container id="game-box">
+                  <div className="game-preview">
+                    <img className="preview-image" src={screen2png} alt=""/>
+                    <p className="game-name">Code Jumble</p>
+                  </div>
+                  <div className="Level-1-Instructions">
+                    <p className="text-style-1">Instructions:</p>
+                    <ul>
+                      <li>
+                         There is a problem statement and a set of jumbled code snippets.
+                      </li>
+                      <li>Simply drag and drop to rearrange the code snippets in order to get the desired outcome.</li>
+                      <li>The game is timed. You get 60 seconds to rearrange the jumbled code snippets in the right order.</li>
+                    </ul>
+                    <br/>
+                    <button className="play-button" type="button" onClick={this.startCodeJumbleGame}>
+                      Start playing
+                    </button>
+                  </div>
+                </Container>
+              </div>
+              <div style={{padding: '30px'}}/>
+            </Container>
           </Page>
         );
       case 'code_jumble_start':
@@ -391,110 +616,6 @@ export default class Prequel extends React.Component {
               </button>
             </div>
           </div>
-        );
-      case 'game-over':
-        return (
-          <Page>
-            <div className="thoughtworks-image">
-              <a href="https://www.thoughtworks.com">
-                <img
-                  className="thoughtworks"
-                  src="https://www.thoughtworks.com/imgs/tw-logo.svg"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div className="Thoughtworks-microsi">
-              <Navbar>
-                <Navbar.Brand href="https://www.thoughtworks.com/thoughtworks-at-gids2020">
-                  &lt;&lt; Back To Home Page
-                </Navbar.Brand>
-              </Navbar>
-            </div>
-            <div className="banner">
-              <img
-                className="tw-banner"
-                src={virtualBannerPng}
-                alt=""
-              />
-              <p className="gids-title">ThoughtWorks @ GIDS 2020</p>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <Container>
-              <div className="play-game-box">
-                <Container id="game-box">
-                  <div className="game-preview">
-                    <img className="preview-image" src={congratsImage} alt=""/>
-                  </div>
-                  <div className="Level-1-Instructions">
-                    <p className="text-style-1">
-                      You scored
-                      {' '}
-                      {this.calculateScore()}
-                      /5.
-                      {publishGameMessage('logo-match', {action: this.score > 3 ? 'completed' : 'failed', score: this.score})}
-                    </p>
-                    <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
-                    <div>
-                      <p>
-                        Please take 2 mins and
-                        {' '}
-                        <a href={this.link}>
-                          sign up
-                        </a>
-                        {' '}
-                        for Access ThoughtWorks Careers to stay in touch with the latest happenings
-                        and know about career opportunities at ThoughtWorks.
-                        <br/>
-                      </p>
-                    </div>
-                    <br/>
-                    {this.score > -1 ? (
-                      <div className="code_jumble_buttons-box">
-                        <button
-                          className="play-button"
-                          type="button"
-                          onClick={e => {
-                            e.preventDefault();
-                            this.startCodeJumbleGame();
-                          }}
-                        >
-                          Start Code Jumble
-                        </button>
-                        <button
-                          className="back-button"
-                          type="button"
-                          onClick={e => {
-                            e.preventDefault();
-                            window.location.href =
-                              'https://www.thoughtworks.com/thoughtworks-at-gids2020';
-                          }}
-                        >
-                          Back to main page
-                        </button>
-                      </div>
-                    ) : (
-                      <button
-                        className="back-button"
-                        type="button"
-                        onClick={e => {
-                          e.preventDefault();
-                          window.location.href =
-                            'https://www.thoughtworks.com/thoughtworks-at-gids2020';
-                        }}
-                      >
-                        Back to main page
-                      </button>
-                    )}
-                  </div>
-                </Container>
-              </div>
-            </Container>
-            <br/>
-            <br/>
-          </Page>
         );
       case 'jumbled-game-over':
         return (
@@ -534,12 +655,11 @@ export default class Prequel extends React.Component {
                   </div>
                   <div className="Level-1-Instructions">
                     <p className="text-style-1">
-                      You
                       {' '}
-                      {this.score === 1 ? 'won' : 'lost'}
+                      {this.score === 1 ? 'Congratulations! You got it right!' : 'Sorry! That was incorrect.'}
                       {publishGameMessage('code-jumble', {action: this.score === 1 ? 'completed' : 'failed', score: this.score})}
                     </p>
-                    <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
+                    <p className="text-style-1">Hope you had fun.</p>
                     <div>
                       <p>
                         Please take 2 mins and

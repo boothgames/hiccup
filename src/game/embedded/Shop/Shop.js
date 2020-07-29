@@ -66,7 +66,8 @@ const Shop = props => {
     setStatus('playing');
     setRandomItems();
   };
-
+   
+  const duration = 25
   const select = e => {
     if (status !== 'playing') return;
     const foundIndex = productsToBuy.findIndex(
@@ -99,7 +100,7 @@ const Shop = props => {
         />
       </div>
 
-      <Control fail={() => displayScore()} status={status}/>
+      <Control duration={duration} fail={() => displayScore()} status={status}/>
       <Items select={select}/>
     </Container>
   );
