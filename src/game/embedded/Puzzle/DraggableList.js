@@ -36,24 +36,26 @@ export default function DraggableList({ items, callBack, updateOrder }) {
   });
   return (
     <div>
-      <div className="listAndTimer" style={{ height: (items.length + 1) * 60 }}>
-        <div className="content" style={{ height: items.length * 60 }}>
-          {springs.map(({ zIndex, shadow, y, scale }, i) => (
-            <animated.div
-              {...bind(i)}
+      <div className="listAndTimer" style={{ height: items.length * 60, maxHeight: '75%' }}>
+        <div className="content" style={{ height: items.length * 60, maxHeight: '100%' }}>
+          <div className="content" style={{overflowY: 'scroll', height: items.length * 60, maxHeight: '100%' }}>
+            {springs.map(({ zIndex, shadow, y, scale }, i) => (
+              <animated.div
+                {...bind(i)}
               // eslint-disable-next-line react/no-array-index-key
-              key={i}
-              style={{
+                key={i}
+                style={{
                 zIndex,
                 boxShadow: shadow.to(s => `rgba(0, 0, 0, 0.15) 0px ${s}px ${2 * s}px 0px`),
                 y,
                 scale,
               }}
-              id={items[i].key}
-            >
-              {items[i].value}
-            </animated.div>
+                id={items[i].key}
+              >
+                {items[i].value}
+              </animated.div>
           ))}
+          </div>
         </div>
         <Control duration={duration} fail={() => updateOrder(order)} status="playing"/>
       </div>
