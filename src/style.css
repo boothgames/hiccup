@@ -255,7 +255,7 @@ body {
 .Level-1-Instructions {
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-align: left;
   letter-spacing: normal;
   /* color: #000000; */
@@ -278,7 +278,7 @@ body {
 }
 
 .text-style-1 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
 }
 

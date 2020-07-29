@@ -67,19 +67,17 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Find "x" from sorted array "A" of size N using Binary search.',
+    question: 'Find an element "k" from a tree "T" using Binary search.',
     code: [
-      {key: 0, value: 'low = 0, high = N - 1'},
-      {value: 'while (low <= high) ', key: 1},
-      {value: 'mid = (low + high) / 2', key: 2},
-      {value: 'if (A[mid] > value)', key: 3},
-      {value: 'high = mid - 1', key: 4},
-      {value: 'else if (A[mid] < value)', key: 5},
-      {value: 'low = mid + 1', key: 6},
-      {value: 'else', key: 7},
-      {value: 'return mid', key: 8},
-      {value: 'end while', key: 9},
-      {value: 'return not_found', key: 10},
+      {key: 0, value: 'x <-- root[T]'},
+      {value: 'while x != NIL and k != key[x] do', key: 1},
+      {value: 'if k < key[x]', key: 2},
+      {value: 'x <-- left[x]', key: 3},
+      {value: 'else', key: 4},
+      {value: 'x <-- right[x]', key: 5},
+      {value: 'end if', key: 6},
+      {value: 'end while', key: 7},
+      {value: 'return x', key: 8},
     ],
   },
   {
@@ -130,7 +128,7 @@ const expectedAnswers = {
   webRTC: 'google',
   kafka: 'linkedin',
   swift: 'apple',
-  kubernetes: 'oracle',
+  kubernetes: 'google',
   kotlin: 'jetbrains',
   couch: 'apache',
   cassandra: 'apache',
@@ -487,12 +485,25 @@ export default class Prequel extends React.Component {
                           </p>
                         </div>
   ) : (
-    <p className="text-style-1">
+    <div>
+      <p className="text-style-1">
                         Well done! You scored
-      {' '}
-      {this.score}
+        {' '}
+        {this.score}
                         /5.
-    </p>
+      </p>
+      <p>
+                        Please take 2 mins and
+        {' '}
+        <a href={this.link}>
+                          sign up
+        </a>
+        {' '}
+                        for Access ThoughtWorks Careers to stay in touch with the latest happenings
+                        and know about career opportunities at ThoughtWorks.
+        <br/>
+      </p>
+    </div>
   ) }
                       {publishGameMessage('logo-match', {action: this.score > 3 ? 'completed' : 'failed', score: this.score})}
                       <br/>
