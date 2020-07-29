@@ -200,7 +200,7 @@ export default class Prequel extends React.Component {
 
   logokickoff() {
     this.setState({status: 'logo-start'});
-    publishGameMessage('logo-match', {action: 'inProgress'})
+    publishGameMessage('logo-match', {action: 'started'})
   }
 
   showLevel1Page() {
@@ -221,7 +221,7 @@ export default class Prequel extends React.Component {
 
   startCodeJumbleGame() {
     this.setState({status: 'code_jumble_start'});
-    publishGameMessage('code-jumble', {action: 'inProgress'})
+    publishGameMessage('code-jumble', {action: 'started'})
   }
 
   displayScore() {
