@@ -17,39 +17,38 @@ const preloadedImages = require.context('./embedded/Shop/images/', true, /\.(png
 
 const jumbledCodeQuestions = [
   {
-    question: 'Check if n is a prime number. n > 1',
+    question: 'Check whether a number "n" is a prime number. n > 1',
     code: [
       {value: 'for (int i = 2; i < n; i++)', key: 0},
       {value: 'if (n % i == 0)', key: 1},
-      {value: 'return false', key: 2},
+      {value: 'return Not a prime number', key: 2},
       {value: 'end if', key: 3},
       {value: 'end loop', key: 4},
-      {value: 'return true', key: 5},
+      {value: 'return Prime Number', key: 5},
     ],
   },
   {
     question: 'Bubble sort list of numbers "S"',
     code: [
       {value: 'do', key: 0},
-      {value: 'swapped <-- false', key: 1},
+      {value: 'swapped = false', key: 1},
       {value: 'for each i in 1 to length(S) - 1 ', key: 2},
       {value: 'if S[i-1]>S[i] then', key: 3},
-      {value: 'swap(S[i-1],S[i])', key: 4},
-      {value: 'swapped <-- true', key: 5},
-      {value: 'end if', key: 6},
-      {value: 'end for', key: 7},
-      {value: 'while swapped', key: 8},
+      {value: 'swap(S[i-1],S[i]); swapped = true;', key: 4},
+      {value: 'end if', key: 5},
+      {value: 'end for', key: 6},
+      {value: 'while swapped', key: 7},
     ],
   },
   {
-    question: 'Linear Search. List "a", size "n", desired item "x"',
+    question: 'Check whether the list "a" of size "n" has the desired item "x"',
     code: [
       {value: 'for i=0 to n-1 do', key: 0},
       {value: 'if a[i]==x then', key: 1},
-      {value: 'return i', key: 2},
+      {value: 'return "x" is in the list', key: 2},
       {value: 'end if', key: 3},
       {value: 'end for', key: 4},
-      {value: 'return nil', key: 5},
+      {value: 'return "x" is not in the list', key: 5},
     ],
   },
   {
@@ -62,33 +61,33 @@ const jumbledCodeQuestions = [
       {value: 'break;', key: 4},
       {value: 'end if; ', key: 5},
       {value: 'x = root; ', key: 6},
-      {value: 'end for loop;', key: 7},
+      {value: 'end while', key: 7},
       {value: 'return root;', key: 8},
     ],
   },
   {
-    question: 'Find an element "k" from a tree "T" using Binary search.',
+    question: 'Find an element "k" from a Binary search tree "T".',
     code: [
-      {key: 0, value: 'x <-- root[T]'},
-      {value: 'while x != NIL and k != key[x] do', key: 1},
-      {value: 'if k < key[x]', key: 2},
-      {value: 'x <-- left[x]', key: 3},
+      {key: 0, value: 'node = root[T]'},
+      {value: 'while node != NIL and k != key[node] do', key: 1},
+      {value: 'if k < key[node]', key: 2},
+      {value: 'node = left[node]', key: 3},
       {value: 'else', key: 4},
-      {value: 'x <-- right[x]', key: 5},
-      {value: 'end if', key: 6},
+      {value: 'node = right[node]', key: 5},
+      {value: 'end if else', key: 6},
       {value: 'end while', key: 7},
-      {value: 'return x', key: 8},
+      {value: 'return node', key: 8},
     ],
   },
   {
-    question: 'Add two number x and y.',
+    question: 'Print sum of two numbers x and y.',
     code: [
       {key: 0, value: 'while (y != 0) '},
       {value: 'int carry = x & y;', key: 1},
       {value: 'x = x ^ y;', key: 2},
       {value: 'y = carry << 1;', key: 3},
       {value: 'end while', key: 4},
-      {value: 'return x', key: 5},
+      {value: 'Print x', key: 5},
     ],
   },
   {
@@ -101,19 +100,137 @@ const jumbledCodeQuestions = [
       {value: 'Print x  y', key: 4},
     ],
   },
-  // {
-  //   question: 'Print "c1=1010, c2=1100"',
-  //   code: [
-  //     { key: 0, value: 'int c1 = 0, c2 = 0;' },
-  //     { value: 'for(int i=0;i<10;i++,c1++)', key: 1 },
-  //     { value: 'for(int j=0;j<100;j++, c1++);', key: 2 },
-  //     { value: 'end loop;', key: 3 },
-  //     { value: 'for(int i=0; i<100; i++, c2++)', key: 4 },
-  //     { value: 'for(int j=0; j<10; j++, c2++);', key: 5 },
-  //     { value: 'end loop;', key: 3 },
-  //     { value: 'print("c1=", c1, "c2=", c2)', key: 7 },
-  //   ],
-  // },
+  {
+    question: 'Check whether a string is a palindrome or not.',
+    code: [
+      {value: 'left = 0, right = text.length - 1', key: 0},
+      {value: 'while (left < right)', key: 1},
+      {value: 'if text[left] != text[right]', key: 2},
+      {value: 'return Not a Palindrome', key: 3},
+      {value: 'end if', key: 4},
+      {value: 'left = left + 1, right = right - 1', key: 5},
+      {value: 'end while', key: 6},
+      {value: 'return Palindrome', key: 7},
+    ],
+  },
+  {
+    question: 'Check whether a number is binary or not. Ex:101 is binary, 1321 is not.',
+    code: [
+      {value: 'while (number != 0)', key: 0},
+      {value: 'if (number % 10 > 1)', key: 1},
+      {value: 'return Not a Binary number', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'number = number / 10;', key: 4},
+      {value: 'end while', key: 5},
+      {value: 'return Binary number', key: 6},
+    ],
+  },
+  {
+    question: 'Check whether an integer "N" is Automorphic number.i.e Its square ends in the same digits as the number itself',
+    code: [
+      {value: 'int square = N * N', key: 0},
+      {value: 'while (N > 0)', key: 1},
+      {value: 'if (N % 10 != sq % 10)', key: 2},
+      {value: 'return Not Automorphic', key: 3},
+      {value: 'end if', key: 4},
+      {value: 'N /= 10; square /= 10;', key: 5},
+      {value: 'end while', key: 6},
+      {value: 'return Automorphic', key: 7},
+    ],
+  },
+  {
+    question: 'Print common elements in three sorted integer arrays ar1, ar2, ar3 of lengths n1,n2 and n3.',
+    code: [
+      {value: 'int i = 0, j = 0, k = 0', key: 0},
+      {value: 'while (i < n1 && j < n2 && k < n3)', key: 1},
+      {value: 'if (ar1[i] == ar2[j] && ar2[j] == ar3[k])', key: 2},
+      {value: 'Print ar[i]; i++,j++,k++;', key: 3},
+      {value: 'else if (ar1[i] < ar2[j]) then i++', key: 4},
+      {value: 'else if (ar2[j] < ar3[k]) then j++', key: 5},
+      {value: 'else k++;', key: 6},
+      {value: 'end if else', key: 7},
+      {value: 'end while', key: 8},
+    ],
+  },
+  {
+    question: 'Find if there is a subarray with sum 0.Integer array "arr" of size "n".',
+    code: [
+      {value: 'set<int> sumSet; sum = 0;', key: 0},
+      {value: 'for (int i = 0 ; i < n ; i++) ', key: 1},
+      {value: 'sum += arr[i];', key: 2},
+      {value: 'if (sum == 0 || sumSet.find(sum) != sumSet.end())', key: 3},
+      {value: 'return true', key: 4},
+      {value: 'end if ', key: 5},
+      {value: 'sumSet.insert(sum);', key: 6},
+      {value: 'end for', key: 7},
+      {value: 'return false', key: 8},
+    ],
+  },
+  {
+    question: 'Find largest sum contiguous subarray.Integer array "a" of size "n".',
+    code: [
+      {value: 'maxSum = INT_MIN; sum = 0; ', key: 0},
+      {value: 'for (int i = 0 ; i < n ; i++) ', key: 1},
+      {value: 'sum = sum + a[i]', key: 2},
+      {value: 'if (maxSum < sum) then maxSum = sum;', key: 3},
+      {value: 'if sum < 0 then sum = 0;', key: 4},
+      {value: 'end for', key: 5},
+      {value: 'return maxSum', key: 6},
+    ],
+  },
+  {
+    question: 'Reverse a linked list with head node "head".',
+    code: [
+      {value: 'Node current=head,previous=null,forward=null', key: 0},
+      {value: 'while(current.next != null)', key: 1},
+      {value: 'forward = current.next', key: 2},
+      {value: 'current.next = previous', key: 3},
+      {value: 'previous = current', key: 4},
+      {value: 'current = forward', key: 5},
+      {value: 'end while', key: 6},
+      {value: 'head=current; head.next=previous;', key: 7},
+      {value: 'return head', key: 7},
+    ],
+  },
+  {
+    question: 'Preorder traversal of binary tree.',
+    code: [
+      {value: 'void preOrder(TreeNode node) {', key: 0},
+      {value: 'if (node == null)', key: 1},
+      {value: 'return', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'print node.data', key: 4},
+      {value: 'preOrder(node.left)', key: 5},
+      {value: 'preOrder(node.right)', key: 6},
+      {value: '}', key: 7},
+    ],
+  },
+  {
+    question: 'Postorder traversal of binary tree.',
+    code: [
+      {value: 'void postOrder(TreeNode node) {', key: 0},
+      {value: 'if (node == null)', key: 1},
+      {value: 'return', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'postOrder(node.left)', key: 4},
+      {value: 'postOrder(node.right)', key: 5},
+      {value: 'print node.data', key: 6},
+      {value: '}', key: 7},
+    ],
+  },
+  {
+    question: 'Inorder traversal of binary tree.',
+    code: [
+      {value: 'void inOrder(TreeNode node) {', key: 0},
+      {value: 'if (node == null)', key: 1},
+      {value: 'return', key: 2},
+      {value: 'end if', key: 3},
+      {value: 'inOrder(node.left)', key: 4},
+      {value: 'print node.data', key: 5},
+      {value: 'inOrder(node.right)', key: 6},
+      {value: '}', key: 7},
+    ],
+  },
 ];
 
 const expectedAnswers = {
@@ -181,8 +298,11 @@ export default class Prequel extends React.Component {
   }
 
   getJumbledCodeQuestion() {
+    const min = 1
+    const max = jumbledCodeQuestions.length
+    const randomNumber = min + Math.random() * (max - min)
     // eslint-disable-next-line prefer-destructuring
-    this.currentCodeJumble = _.shuffle(jumbledCodeQuestions)[0];
+    this.currentCodeJumble = jumbledCodeQuestions[Math.ceil(randomNumber) - 1];
     this.currentJumbledOrder = _.shuffle(this.currentCodeJumble.code);
     this.correctOrder = [];
     for (let i = 0; i < this.currentJumbledOrder.length; i += 1) {
