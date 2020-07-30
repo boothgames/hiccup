@@ -243,7 +243,7 @@ const expectedAnswers = {
   tensor: 'google',
   firebase: 'google',
   webRTC: 'google',
-  kafka: 'linkedin',
+  kafka: 'apache',
   swift: 'apple',
   kubernetes: 'google',
   kotlin: 'jetbrains',
@@ -259,6 +259,9 @@ const expectedAnswers = {
   xbox: 'microsoft',
   trello: 'atlassian',
   confluence: 'atlassian',
+  photoshop: 'adobe',
+  intellij: 'jetbrains',
+  csharp: 'microsoft'
 };
 
 const virtualBannerPng = require('./GIDS-Virtual-Banner-Desktop.png')

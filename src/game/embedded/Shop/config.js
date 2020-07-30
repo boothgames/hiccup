@@ -1,6 +1,7 @@
 export const questions = [
   'hadoop',
   'kafka',
+  'trello',
   'selenium',
   'react',
   'kotlin',
@@ -12,17 +13,18 @@ export const questions = [
   'gocd',
   'confluence',
   'terraform',
-  'fedora',
+  'consul',
+  'photoshop',
+  'intellij',
+  'csharp'
   // "tensor",
   // "jest",
   // "firebase",
   // "couch",
   // "flux",
-  // "consul",
   // "cassandra",
   // "graphsql",
   // "webRTC",
-  // "trello",
   // "angular",
 ];
 
@@ -38,10 +40,10 @@ export const bottomOptions = [
   'hashicorp',
   'twitter',
   'soundcloud',
-  'nitobi',
   'redhat',
   'microsoft',
   'atlassian',
+  'adobe'
 ];
 
 export const titles = ['companies', 'products'];
