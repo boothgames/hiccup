@@ -91,13 +91,13 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Print 20 10.',
+    question: 'Swap two numbers x and y and print number1 = 20 number2 = 10.',
     code: [
       {value: 'x =10, y =20;', key: 0},
       {value: 'x = x + y;', key: 1},
       {value: 'y = x - y;', key: 2},
       {value: 'x = x - y;', key: 3},
-      {value: 'Print x  y', key: 4},
+      {value: 'Print number1 = x  number2 = y', key: 4},
     ],
   },
   {
@@ -594,7 +594,7 @@ export default class Prequel extends React.Component {
                       <img className="preview-image" src={congratsImage} alt=""/>
                     </div>
                     <div className="Level-1-Instructions">
-                      {this.calculateScore() > 1 ? 
+                      {this.calculateScore() > 3 ? 
                       (
                         <div>
                           <p className="text-style-1">
@@ -610,20 +610,20 @@ export default class Prequel extends React.Component {
   ) : (
     <div>
       <p className="text-style-1">
-                        Well done! You scored
+                        You scored
         {' '}
         {this.score}
                         /5.
       </p>
-      <p>
-                        Please take 2 mins and
+      <p className='text-style-1'>Thanks for playing! Hope you had fun.</p>
+      <p className="text-style-2">
+      To stay up-to-date on events, news and job opportunities please
         {' '}
         <a href={this.link}>
-                          sign up
+        subscribe
         </a>
         {' '}
-                        for Access ThoughtWorks Careers to stay in touch with the latest happenings
-                        and know about career opportunities at ThoughtWorks.
+        for our monthly newsletter, Access ThoughtWorks careers.
         <br/>
       </p>
     </div>
@@ -701,10 +701,10 @@ export default class Prequel extends React.Component {
                     <p className="text-style-1">Instructions:</p>
                     <ul>
                       <li>
-                         There is a problem statement and a set of jumbled code snippets.
+                      At the top, there will be a problem statement, followed by a set of jumbled code snippets.
                       </li>
-                      <li>Simply drag and drop to rearrange the code snippets in order to get the desired outcome.</li>
-                      <li>The game is timed. You get 60 seconds to rearrange the jumbled code snippets in the right order.</li>
+                      <li>You have to re-arrange the code snippets in the correct order by simply dragging and dropping them to get the desired outcome.</li>
+                      <li>The game is timed. You get 90 seconds to rearrange the jumbled code snippets in the right order.</li>
                     </ul>
                     <br/>
                     <button className="play-button" type="button" onClick={this.startCodeJumbleGame}>
@@ -793,17 +793,16 @@ export default class Prequel extends React.Component {
                       {this.score === 1 ? 'Congratulations! You got it right!' : 'Sorry! That was incorrect.'}
                       {publishGameMessage('code-jumble', {action: this.score === 1 ? 'completed' : 'failed', score: this.score})}
                     </p>
-                    <p className="text-style-1">Hope you had fun.</p>
+                    <p className="text-style-1">Thanks for playing! Hope you had fun.</p>
                     <div>
-                      <p>
-                        Please take 2 mins and
+                      <p className="text-style-2">
+                      To stay up-to-date on events, news and job opportunities please
                         {' '}
                         <a href={this.link}>
-                          sign up
+        subscribe
                         </a>
                         {' '}
-                        for Access ThoughtWorks Careers to stay in touch with the latest happenings
-                        and know about career opportunities at ThoughtWorks.
+        for our monthly newsletter, Access ThoughtWorks careers.
                         <br/>
                       </p>
                     </div>

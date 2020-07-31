@@ -282,6 +282,11 @@ body {
   font-weight: 600;
 }
 
+.text-style-2 {
+  font-size: 20px;
+  font-weight: 650;
+}
+
 .game-preview .game-name {
   font-family: 'Open Sans', 'Microsoft YaHei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', '微软雅黑',
     'Helvetica Neue', Arial, sans-serif;
