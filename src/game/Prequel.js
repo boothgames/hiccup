@@ -17,7 +17,7 @@ const preloadedImages = require.context('./embedded/Shop/images/', true, /\.(png
 
 const jumbledCodeQuestions = [
   {
-    question: 'Check whether a number "n" is a prime number. n > 1',
+    question: 'Problem Statement: Check whether a number "n" is a prime number. n > 1',
     code: [
       {value: 'for (int i = 2; i < n; i++)', key: 0},
       {value: 'if (n % i == 0)', key: 1},
@@ -28,7 +28,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Bubble sort list of numbers "S"',
+    question: 'Problem Statement: Bubble sort list of numbers "S"',
     code: [
       {value: 'do', key: 0},
       {value: 'swapped = false', key: 1},
@@ -41,7 +41,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Check whether the list "a" of size "n" has the desired item "x"',
+    question: 'Problem Statement: Check whether the list "a" of size "n" has the desired item "x"',
     code: [
       {value: 'for i=0 to n-1 do', key: 0},
       {value: 'if a[i]==x then', key: 1},
@@ -52,7 +52,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Find square root of "n" using newtons method."l" is Tolerance level',
+    question: 'Problem Statement: Find square root of "n" using newtons method."l" is Tolerance level',
     code: [
       {key: 0, value: 'double root; double x = n;'},
       {value: 'while (1) ', key: 1},
@@ -65,8 +65,8 @@ const jumbledCodeQuestions = [
       {value: 'return root;', key: 8},
     ],
   },
-  {
-    question: 'Find an element "k" from a Binary search tree "T".',
+  { 
+    question: 'Problem Statement: Find an element "k" from a Binary search tree "T".',
     code: [
       {key: 0, value: 'node = root[T]'},
       {value: 'while node != NIL and k != key[node] do', key: 1},
@@ -80,7 +80,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Print sum of two numbers x and y.',
+    question: 'Problem Statement: Print sum of two numbers x and y.',
     code: [
       {key: 0, value: 'while (y != 0) '},
       {value: 'int carry = x & y;', key: 1},
@@ -91,7 +91,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Swap two numbers x and y and print number1 = 20 number2 = 10.',
+    question: 'Problem Statement: Swap two numbers x and y and print number1 = 20 number2 = 10.',
     code: [
       {value: 'x =10, y =20;', key: 0},
       {value: 'x = x + y;', key: 1},
@@ -101,7 +101,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Check whether a string is a palindrome or not.',
+    question: 'Problem Statement: Check whether a string is a palindrome or not.',
     code: [
       {value: 'left = 0, right = text.length - 1', key: 0},
       {value: 'while (left < right)', key: 1},
@@ -114,7 +114,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Check whether a number is binary or not. Ex:101 is binary, 1321 is not.',
+    question: 'Problem Statement: Check whether a number is binary or not. Ex:101 is binary, 1321 is not.',
     code: [
       {value: 'while (number != 0)', key: 0},
       {value: 'if (number % 10 > 1)', key: 1},
@@ -126,7 +126,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Check whether an integer "N" is Automorphic number.i.e Its square ends in the same digits as the number itself',
+    question: 'Problem Statement: Check whether an integer "N" is Automorphic number.i.e Its square ends in the same digits as the number itself',
     code: [
       {value: 'int square = N * N', key: 0},
       {value: 'while (N > 0)', key: 1},
@@ -139,7 +139,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Print common elements in three sorted integer arrays ar1, ar2, ar3 of lengths n1,n2 and n3.',
+    question: 'Problem Statement: Print common elements in three sorted integer arrays ar1, ar2, ar3 of lengths n1,n2 and n3.',
     code: [
       {value: 'int i = 0, j = 0, k = 0', key: 0},
       {value: 'while (i < n1 && j < n2 && k < n3)', key: 1},
@@ -153,7 +153,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Find if there is a subarray with sum 0.Integer array "arr" of size "n".',
+    question: 'Problem Statement: Find if there is a subarray with sum 0.Integer array "arr" of size "n".',
     code: [
       {value: 'set<int> sumSet; sum = 0;', key: 0},
       {value: 'for (int i = 0 ; i < n ; i++) ', key: 1},
@@ -167,7 +167,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Find largest sum contiguous subarray.Integer array "a" of size "n".',
+    question: 'Problem Statement: Find largest sum contiguous subarray.Integer array "a" of size "n".',
     code: [
       {value: 'maxSum = INT_MIN; sum = 0; ', key: 0},
       {value: 'for (int i = 0 ; i < n ; i++) ', key: 1},
@@ -179,7 +179,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Reverse a linked list with head node "head".',
+    question: 'Problem Statement: Reverse a linked list with head node "head".',
     code: [
       {value: 'Node current=head,previous=null,forward=null', key: 0},
       {value: 'while(current.next != null)', key: 1},
@@ -193,7 +193,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Preorder traversal of binary tree.',
+    question: 'Problem Statement: Preorder traversal of binary tree.',
     code: [
       {value: 'void preOrder(TreeNode node) {', key: 0},
       {value: 'if (node == null)', key: 1},
@@ -206,7 +206,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Postorder traversal of binary tree.',
+    question: 'Problem Statement: Postorder traversal of binary tree.',
     code: [
       {value: 'void postOrder(TreeNode node) {', key: 0},
       {value: 'if (node == null)', key: 1},
@@ -219,7 +219,7 @@ const jumbledCodeQuestions = [
     ],
   },
   {
-    question: 'Inorder traversal of binary tree.',
+    question: 'Problem Statement: Inorder traversal of binary tree.',
     code: [
       {value: 'void inOrder(TreeNode node) {', key: 0},
       {value: 'if (node == null)', key: 1},
@@ -270,7 +270,7 @@ const congratsImage = require('./congrats.png');
 
 const screen2png = require('./screen2.png')
 
-const grouppng = require('./group.jpg')
+const grouppng = require('./group.jpeg')
 
 export default class Prequel extends React.Component {
 
@@ -730,6 +730,15 @@ export default class Prequel extends React.Component {
               }}
               src={grouppng}
               alt=""
+            />
+            <div
+              style={{
+          position: "absolute",
+          height: "100vh",
+          width: "100vw",
+          backgroundColor: "#2c2c2c",
+          opacity: "0.6"
+        }}
             />
             <div className="code_jumble_title">{this.getJumbledCodeQuestion().question}</div>
             <DraggableList
