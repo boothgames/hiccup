@@ -320,6 +320,7 @@ export default class Prequel extends React.Component {
   }
 
   logokickoff() {
+    this.score = 0;
     this.setState({status: 'logo-start'});
     publishGameMessage('logo-match', {action: 'started'})
   }
@@ -341,6 +342,7 @@ export default class Prequel extends React.Component {
   }
 
   startCodeJumbleGame() {
+    this.score = 0;
     this.setState({status: 'code_jumble_start'});
     publishGameMessage('code-jumble', {action: 'started'})
   }
@@ -630,7 +632,7 @@ export default class Prequel extends React.Component {
   ) }
                       {publishGameMessage('logo-match', {action: this.score > 3 ? 'completed' : 'failed', score: this.score})}
                       <br/>
-                      {this.score > 1 ? (
+                      {this.score > 3 ? (
                         <div className="code_jumble_buttons-box">
                           <button
                             className="play-button"
